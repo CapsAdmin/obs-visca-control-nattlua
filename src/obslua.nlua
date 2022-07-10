@@ -1,0 +1,2025 @@
+local type o = {}
+type o.gs_effect_t = {__name = "gs_effect_t"}
+type o.obs_hotkey_binding_enum_func = {__name = "obs_hotkey_binding_enum_func"}
+type o.audio_t = {__name = "audio_t"}
+type o.obs_source_t = {__name = "obs_source_t"}
+type o.obs_weak_output_t = {__name = "obs_weak_output_t"}
+type o.gs_stagesurf_t = {__name = "gs_stagesurf_t"}
+type o.obs_weak_encoder_t = {__name = "obs_weak_encoder_t"}
+type o.obs_transition_video_render_callback_t = {__name = "obs_transition_video_render_callback_t"}
+type o.lookup_t = {__name = "lookup_t"}
+type o.gs_texrender_t = {__name = "gs_texrender_t"}
+type o.obs_weak_service_t = {__name = "obs_weak_service_t"}
+type o.graphics_t = {__name = "graphics_t"}
+type o.obs_property_t = {__name = "obs_property_t"}
+type o.obs_output_t = {__name = "obs_output_t"}
+type o.plane = {__name = "plane"}
+type o.obs_source_enum_proc_t = {__name = "obs_source_enum_proc_t"}
+type o.gs_timer_t = {__name = "gs_timer_t"}
+type o.obs_hotkey_binding_t = {__name = "obs_hotkey_binding_t"}
+type o.gs_indexbuffer_t = {__name = "gs_indexbuffer_t"}
+type o.wchar_t = {__name = "wchar_t"}
+type o.obs_enum_module_callback_t = {__name = "obs_enum_module_callback_t"}
+type o.obs_hotkey_atomic_update_func = {__name = "obs_hotkey_atomic_update_func"}
+type o.obs_sceneitem_t = {__name = "obs_sceneitem_t"}
+type o.obs_weak_source_t = {__name = "obs_weak_source_t"}
+type o.obs_property_modified2_t = {__name = "obs_property_modified2_t"}
+type o.obs_view_t = {__name = "obs_view_t"}
+type o.proc_handler_t = {__name = "proc_handler_t"}
+type o.void = {__name = "void"}
+type o.dstr = {__name = "dstr"}
+type o.obs_key_combination_t = {__name = "obs_key_combination_t"}
+type o.gs_samplerstate_t = {__name = "gs_samplerstate_t"}
+type o.obs_task_handler_t = {__name = "obs_task_handler_t"}
+type o.obs_display_t = {__name = "obs_display_t"}
+type o.input_t = {__name = "input_t"}
+type o.obs_property_clicked_t = {__name = "obs_property_clicked_t"}
+type o.uint64_t = {__name = "uint64_t"}
+type o.gs_eparam_t = {__name = "gs_eparam_t"}
+type o.signal_callback_t = {__name = "signal_callback_t"}
+type o.obs_encoder_t = {__name = "obs_encoder_t"}
+type o.audio_convert_info = {__name = "audio_convert_info"}
+type o.gs_zstencil_t = {__name = "gs_zstencil_t"}
+type o.gs_swapchain_t = {__name = "gs_swapchain_t"}
+type o.obs_hotkey_registerer_t = {__name = "obs_hotkey_registerer_t"}
+type o.obs_data_array_t = {__name = "obs_data_array_t"}
+type o.obs_scene_atomic_update_func = {__name = "obs_scene_atomic_update_func"}
+type o.gs_vertbuffer_t = {__name = "gs_vertbuffer_t"}
+type o.obs_data_t = {__name = "obs_data_t"}
+type o.obs_key_t = {__name = "obs_key_t"}
+type o.obs_task_t = {__name = "obs_task_t"}
+type o.obs_hotkey_id = {__name = "obs_hotkey_id"}
+type o.video_t = {__name = "video_t"}
+type o.obs_module_t = {__name = "obs_module_t"}
+type o.video_scale_info = {__name = "video_scale_info"}
+type o.obs_properties_t = {__name = "obs_properties_t"}
+type o.media_frames_per_second = {__name = "media_frames_per_second"}
+type o.config_t = {__name = "config_t"}
+type o.gs_technique_t = {__name = "gs_technique_t"}
+type o.axisang = {__name = "axisang"}
+type o.proc_handler_proc_t = {__name = "proc_handler_proc_t"}
+type o.log_handler_t = {__name = "log_handler_t"}
+type o.gs_texture_t = {__name = "gs_texture_t"}
+type o.profiler_name_store_t = {__name = "profiler_name_store_t"}
+type o.obs_data_item_t = {__name = "obs_data_item_t"}
+type o.obs_hotkey_t = {__name = "obs_hotkey_t"}
+type o.encoder_packet = {__name = "encoder_packet"}
+type o.calldata_t = {__name = "calldata_t"}
+type o.gs_timer_range_t = {__name = "gs_timer_range_t"}
+type o.obs_hotkey_callback_router_func = {__name = "obs_hotkey_callback_router_func"}
+type o.signal_handler_t = {__name = "signal_handler_t"}
+type o.obs_hotkey_pair_id = {__name = "obs_hotkey_pair_id"}
+type o.obs_hotkey_enum_func = {__name = "obs_hotkey_enum_func"}
+type o.obs_load_source_cb = {__name = "obs_load_source_cb"}
+type o.obs_save_source_filter_cb = {__name = "obs_save_source_filter_cb"}
+type o.gs_epass_t = {__name = "gs_epass_t"}
+type o.gs_shader_t = {__name = "gs_shader_t"}
+type o.obs_scene_t = {__name = "obs_scene_t"}
+type o.obs_transition_audio_mix_callback_t = {__name = "obs_transition_audio_mix_callback_t"}
+type o.obs_service_t = {__name = "obs_service_t"}
+type o.obs_source_audio_capture_t = {__name = "obs_source_audio_capture_t"}
+type o.obs_enum_audio_device_cb = {__name = "obs_enum_audio_device_cb"}
+type o.uint8_t = {__name = "uint8_t"}
+type o.BUILD_CAPTIONS = 0
+type o.CALL_PARAM_IN = 1
+type o.CALL_PARAM_OUT = 2
+type o.CALL_PARAM_TYPE_BOOL = 3
+type o.CALL_PARAM_TYPE_FLOAT = 2
+type o.CALL_PARAM_TYPE_INT = 1
+type o.CALL_PARAM_TYPE_PTR = 4
+type o.CALL_PARAM_TYPE_STRING = 5
+type o.CALL_PARAM_TYPE_VOID = 0
+type o.COMPILE_LUA = 1
+type o.COMPILE_PYTHON = 1
+type o.FALSE = 0
+type o.GS_A8 = 1
+type o.GS_ADDRESS_BORDER = 3
+type o.GS_ADDRESS_CLAMP = 0
+type o.GS_ADDRESS_MIRROR = 2
+type o.GS_ADDRESS_MIRRORONCE = 4
+type o.GS_ADDRESS_WRAP = 1
+type o.GS_ALWAYS = 7
+type o.GS_BACK = 0
+type o.GS_BGRA = 5
+type o.GS_BGRX = 4
+type o.GS_BLEND_DSTALPHA = 8
+type o.GS_BLEND_DSTCOLOR = 6
+type o.GS_BLEND_INVDSTALPHA = 9
+type o.GS_BLEND_INVDSTCOLOR = 7
+type o.GS_BLEND_INVSRCALPHA = 5
+type o.GS_BLEND_INVSRCCOLOR = 3
+type o.GS_BLEND_ONE = 1
+type o.GS_BLEND_SRCALPHA = 4
+type o.GS_BLEND_SRCALPHASAT = 10
+type o.GS_BLEND_SRCCOLOR = 2
+type o.GS_BLEND_ZERO = 0
+type o.GS_BUILD_MIPMAPS = 1
+type o.GS_CLEAR_COLOR = 1
+type o.GS_CLEAR_DEPTH = 2
+type o.GS_CLEAR_STENCIL = 4
+type o.GS_DECR = 4
+type o.GS_DEVICE_DIRECT3D_11 = 2
+type o.GS_DEVICE_OPENGL = 1
+type o.GS_DUP_BUFFER = 16
+type o.GS_DXT1 = 15
+type o.GS_DXT3 = 16
+type o.GS_DXT5 = 17
+type o.GS_DYNAMIC = 2
+type o.GS_EQUAL = 3
+type o.GS_ERROR_FAIL = -1
+type o.GS_ERROR_MODULE_NOT_FOUND = -2
+type o.GS_ERROR_NOT_SUPPORTED = -3
+type o.GS_FILTER_ANISOTROPIC = 2
+type o.GS_FILTER_LINEAR = 1
+type o.GS_FILTER_MIN_LINEAR_MAG_MIP_POINT = 6
+type o.GS_FILTER_MIN_LINEAR_MAG_POINT_MIP_LINEAR = 7
+type o.GS_FILTER_MIN_MAG_LINEAR_MIP_POINT = 8
+type o.GS_FILTER_MIN_MAG_POINT_MIP_LINEAR = 3
+type o.GS_FILTER_MIN_POINT_MAG_LINEAR_MIP_POINT = 4
+type o.GS_FILTER_MIN_POINT_MAG_MIP_LINEAR = 5
+type o.GS_FILTER_POINT = 0
+type o.GS_FLIP_U = 1
+type o.GS_FLIP_V = 2
+type o.GS_FRONT = 1
+type o.GS_GEQUAL = 4
+type o.GS_GL_DUMMYTEX = 8
+type o.GS_GREATER = 5
+type o.GS_INCR = 3
+type o.GS_INVERT = 5
+type o.GS_KEEP = 0
+type o.GS_LEQUAL = 2
+type o.GS_LESS = 1
+type o.GS_LINES = 1
+type o.GS_LINESTRIP = 2
+type o.GS_MAX_TEXTURES = 8
+type o.GS_NEGATIVE_X = 1
+type o.GS_NEGATIVE_Y = 3
+type o.GS_NEGATIVE_Z = 5
+type o.GS_NEITHER = 2
+type o.GS_NEVER = 0
+type o.GS_NOTEQUAL = 6
+type o.GS_POINTS = 0
+type o.GS_POSITIVE_X = 0
+type o.GS_POSITIVE_Y = 2
+type o.GS_POSITIVE_Z = 4
+type o.GS_R10G10B10A2 = 6
+type o.GS_R16 = 8
+type o.GS_R16F = 13
+type o.GS_R32F = 14
+type o.GS_R8 = 2
+type o.GS_R8G8 = 18
+type o.GS_RENDER_TARGET = 4
+type o.GS_REPLACE = 2
+type o.GS_RG16F = 11
+type o.GS_RG32F = 12
+type o.GS_RGBA = 3
+type o.GS_RGBA16 = 7
+type o.GS_RGBA16F = 9
+type o.GS_RGBA32F = 10
+type o.GS_SHADER_PARAM_BOOL = 1
+type o.GS_SHADER_PARAM_FLOAT = 2
+type o.GS_SHADER_PARAM_INT = 3
+type o.GS_SHADER_PARAM_INT2 = 8
+type o.GS_SHADER_PARAM_INT3 = 9
+type o.GS_SHADER_PARAM_INT4 = 10
+type o.GS_SHADER_PARAM_MATRIX4X4 = 11
+type o.GS_SHADER_PARAM_STRING = 4
+type o.GS_SHADER_PARAM_TEXTURE = 12
+type o.GS_SHADER_PARAM_UNKNOWN = 0
+type o.GS_SHADER_PARAM_VEC2 = 5
+type o.GS_SHADER_PARAM_VEC3 = 6
+type o.GS_SHADER_PARAM_VEC4 = 7
+type o.GS_SHARED_KM_TEX = 64
+type o.GS_SHARED_TEX = 32
+type o.GS_STENCIL_BACK = 2
+type o.GS_STENCIL_BOTH = 3
+type o.GS_STENCIL_FRONT = 1
+type o.GS_SUCCESS = 0
+type o.GS_TEXTURE_2D = 0
+type o.GS_TEXTURE_3D = 1
+type o.GS_TEXTURE_CUBE = 2
+type o.GS_TRIS = 3
+type o.GS_TRISTRIP = 4
+type o.GS_UNKNOWN = 0
+type o.GS_UNSIGNED_LONG = 1
+type o.GS_UNSIGNED_SHORT = 0
+type o.GS_USE_DEBUG_MARKERS = 0
+type o.GS_Z16 = 1
+type o.GS_Z24_S8 = 2
+type o.GS_Z32F = 3
+type o.GS_Z32F_S8X24 = 4
+type o.GS_ZERO = 1
+type o.GS_ZS_NONE = 0
+type o.INTERACT_ALT_KEY = 8
+type o.INTERACT_CAPS_KEY = 1
+type o.INTERACT_COMMAND_KEY = 128
+type o.INTERACT_CONTROL_KEY = 4
+type o.INTERACT_IS_KEY_PAD = 512
+type o.INTERACT_IS_LEFT = 1024
+type o.INTERACT_IS_RIGHT = 2048
+type o.INTERACT_MOUSE_LEFT = 16
+type o.INTERACT_MOUSE_MIDDLE = 32
+type o.INTERACT_MOUSE_RIGHT = 64
+type o.INTERACT_NONE = 0
+type o.INTERACT_NUMLOCK_KEY = 256
+type o.INTERACT_SHIFT_KEY = 2
+type o.INT_CUR_LINE = 35
+type o.LOG_DEBUG = 400
+type o.LOG_ERROR = 100
+type o.LOG_INFO = 300
+type o.LOG_WARNING = 200
+type o.MOUSE_LEFT = 0
+type o.MOUSE_MIDDLE = 1
+type o.MOUSE_RIGHT = 2
+type o.OBS_ALLOW_DIRECT_RENDERING = 1
+type o.OBS_BALANCE_TYPE_LINEAR = 2
+type o.OBS_BALANCE_TYPE_SINE_LAW = 0
+type o.OBS_BALANCE_TYPE_SQUARE_LAW = 1
+type o.OBS_BOUNDS_MAX_ONLY = 6
+type o.OBS_BOUNDS_NONE = 0
+type o.OBS_BOUNDS_SCALE_INNER = 2
+type o.OBS_BOUNDS_SCALE_OUTER = 3
+type o.OBS_BOUNDS_SCALE_TO_HEIGHT = 5
+type o.OBS_BOUNDS_SCALE_TO_WIDTH = 4
+type o.OBS_BOUNDS_STRETCH = 1
+type o.OBS_COMBO_FORMAT_FLOAT = 2
+type o.OBS_COMBO_FORMAT_INT = 1
+type o.OBS_COMBO_FORMAT_INVALID = 0
+type o.OBS_COMBO_FORMAT_STRING = 3
+type o.OBS_COMBO_INVALID = 0
+type o.OBS_COMBO_TYPE_EDITABLE = 1
+type o.OBS_COMBO_TYPE_INVALID = 0
+type o.OBS_COMBO_TYPE_LIST = 2
+type o.OBS_DATA_ARRAY = 5
+type o.OBS_DATA_BOOLEAN = 3
+type o.OBS_DATA_NULL = 0
+type o.OBS_DATA_NUMBER = 2
+type o.OBS_DATA_NUM_DOUBLE = 2
+type o.OBS_DATA_NUM_INT = 1
+type o.OBS_DATA_NUM_INVALID = 0
+type o.OBS_DATA_OBJECT = 4
+type o.OBS_DATA_STRING = 1
+type o.OBS_DEINTERLACE_FIELD_ORDER_BOTTOM = 1
+type o.OBS_DEINTERLACE_FIELD_ORDER_TOP = 0
+type o.OBS_DEINTERLACE_MODE_BLEND = 3
+type o.OBS_DEINTERLACE_MODE_BLEND_2X = 4
+type o.OBS_DEINTERLACE_MODE_DISABLE = 0
+type o.OBS_DEINTERLACE_MODE_DISCARD = 1
+type o.OBS_DEINTERLACE_MODE_LINEAR = 5
+type o.OBS_DEINTERLACE_MODE_LINEAR_2X = 6
+type o.OBS_DEINTERLACE_MODE_RETRO = 2
+type o.OBS_DEINTERLACE_MODE_YADIF = 7
+type o.OBS_DEINTERLACE_MODE_YADIF_2X = 8
+type o.OBS_EDITABLE_LIST_TYPE_FILES = 1
+type o.OBS_EDITABLE_LIST_TYPE_FILES_AND_URLS = 2
+type o.OBS_EDITABLE_LIST_TYPE_STRINGS = 0
+type o.OBS_EFFECT_AREA = 9
+type o.OBS_EFFECT_BICUBIC = 4
+type o.OBS_EFFECT_BILINEAR_LOWRES = 6
+type o.OBS_EFFECT_DEFAULT = 0
+type o.OBS_EFFECT_DEFAULT_RECT = 1
+type o.OBS_EFFECT_LANCZOS = 5
+type o.OBS_EFFECT_OPAQUE = 2
+type o.OBS_EFFECT_PREMULTIPLIED_ALPHA = 7
+type o.OBS_EFFECT_REPEAT = 8
+type o.OBS_EFFECT_SOLID = 3
+type o.OBS_FONT_BOLD = 1
+type o.OBS_FONT_ITALIC = 2
+type o.OBS_FONT_STRIKEOUT = 8
+type o.OBS_FONT_UNDERLINE = 4
+type o.OBS_FRONTEND_EVENT_EXIT = 17
+type o.OBS_FRONTEND_EVENT_FINISHED_LOADING = 26
+type o.OBS_FRONTEND_EVENT_PREVIEW_SCENE_CHANGED = 24
+type o.OBS_FRONTEND_EVENT_PROFILE_CHANGED = 15
+type o.OBS_FRONTEND_EVENT_PROFILE_LIST_CHANGED = 16
+type o.OBS_FRONTEND_EVENT_RECORDING_PAUSED = 27
+type o.OBS_FRONTEND_EVENT_RECORDING_STARTED = 5
+type o.OBS_FRONTEND_EVENT_RECORDING_STARTING = 4
+type o.OBS_FRONTEND_EVENT_RECORDING_STOPPED = 7
+type o.OBS_FRONTEND_EVENT_RECORDING_STOPPING = 6
+type o.OBS_FRONTEND_EVENT_RECORDING_UNPAUSED = 28
+type o.OBS_FRONTEND_EVENT_REPLAY_BUFFER_STARTED = 19
+type o.OBS_FRONTEND_EVENT_REPLAY_BUFFER_STARTING = 18
+type o.OBS_FRONTEND_EVENT_REPLAY_BUFFER_STOPPED = 21
+type o.OBS_FRONTEND_EVENT_REPLAY_BUFFER_STOPPING = 20
+type o.OBS_FRONTEND_EVENT_SCENE_CHANGED = 8
+type o.OBS_FRONTEND_EVENT_SCENE_COLLECTION_CHANGED = 13
+type o.OBS_FRONTEND_EVENT_SCENE_COLLECTION_CLEANUP = 25
+type o.OBS_FRONTEND_EVENT_SCENE_COLLECTION_LIST_CHANGED = 14
+type o.OBS_FRONTEND_EVENT_SCENE_LIST_CHANGED = 9
+type o.OBS_FRONTEND_EVENT_STREAMING_STARTED = 1
+type o.OBS_FRONTEND_EVENT_STREAMING_STARTING = 0
+type o.OBS_FRONTEND_EVENT_STREAMING_STOPPED = 3
+type o.OBS_FRONTEND_EVENT_STREAMING_STOPPING = 2
+type o.OBS_FRONTEND_EVENT_STUDIO_MODE_DISABLED = 23
+type o.OBS_FRONTEND_EVENT_STUDIO_MODE_ENABLED = 22
+type o.OBS_FRONTEND_EVENT_TRANSITION_CHANGED = 10
+type o.OBS_FRONTEND_EVENT_TRANSITION_DURATION_CHANGED = 29
+type o.OBS_FRONTEND_EVENT_TRANSITION_LIST_CHANGED = 12
+type o.OBS_FRONTEND_EVENT_TRANSITION_STOPPED = 11
+type o.OBS_GROUP_CHECKABLE = 2
+type o.OBS_GROUP_NORMAL = 1
+type o.OBS_HOTKEY_REGISTERER_ENCODER = 3
+type o.OBS_HOTKEY_REGISTERER_FRONTEND = 0
+type o.OBS_HOTKEY_REGISTERER_OUTPUT = 2
+type o.OBS_HOTKEY_REGISTERER_SERVICE = 4
+type o.OBS_HOTKEY_REGISTERER_SOURCE = 1
+type o.OBS_ICON_TYPE_AUDIO_INPUT = 4
+type o.OBS_ICON_TYPE_AUDIO_OUTPUT = 5
+type o.OBS_ICON_TYPE_BROWSER = 12
+type o.OBS_ICON_TYPE_CAMERA = 9
+type o.OBS_ICON_TYPE_COLOR = 2
+type o.OBS_ICON_TYPE_CUSTOM = 13
+type o.OBS_ICON_TYPE_DESKTOP_CAPTURE = 6
+type o.OBS_ICON_TYPE_GAME_CAPTURE = 8
+type o.OBS_ICON_TYPE_IMAGE = 1
+type o.OBS_ICON_TYPE_MEDIA = 11
+type o.OBS_ICON_TYPE_SLIDESHOW = 3
+type o.OBS_ICON_TYPE_TEXT = 10
+type o.OBS_ICON_TYPE_UNKNOWN = 0
+type o.OBS_ICON_TYPE_WINDOW_CAPTURE = 7
+type o.OBS_INVALID_HOTKEY_ID = 18446744073709551615
+type o.OBS_INVALID_HOTKEY_PAIR_ID = 18446744073709551615
+type o.OBS_KEY_LAST_VALUE = 636
+type o.OBS_MEDIA_STATE_BUFFERING = 3
+type o.OBS_MEDIA_STATE_ENDED = 6
+type o.OBS_MEDIA_STATE_ERROR = 7
+type o.OBS_MEDIA_STATE_NONE = 0
+type o.OBS_MEDIA_STATE_OPENING = 2
+type o.OBS_MEDIA_STATE_PAUSED = 4
+type o.OBS_MEDIA_STATE_PLAYING = 1
+type o.OBS_MEDIA_STATE_STOPPED = 5
+type o.OBS_MONITORING_TYPE_MONITOR_AND_OUTPUT = 2
+type o.OBS_MONITORING_TYPE_MONITOR_ONLY = 1
+type o.OBS_MONITORING_TYPE_NONE = 0
+type o.OBS_NO_DIRECT_RENDERING = 0
+type o.OBS_NUMBER_SCROLLER = 0
+type o.OBS_NUMBER_SLIDER = 1
+type o.OBS_OBJ_TYPE_ENCODER = 3
+type o.OBS_OBJ_TYPE_INVALID = 0
+type o.OBS_OBJ_TYPE_OUTPUT = 2
+type o.OBS_OBJ_TYPE_SERVICE = 4
+type o.OBS_OBJ_TYPE_SOURCE = 1
+type o.OBS_ORDER_MOVE_BOTTOM = 3
+type o.OBS_ORDER_MOVE_DOWN = 1
+type o.OBS_ORDER_MOVE_TOP = 2
+type o.OBS_ORDER_MOVE_UP = 0
+type o.OBS_OUTPUT_DELAY_PRESERVE = 1
+type o.OBS_PATH_DIRECTORY = 2
+type o.OBS_PATH_FILE = 0
+type o.OBS_PATH_FILE_SAVE = 1
+type o.OBS_PROPERTIES_DEFER_UPDATE = 1
+type o.OBS_PROPERTY_BOOL = 1
+type o.OBS_PROPERTY_BUTTON = 8
+type o.OBS_PROPERTY_COLOR = 7
+type o.OBS_PROPERTY_EDITABLE_LIST = 10
+type o.OBS_PROPERTY_FLOAT = 3
+type o.OBS_PROPERTY_FONT = 9
+type o.OBS_PROPERTY_FRAME_RATE = 11
+type o.OBS_PROPERTY_GROUP = 12
+type o.OBS_PROPERTY_INT = 2
+type o.OBS_PROPERTY_INVALID = 0
+type o.OBS_PROPERTY_LIST = 6
+type o.OBS_PROPERTY_PATH = 5
+type o.OBS_PROPERTY_TEXT = 4
+type o.OBS_SCALE_AREA = 5
+type o.OBS_SCALE_BICUBIC = 2
+type o.OBS_SCALE_BILINEAR = 3
+type o.OBS_SCALE_DISABLE = 0
+type o.OBS_SCALE_LANCZOS = 4
+type o.OBS_SCALE_POINT = 1
+type o.OBS_SCENE_DUP_COPY = 1
+type o.OBS_SCENE_DUP_PRIVATE_COPY = 3
+type o.OBS_SCENE_DUP_PRIVATE_REFS = 2
+type o.OBS_SCENE_DUP_REFS = 0
+type o.OBS_SOURCE_ASYNC = 4
+type o.OBS_SOURCE_ASYNC_VIDEO = 5
+type o.OBS_SOURCE_AUDIO = 2
+type o.OBS_SOURCE_CAP_DISABLED = 1024
+type o.OBS_SOURCE_CAP_OBSOLETE = 1024
+type o.OBS_SOURCE_COMPOSITE = 64
+type o.OBS_SOURCE_CONTROLLABLE_MEDIA = 8192
+type o.OBS_SOURCE_CUSTOM_DRAW = 8
+type o.OBS_SOURCE_DEPRECATED = 256
+type o.OBS_SOURCE_DO_NOT_DUPLICATE = 128
+type o.OBS_SOURCE_DO_NOT_SELF_MONITOR = 512
+type o.OBS_SOURCE_FLAG_FORCE_MONO = 2
+type o.OBS_SOURCE_FLAG_UNUSED_1 = 1
+type o.OBS_SOURCE_INTERACTION = 32
+type o.OBS_SOURCE_MONITOR_BY_DEFAULT = 2048
+type o.OBS_SOURCE_SUBMIX = 4096
+type o.OBS_SOURCE_TYPE_FILTER = 1
+type o.OBS_SOURCE_TYPE_INPUT = 0
+type o.OBS_SOURCE_TYPE_SCENE = 3
+type o.OBS_SOURCE_TYPE_TRANSITION = 2
+type o.OBS_SOURCE_VIDEO = 1
+type o.OBS_TASK_GRAPHICS = 1
+type o.OBS_TASK_UI = 0
+type o.OBS_TEXT_DEFAULT = 0
+type o.OBS_TEXT_MULTILINE = 2
+type o.OBS_TEXT_PASSWORD = 1
+type o.OBS_TRANSITION_MODE_AUTO = 0
+type o.OBS_TRANSITION_MODE_MANUAL = 1
+type o.OBS_TRANSITION_SCALE_ASPECT = 1
+type o.OBS_TRANSITION_SCALE_MAX_ONLY = 0
+type o.OBS_TRANSITION_SCALE_STRETCH = 2
+type o.OBS_TRANSITION_SOURCE_A = 0
+type o.OBS_TRANSITION_SOURCE_B = 1
+type o.OFF = 0
+type o.ON = 1
+type o.TRUE = 1
+type o.UI_ENABLED = 1
+type o.XINPUT_MOUSE_LEN = 33
+type o.FILE_LINE = "/build/obs-studio-ojyHL5/obs-studio-25.0.3+dfsg1/libobs/util/base.h (36): "
+type o.PYTHON_LIB = "libpython3.8"
+type o.SCRIPT_DIR = "/usr/lib/x86_64-linux-gnu/obs-scripting"
+type o.S__LINE__ = "33"
+type o.__cached__ = "/usr/lib/x86_64-linux-gnu/obs-scripting/__pycache__/obspython.cpython-38.pyc"
+type o.__file__ = "/usr/lib/x86_64-linux-gnu/obs-scripting/obspython.py"
+type o.__name__ = "obspython"
+type o.__package__ = ""
+type o._SwigNonDynamicMeta = {
+}
+type o.base_allocator = {
+	free = any,
+	malloc = any,
+	realloc = any,
+	thisown = any,
+}
+type o.calldata = {
+	capacity = any,
+	fixed = any,
+	size = any,
+	stack = any,
+	thisown = any,
+}
+type o.gs_device_loss = {
+	data = any,
+	device_loss_rebuild = any,
+	device_loss_release = any,
+	thisown = any,
+}
+type o.gs_display_mode = {
+	bits = any,
+	freq = any,
+	height = any,
+	thisown = any,
+	width = any,
+}
+type o.gs_init_data = {
+	adapter = any,
+	cx = any,
+	cy = any,
+	format = any,
+	num_backbuffers = any,
+	thisown = any,
+	window = any,
+	zsformat = any,
+}
+type o.gs_monitor_info = {
+	cx = any,
+	cy = any,
+	rotation_degrees = any,
+	thisown = any,
+	x = any,
+	y = any,
+}
+type o.gs_rect = {
+	cx = any,
+	cy = any,
+	thisown = any,
+	x = any,
+	y = any,
+}
+type o.gs_sampler_info = {
+	address_u = any,
+	address_v = any,
+	address_w = any,
+	border_color = any,
+	filter = any,
+	max_anisotropy = any,
+	thisown = any,
+}
+type o.gs_tvertarray = {
+	array = any,
+	thisown = any,
+	width = any,
+}
+type o.gs_vb_data = {
+	colors = any,
+	normals = any,
+	num = any,
+	num_tex = any,
+	points = any,
+	tangents = any,
+	thisown = any,
+	tvarray = any,
+}
+type o.gs_window = {
+	thisown = any,
+}
+type o.matrix3 = {
+	t = any,
+	thisown = any,
+	x = any,
+	y = any,
+	z = any,
+}
+type o.matrix4 = {
+	t = any,
+	thisown = any,
+	x = any,
+	y = any,
+	z = any,
+}
+type o.obs_audio_data = {
+	data = any,
+	frames = any,
+	thisown = any,
+	timestamp = any,
+}
+type o.obs_audio_info = {
+	samples_per_sec = any,
+	speakers = any,
+	thisown = any,
+}
+type o.obs_cmdline_args = {
+	argc = any,
+	argv = any,
+	thisown = any,
+}
+type o.obs_key_combination = {
+	key = any,
+	modifiers = any,
+	thisown = any,
+}
+type o.obs_key_event = {
+	modifiers = any,
+	native_modifiers = any,
+	native_scancode = any,
+	native_vkey = any,
+	text = any,
+	thisown = any,
+}
+type o.obs_mouse_event = {
+	modifiers = any,
+	thisown = any,
+	x = any,
+	y = any,
+}
+type o.obs_sceneitem_crop = {
+	bottom = any,
+	left = any,
+	right = any,
+	thisown = any,
+	top = any,
+}
+type o.obs_sceneitem_order_info = {
+	group = any,
+	item = any,
+	thisown = any,
+}
+type o.obs_source_audio = {
+	data = any,
+	format = any,
+	frames = any,
+	samples_per_sec = any,
+	speakers = any,
+	thisown = any,
+	timestamp = any,
+}
+type o.obs_source_audio_mix = {
+	output = any,
+	thisown = any,
+}
+type o.obs_source_frame = {
+	color_matrix = any,
+	color_range_max = any,
+	color_range_min = any,
+	data = any,
+	flip = any,
+	format = any,
+	full_range = any,
+	height = any,
+	linesize = any,
+	prev_frame = any,
+	refs = any,
+	thisown = any,
+	timestamp = any,
+	width = any,
+}
+type o.obs_source_frame2 = {
+	color_matrix = any,
+	color_range_max = any,
+	color_range_min = any,
+	data = any,
+	flip = any,
+	format = any,
+	height = any,
+	linesize = any,
+	range = any,
+	thisown = any,
+	timestamp = any,
+	width = any,
+}
+type o.obs_transform_info = {
+	alignment = any,
+	bounds = any,
+	bounds_alignment = any,
+	bounds_type = any,
+	pos = any,
+	rot = any,
+	scale = any,
+	thisown = any,
+}
+type o.obs_video_info = {
+	adapter = any,
+	base_height = any,
+	base_width = any,
+	colorspace = any,
+	fps_den = any,
+	fps_num = any,
+	gpu_conversion = any,
+	output_format = any,
+	output_height = any,
+	output_width = any,
+	range = any,
+	scale_type = any,
+	thisown = any,
+}
+type o.quat = {
+	m = any,
+	ptr = any,
+	thisown = any,
+	w = any,
+	x = any,
+	y = any,
+	z = any,
+}
+type o.vec2 = {
+	ptr = any,
+	thisown = any,
+	x = any,
+	y = any,
+}
+type o.vec3 = {
+	m = any,
+	ptr = any,
+	thisown = any,
+	w = any,
+	x = any,
+	y = any,
+	z = any,
+}
+type o.vec4 = {
+	m = any,
+	ptr = any,
+	thisown = any,
+	w = any,
+	x = any,
+	y = any,
+	z = any,
+}
+type o._swig_add_metaclass = function=(any)>(any)
+type o._swig_repr = function=(any)>(any)
+type o._swig_setattr_nondynamic_class_variable = function=(any)>(any)
+type o._swig_setattr_nondynamic_instance_variable = function=(any)>(any)
+type o.base_get_alignment = function=()>(number)
+type o.base_get_log_handler = function=(o.log_handler_t--[[ log_handler_t * ]], o.void--[[ void ** ]])>()
+type o.base_set_allocator = function=(o.base_allocator)>()
+type o.base_set_crash_handler = function=(any, any)>()
+type o.base_set_log_handler = function=(o.log_handler_t, any)>()
+type o.bfree = function=(any)>()
+type o.blog = function=(number, string)>()
+type o.bmalloc = function=(number)>(any)
+type o.bmemdup = function=(any, number)>(any)
+type o.bnum_allocs = function=()>(number)
+type o.brealloc = function=(any, number)>(any)
+type o.bstrdup = function=(string)>(string)
+type o.bstrdup_n = function=(string, number)>(string)
+type o.bwstrdup = function=(o.wchar_t--[[ wchar_t const * ]])>(o.wchar_t | nil--[[ wchar_t * ]])
+type o.bwstrdup_n = function=(o.wchar_t--[[ wchar_t const * ]], number)>(o.wchar_t | nil--[[ wchar_t * ]])
+type o.bzalloc = function=(number)>(any)
+type o.calldata_bool = function=(o.calldata, string)>(boolean)
+type o.calldata_clear = function=(o.calldata)>()
+type o.calldata_create = function=()>(o.calldata_t | nil--[[ calldata_t * ]])
+type o.calldata_destroy = function=(o.calldata)>()
+type o.calldata_float = function=(o.calldata, string)>(number)
+type o.calldata_free = function=(o.calldata)>()
+type o.calldata_get_bool = function=(o.calldata, string, List<|boolean|>)>(boolean)
+type o.calldata_get_data = function=(o.calldata, string, any, number)>(boolean)
+type o.calldata_get_float = function=(o.calldata, string, List<|number|>)>(boolean)
+type o.calldata_get_int = function=(o.calldata, string, List<|number|>)>(boolean)
+type o.calldata_get_ptr = function=(o.calldata, string, any)>(boolean)
+type o.calldata_get_string = function=(o.calldata, string, List<|string|>)>(boolean)
+type o.calldata_init = function=(o.calldata)>()
+type o.calldata_init_fixed = function=(o.calldata, o.uint8_t--[[ uint8_t * ]], number)>()
+type o.calldata_int = function=(o.calldata, string)>(number)
+type o.calldata_ptr = function=(o.calldata, string)>(any)
+type o.calldata_set_bool = function=(o.calldata, string, boolean)>()
+type o.calldata_set_data = function=(o.calldata, string, any, number)>()
+type o.calldata_set_float = function=(o.calldata, string, number)>()
+type o.calldata_set_int = function=(o.calldata, string, number)>()
+type o.calldata_set_ptr = function=(o.calldata, string, any)>()
+type o.calldata_set_string = function=(o.calldata, string, string)>()
+type o.calldata_string = function=(o.calldata, string)>(string)
+type o.gs_begin_frame = function=()>()
+type o.gs_begin_scene = function=()>()
+type o.gs_blend_function = function=(number, number)>()
+type o.gs_blend_function_separate = function=(number, number, number, number)>()
+type o.gs_blend_state_pop = function=()>()
+type o.gs_blend_state_push = function=()>()
+type o.gs_clear = function=(number, o.vec4, number, number)>()
+type o.gs_color = function=(number)>()
+type o.gs_color4v = function=(o.vec4)>()
+type o.gs_copy_texture = function=(o.gs_texture_t--[[ gs_texture_t * ]], o.gs_texture_t--[[ gs_texture_t * ]])>()
+type o.gs_copy_texture_region = function=(o.gs_texture_t--[[ gs_texture_t * ]], number, number, o.gs_texture_t--[[ gs_texture_t * ]], number, number, number, number)>()
+type o.gs_create = function=(o.graphics_t--[[ graphics_t ** ]], string, number)>(number)
+type o.gs_create_texture_file_data = function=(string, number, List<|number|>, List<|number|>)>(o.uint8_t | nil--[[ uint8_t * ]])
+type o.gs_cubetexture_create = function=(number, number, number, o.uint8_t--[[ uint8_t const ** ]], number)>(o.gs_texture_t | nil--[[ gs_texture_t * ]])
+type o.gs_cubetexture_destroy = function=(o.gs_texture_t--[[ gs_texture_t * ]])>()
+type o.gs_cubetexture_get_color_format = function=(o.gs_texture_t--[[ gs_texture_t const * ]])>(number)
+type o.gs_cubetexture_get_size = function=(o.gs_texture_t--[[ gs_texture_t const * ]])>(number)
+type o.gs_cubetexture_set_image = function=(o.gs_texture_t--[[ gs_texture_t * ]], number, any, number, boolean)>()
+type o.gs_debug_marker_begin = function=(any, string)>()
+type o.gs_debug_marker_begin_format = function=(any)>()
+type o.gs_debug_marker_end = function=()>()
+type o.gs_depth_function = function=(number)>()
+type o.gs_destroy = function=(o.graphics_t--[[ graphics_t * ]])>()
+type o.gs_draw = function=(number, number, number)>()
+type o.gs_draw_cube_backdrop = function=(o.gs_texture_t--[[ gs_texture_t * ]], o.quat, number, number, number, number, number)>()
+type o.gs_draw_sprite = function=(o.gs_texture_t--[[ gs_texture_t * ]], number, number, number)>()
+type o.gs_draw_sprite_subregion = function=(o.gs_texture_t--[[ gs_texture_t * ]], number, number, number, number, number)>()
+type o.gs_effect_create = function=(string, string, List<|string|>)>(o.gs_effect_t | nil--[[ gs_effect_t * ]])
+type o.gs_effect_create_from_file = function=(string, List<|string|>)>(o.gs_effect_t | nil--[[ gs_effect_t * ]])
+type o.gs_effect_destroy = function=(o.gs_effect_t--[[ gs_effect_t * ]])>()
+type o.gs_effect_get_current_technique = function=(o.gs_effect_t--[[ gs_effect_t const * ]])>(o.gs_technique_t | nil--[[ gs_technique_t * ]])
+type o.gs_effect_get_default_val = function=(o.gs_eparam_t--[[ gs_eparam_t * ]])>(any)
+type o.gs_effect_get_default_val_size = function=(o.gs_eparam_t--[[ gs_eparam_t * ]])>(number)
+type o.gs_effect_get_num_params = function=(o.gs_effect_t--[[ gs_effect_t const * ]])>(number)
+type o.gs_effect_get_param_by_idx = function=(o.gs_effect_t--[[ gs_effect_t const * ]], number)>(o.gs_eparam_t | nil--[[ gs_eparam_t * ]])
+type o.gs_effect_get_param_by_name = function=(o.gs_effect_t--[[ gs_effect_t const * ]], string)>(o.gs_eparam_t | nil--[[ gs_eparam_t * ]])
+type o.gs_effect_get_technique = function=(o.gs_effect_t--[[ gs_effect_t const * ]], string)>(o.gs_technique_t | nil--[[ gs_technique_t * ]])
+type o.gs_effect_get_val = function=(o.gs_eparam_t--[[ gs_eparam_t * ]])>(any)
+type o.gs_effect_get_val_size = function=(o.gs_eparam_t--[[ gs_eparam_t * ]])>(number)
+type o.gs_effect_get_viewproj_matrix = function=(o.gs_effect_t--[[ gs_effect_t const * ]])>(o.gs_eparam_t | nil--[[ gs_eparam_t * ]])
+type o.gs_effect_get_world_matrix = function=(o.gs_effect_t--[[ gs_effect_t const * ]])>(o.gs_eparam_t | nil--[[ gs_eparam_t * ]])
+type o.gs_effect_loop = function=(o.gs_effect_t--[[ gs_effect_t * ]], string)>(boolean)
+type o.gs_effect_set_bool = function=(o.gs_eparam_t--[[ gs_eparam_t * ]], boolean)>()
+type o.gs_effect_set_color = function=(o.gs_eparam_t--[[ gs_eparam_t * ]], number)>()
+type o.gs_effect_set_default = function=(o.gs_eparam_t--[[ gs_eparam_t * ]])>()
+type o.gs_effect_set_float = function=(o.gs_eparam_t--[[ gs_eparam_t * ]], number)>()
+type o.gs_effect_set_int = function=(o.gs_eparam_t--[[ gs_eparam_t * ]], number)>()
+type o.gs_effect_set_matrix4 = function=(o.gs_eparam_t--[[ gs_eparam_t * ]], o.matrix4)>()
+type o.gs_effect_set_next_sampler = function=(o.gs_eparam_t--[[ gs_eparam_t * ]], o.gs_samplerstate_t--[[ gs_samplerstate_t * ]])>()
+type o.gs_effect_set_texture = function=(o.gs_eparam_t--[[ gs_eparam_t * ]], o.gs_texture_t--[[ gs_texture_t * ]])>()
+type o.gs_effect_set_val = function=(o.gs_eparam_t--[[ gs_eparam_t * ]], any, number)>()
+type o.gs_effect_set_vec2 = function=(o.gs_eparam_t--[[ gs_eparam_t * ]], o.vec2)>()
+type o.gs_effect_set_vec3 = function=(o.gs_eparam_t--[[ gs_eparam_t * ]], o.vec3)>()
+type o.gs_effect_set_vec4 = function=(o.gs_eparam_t--[[ gs_eparam_t * ]], o.vec4)>()
+type o.gs_effect_update_params = function=(o.gs_effect_t--[[ gs_effect_t * ]])>()
+type o.gs_enable_blending = function=(boolean)>()
+type o.gs_enable_color = function=(boolean, boolean, boolean, boolean)>()
+type o.gs_enable_depth_test = function=(boolean)>()
+type o.gs_enable_stencil_test = function=(boolean)>()
+type o.gs_enable_stencil_write = function=(boolean)>()
+type o.gs_end_scene = function=()>()
+type o.gs_enter_context = function=(o.graphics_t--[[ graphics_t * ]])>()
+type o.gs_enum_adapters = function=(any, any)>()
+type o.gs_flush = function=()>()
+type o.gs_frustum = function=(number, number, number, number, number, number)>()
+type o.gs_get_context = function=()>(o.graphics_t | nil--[[ graphics_t * ]])
+type o.gs_get_cull_mode = function=()>(number)
+type o.gs_get_device_name = function=()>(string)
+type o.gs_get_device_obj = function=()>(any)
+type o.gs_get_device_type = function=()>(number)
+type o.gs_get_effect = function=()>(o.gs_effect_t | nil--[[ gs_effect_t * ]])
+type o.gs_get_format_bpp = function=(number)>(number)
+type o.gs_get_height = function=()>(number)
+type o.gs_get_input = function=()>(o.input_t | nil--[[ input_t * ]])
+type o.gs_get_pixel_shader = function=()>(o.gs_shader_t | nil--[[ gs_shader_t * ]])
+type o.gs_get_render_target = function=()>(o.gs_texture_t | nil--[[ gs_texture_t * ]])
+type o.gs_get_size = function=(List<|number|>, List<|number|>)>()
+type o.gs_get_texture_type = function=(o.gs_texture_t--[[ gs_texture_t const * ]])>(number)
+type o.gs_get_total_levels = function=(number, number, number)>(number)
+type o.gs_get_vertex_shader = function=()>(o.gs_shader_t | nil--[[ gs_shader_t * ]])
+type o.gs_get_viewport = function=(o.gs_rect)>()
+type o.gs_get_width = function=()>(number)
+type o.gs_get_zstencil_target = function=()>(o.gs_zstencil_t | nil--[[ gs_zstencil_t * ]])
+type o.gs_indexbuffer_create = function=(number, any, number, number)>(o.gs_indexbuffer_t | nil--[[ gs_indexbuffer_t * ]])
+type o.gs_indexbuffer_destroy = function=(o.gs_indexbuffer_t--[[ gs_indexbuffer_t * ]])>()
+type o.gs_indexbuffer_flush = function=(o.gs_indexbuffer_t--[[ gs_indexbuffer_t * ]])>()
+type o.gs_indexbuffer_flush_direct = function=(o.gs_indexbuffer_t--[[ gs_indexbuffer_t * ]], any)>()
+type o.gs_indexbuffer_get_data = function=(o.gs_indexbuffer_t--[[ gs_indexbuffer_t const * ]])>(any)
+type o.gs_indexbuffer_get_num_indices = function=(o.gs_indexbuffer_t--[[ gs_indexbuffer_t const * ]])>(number)
+type o.gs_indexbuffer_get_type = function=(o.gs_indexbuffer_t--[[ gs_indexbuffer_t const * ]])>(number)
+type o.gs_is_compressed_format = function=(number)>(boolean)
+type o.gs_leave_context = function=()>()
+type o.gs_load_default_samplerstate = function=(boolean, number)>()
+type o.gs_load_indexbuffer = function=(o.gs_indexbuffer_t--[[ gs_indexbuffer_t * ]])>()
+type o.gs_load_pixelshader = function=(o.gs_shader_t--[[ gs_shader_t * ]])>()
+type o.gs_load_samplerstate = function=(o.gs_samplerstate_t--[[ gs_samplerstate_t * ]], number)>()
+type o.gs_load_swapchain = function=(o.gs_swapchain_t--[[ gs_swapchain_t * ]])>()
+type o.gs_load_texture = function=(o.gs_texture_t--[[ gs_texture_t * ]], number)>()
+type o.gs_load_vertexbuffer = function=(o.gs_vertbuffer_t--[[ gs_vertbuffer_t * ]])>()
+type o.gs_load_vertexshader = function=(o.gs_shader_t--[[ gs_shader_t * ]])>()
+type o.gs_matrix_get = function=(o.matrix4)>()
+type o.gs_matrix_identity = function=()>()
+type o.gs_matrix_mul = function=(o.matrix4)>()
+type o.gs_matrix_pop = function=()>()
+type o.gs_matrix_push = function=()>()
+type o.gs_matrix_rotaa = function=(o.axisang--[[ struct axisang const * ]])>()
+type o.gs_matrix_rotaa4f = function=(number, number, number, number)>()
+type o.gs_matrix_rotquat = function=(o.quat)>()
+type o.gs_matrix_scale = function=(o.vec3)>()
+type o.gs_matrix_scale3f = function=(number, number, number)>()
+type o.gs_matrix_set = function=(o.matrix4)>()
+type o.gs_matrix_translate = function=(o.vec3)>()
+type o.gs_matrix_translate3f = function=(number, number, number)>()
+type o.gs_matrix_transpose = function=()>()
+type o.gs_normal3f = function=(number, number, number)>()
+type o.gs_normal3v = function=(o.vec3)>()
+type o.gs_nv12_available = function=()>(boolean)
+type o.gs_ortho = function=(number, number, number, number, number, number)>()
+type o.gs_param_get_annotation_by_idx = function=(o.gs_eparam_t--[[ gs_eparam_t const * ]], number)>(o.gs_eparam_t | nil--[[ gs_eparam_t * ]])
+type o.gs_param_get_annotation_by_name = function=(o.gs_eparam_t--[[ gs_eparam_t const * ]], string)>(o.gs_eparam_t | nil--[[ gs_eparam_t * ]])
+type o.gs_param_get_num_annotations = function=(o.gs_eparam_t--[[ gs_eparam_t const * ]])>(number)
+type o.gs_perspective = function=(number, number, number, number)>()
+type o.gs_pixelshader_create = function=(string, string, List<|string|>)>(o.gs_shader_t | nil--[[ gs_shader_t * ]])
+type o.gs_pixelshader_create_from_file = function=(string, List<|string|>)>(o.gs_shader_t | nil--[[ gs_shader_t * ]])
+type o.gs_present = function=()>()
+type o.gs_projection_pop = function=()>()
+type o.gs_projection_push = function=()>()
+type o.gs_render_save = function=()>(o.gs_vertbuffer_t | nil--[[ gs_vertbuffer_t * ]])
+type o.gs_render_start = function=(boolean)>()
+type o.gs_render_stop = function=(number)>()
+type o.gs_reset_blend_state = function=()>()
+type o.gs_reset_viewport = function=()>()
+type o.gs_resize = function=(number, number)>()
+type o.gs_samplerstate_create = function=(o.gs_sampler_info)>(o.gs_samplerstate_t | nil--[[ gs_samplerstate_t * ]])
+type o.gs_samplerstate_destroy = function=(o.gs_samplerstate_t--[[ gs_samplerstate_t * ]])>()
+type o.gs_set_2d_mode = function=()>()
+type o.gs_set_3d_mode = function=(number, number, number)>()
+type o.gs_set_cube_render_target = function=(o.gs_texture_t--[[ gs_texture_t * ]], number, o.gs_zstencil_t--[[ gs_zstencil_t * ]])>()
+type o.gs_set_cull_mode = function=(number)>()
+type o.gs_set_render_target = function=(o.gs_texture_t--[[ gs_texture_t * ]], o.gs_zstencil_t--[[ gs_zstencil_t * ]])>()
+type o.gs_set_scissor_rect = function=(o.gs_rect)>()
+type o.gs_set_viewport = function=(number, number, number, number)>()
+type o.gs_stage_texture = function=(o.gs_stagesurf_t--[[ gs_stagesurf_t * ]], o.gs_texture_t--[[ gs_texture_t * ]])>()
+type o.gs_stagesurface_create = function=(number, number, number)>(o.gs_stagesurf_t | nil--[[ gs_stagesurf_t * ]])
+type o.gs_stagesurface_destroy = function=(o.gs_stagesurf_t--[[ gs_stagesurf_t * ]])>()
+type o.gs_stagesurface_get_color_format = function=(o.gs_stagesurf_t--[[ gs_stagesurf_t const * ]])>(number)
+type o.gs_stagesurface_get_height = function=(o.gs_stagesurf_t--[[ gs_stagesurf_t const * ]])>(number)
+type o.gs_stagesurface_get_width = function=(o.gs_stagesurf_t--[[ gs_stagesurf_t const * ]])>(number)
+type o.gs_stagesurface_map = function=(o.gs_stagesurf_t--[[ gs_stagesurf_t * ]], o.uint8_t--[[ uint8_t ** ]], List<|number|>)>(boolean)
+type o.gs_stagesurface_unmap = function=(o.gs_stagesurf_t--[[ gs_stagesurf_t * ]])>()
+type o.gs_stencil_function = function=(number, number)>()
+type o.gs_stencil_op = function=(number, number, number, number)>()
+type o.gs_swapchain_create = function=(o.gs_init_data)>(o.gs_swapchain_t | nil--[[ gs_swapchain_t * ]])
+type o.gs_swapchain_destroy = function=(o.gs_swapchain_t--[[ gs_swapchain_t * ]])>()
+type o.gs_technique_begin = function=(o.gs_technique_t--[[ gs_technique_t * ]])>(number)
+type o.gs_technique_begin_pass = function=(o.gs_technique_t--[[ gs_technique_t * ]], number)>(boolean)
+type o.gs_technique_begin_pass_by_name = function=(o.gs_technique_t--[[ gs_technique_t * ]], string)>(boolean)
+type o.gs_technique_end = function=(o.gs_technique_t--[[ gs_technique_t * ]])>()
+type o.gs_technique_end_pass = function=(o.gs_technique_t--[[ gs_technique_t * ]])>()
+type o.gs_technique_get_pass_by_idx = function=(o.gs_technique_t--[[ gs_technique_t const * ]], number)>(o.gs_epass_t | nil--[[ gs_epass_t * ]])
+type o.gs_technique_get_pass_by_name = function=(o.gs_technique_t--[[ gs_technique_t const * ]], string)>(o.gs_epass_t | nil--[[ gs_epass_t * ]])
+type o.gs_texcoord = function=(number, number, number)>()
+type o.gs_texcoord2v = function=(o.vec2, number)>()
+type o.gs_texrender_begin = function=(o.gs_texrender_t--[[ gs_texrender_t * ]], number, number)>(boolean)
+type o.gs_texrender_create = function=(number, number)>(o.gs_texrender_t | nil--[[ gs_texrender_t * ]])
+type o.gs_texrender_destroy = function=(o.gs_texrender_t--[[ gs_texrender_t * ]])>()
+type o.gs_texrender_end = function=(o.gs_texrender_t--[[ gs_texrender_t * ]])>()
+type o.gs_texrender_get_texture = function=(o.gs_texrender_t--[[ gs_texrender_t const * ]])>(o.gs_texture_t | nil--[[ gs_texture_t * ]])
+type o.gs_texrender_reset = function=(o.gs_texrender_t--[[ gs_texrender_t * ]])>()
+type o.gs_texture_create = function=(number, number, number, number, o.uint8_t--[[ uint8_t const ** ]], number)>(o.gs_texture_t | nil--[[ gs_texture_t * ]])
+type o.gs_texture_create_from_file = function=(string)>(o.gs_texture_t | nil--[[ gs_texture_t * ]])
+type o.gs_texture_destroy = function=(o.gs_texture_t--[[ gs_texture_t * ]])>()
+type o.gs_texture_get_color_format = function=(o.gs_texture_t--[[ gs_texture_t const * ]])>(number)
+type o.gs_texture_get_height = function=(o.gs_texture_t--[[ gs_texture_t const * ]])>(number)
+type o.gs_texture_get_obj = function=(o.gs_texture_t--[[ gs_texture_t * ]])>(any)
+type o.gs_texture_get_width = function=(o.gs_texture_t--[[ gs_texture_t const * ]])>(number)
+type o.gs_texture_is_rect = function=(o.gs_texture_t--[[ gs_texture_t const * ]])>(boolean)
+type o.gs_texture_map = function=(o.gs_texture_t--[[ gs_texture_t * ]], o.uint8_t--[[ uint8_t ** ]], List<|number|>)>(boolean)
+type o.gs_texture_set_image = function=(o.gs_texture_t--[[ gs_texture_t * ]], o.uint8_t--[[ uint8_t const * ]], number, boolean)>()
+type o.gs_texture_unmap = function=(o.gs_texture_t--[[ gs_texture_t * ]])>()
+type o.gs_timer_begin = function=(o.gs_timer_t--[[ gs_timer_t * ]])>()
+type o.gs_timer_create = function=()>(o.gs_timer_t | nil--[[ gs_timer_t * ]])
+type o.gs_timer_destroy = function=(o.gs_timer_t--[[ gs_timer_t * ]])>()
+type o.gs_timer_end = function=(o.gs_timer_t--[[ gs_timer_t * ]])>()
+type o.gs_timer_get_data = function=(o.gs_timer_t--[[ gs_timer_t * ]], o.uint64_t--[[ uint64_t * ]])>(boolean)
+type o.gs_timer_range_begin = function=(o.gs_timer_range_t--[[ gs_timer_range_t * ]])>()
+type o.gs_timer_range_create = function=()>(o.gs_timer_range_t | nil--[[ gs_timer_range_t * ]])
+type o.gs_timer_range_destroy = function=(o.gs_timer_range_t--[[ gs_timer_range_t * ]])>()
+type o.gs_timer_range_end = function=(o.gs_timer_range_t--[[ gs_timer_range_t * ]])>()
+type o.gs_timer_range_get_data = function=(o.gs_timer_range_t--[[ gs_timer_range_t * ]], List<|boolean|>, o.uint64_t--[[ uint64_t * ]])>(boolean)
+type o.gs_vbdata_create = function=()>(o.gs_vb_data | nil--[[ struct gs_vb_data * ]])
+type o.gs_vbdata_destroy = function=(o.gs_vb_data)>()
+type o.gs_vertex2f = function=(number, number)>()
+type o.gs_vertex2v = function=(o.vec2)>()
+type o.gs_vertex3f = function=(number, number, number)>()
+type o.gs_vertex3v = function=(o.vec3)>()
+type o.gs_vertexbuffer_create = function=(o.gs_vb_data, number)>(o.gs_vertbuffer_t | nil--[[ gs_vertbuffer_t * ]])
+type o.gs_vertexbuffer_destroy = function=(o.gs_vertbuffer_t--[[ gs_vertbuffer_t * ]])>()
+type o.gs_vertexbuffer_flush = function=(o.gs_vertbuffer_t--[[ gs_vertbuffer_t * ]])>()
+type o.gs_vertexbuffer_flush_direct = function=(o.gs_vertbuffer_t--[[ gs_vertbuffer_t * ]], o.gs_vb_data)>()
+type o.gs_vertexbuffer_get_data = function=(o.gs_vertbuffer_t--[[ gs_vertbuffer_t const * ]])>(o.gs_vb_data | nil--[[ struct gs_vb_data * ]])
+type o.gs_vertexshader_create = function=(string, string, List<|string|>)>(o.gs_shader_t | nil--[[ gs_shader_t * ]])
+type o.gs_vertexshader_create_from_file = function=(string, List<|string|>)>(o.gs_shader_t | nil--[[ gs_shader_t * ]])
+type o.gs_viewport_pop = function=()>()
+type o.gs_viewport_push = function=()>()
+type o.gs_voltexture_create = function=(number, number, number, number, number, o.uint8_t--[[ uint8_t const ** ]], number)>(o.gs_texture_t | nil--[[ gs_texture_t * ]])
+type o.gs_voltexture_destroy = function=(o.gs_texture_t--[[ gs_texture_t * ]])>()
+type o.gs_voltexture_get_color_format = function=(o.gs_texture_t--[[ gs_texture_t const * ]])>(number)
+type o.gs_voltexture_get_depth = function=(o.gs_texture_t--[[ gs_texture_t const * ]])>(number)
+type o.gs_voltexture_get_height = function=(o.gs_texture_t--[[ gs_texture_t const * ]])>(number)
+type o.gs_voltexture_get_width = function=(o.gs_texture_t--[[ gs_texture_t const * ]])>(number)
+type o.gs_zstencil_create = function=(number, number, number)>(o.gs_zstencil_t | nil--[[ gs_zstencil_t * ]])
+type o.gs_zstencil_destroy = function=(o.gs_zstencil_t--[[ gs_zstencil_t * ]])>()
+type o.matrix3_copy = function=(o.matrix3, o.matrix3)>()
+type o.matrix3_from_axisang = function=(o.matrix3, o.axisang--[[ struct axisang const * ]])>()
+type o.matrix3_from_matrix4 = function=(o.matrix3, o.matrix4)>()
+type o.matrix3_from_quat = function=(o.matrix3, o.quat)>()
+type o.matrix3_identity = function=(o.matrix3)>()
+type o.matrix3_inv = function=(o.matrix3, o.matrix3)>()
+type o.matrix3_mirror = function=(o.matrix3, o.matrix3, o.plane--[[ struct plane const * ]])>()
+type o.matrix3_mirrorv = function=(o.matrix3, o.matrix3, o.vec3)>()
+type o.matrix3_mul = function=(o.matrix3, o.matrix3, o.matrix3)>()
+type o.matrix3_rotate = function=(o.matrix3, o.matrix3, o.quat)>()
+type o.matrix3_rotate_aa = function=(o.matrix3, o.matrix3, o.axisang--[[ struct axisang const * ]])>()
+type o.matrix3_rotate_aa4f = function=(o.matrix3, o.matrix3, number, number, number, number)>()
+type o.matrix3_scale = function=(o.matrix3, o.matrix3, o.vec3)>()
+type o.matrix3_scale3f = function=(o.matrix3, o.matrix3, number, number, number)>()
+type o.matrix3_translate = function=(o.matrix3, o.matrix3, o.vec3)>()
+type o.matrix3_translate3f = function=(o.matrix3, o.matrix3, number, number, number)>()
+type o.matrix3_transpose = function=(o.matrix3, o.matrix3)>()
+type o.matrix4_copy = function=(o.matrix4, o.matrix4)>()
+type o.matrix4_determinant = function=(o.matrix4)>(number)
+type o.matrix4_from_axisang = function=(o.matrix4, o.axisang--[[ struct axisang const * ]])>()
+type o.matrix4_from_matrix3 = function=(o.matrix4, o.matrix3)>()
+type o.matrix4_from_quat = function=(o.matrix4, o.quat)>()
+type o.matrix4_identity = function=(o.matrix4)>()
+type o.matrix4_inv = function=(o.matrix4, o.matrix4)>(boolean)
+type o.matrix4_mul = function=(o.matrix4, o.matrix4, o.matrix4)>()
+type o.matrix4_rotate = function=(o.matrix4, o.matrix4, o.quat)>()
+type o.matrix4_rotate_aa = function=(o.matrix4, o.matrix4, o.axisang--[[ struct axisang const * ]])>()
+type o.matrix4_rotate_aa4f = function=(o.matrix4, o.matrix4, number, number, number, number)>()
+type o.matrix4_rotate_aa_i = function=(o.matrix4, o.axisang--[[ struct axisang const * ]], o.matrix4)>()
+type o.matrix4_rotate_i = function=(o.matrix4, o.quat, o.matrix4)>()
+type o.matrix4_scale = function=(o.matrix4, o.matrix4, o.vec3)>()
+type o.matrix4_scale3f = function=(o.matrix4, o.matrix4, number, number, number)>()
+type o.matrix4_scale_i = function=(o.matrix4, o.vec3, o.matrix4)>()
+type o.matrix4_translate3f = function=(o.matrix4, o.matrix4, number, number, number)>()
+type o.matrix4_translate3v = function=(o.matrix4, o.matrix4, o.vec3)>()
+type o.matrix4_translate3v_i = function=(o.matrix4, o.vec3, o.matrix4)>()
+type o.matrix4_translate4v = function=(o.matrix4, o.matrix4, o.vec4)>()
+type o.matrix4_translate4v_i = function=(o.matrix4, o.vec4, o.matrix4)>()
+type o.matrix4_transpose = function=(o.matrix4, o.matrix4)>()
+type o.obs_add_data_path = function=(string)>()
+type o.obs_add_module_path = function=(string, string)>()
+type o.obs_add_raw_video_callback = function=(o.video_scale_info--[[ struct video_scale_info const * ]], any, any)>()
+type o.obs_apply_private_data = function=(o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_audio_encoder_create = function=(string, string, o.obs_data_t--[[ obs_data_t * ]], number, o.obs_data_t--[[ obs_data_t * ]])>(o.obs_encoder_t | nil--[[ obs_encoder_t * ]])
+type o.obs_data_addref = function=(o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_data_apply = function=(o.obs_data_t--[[ obs_data_t * ]], o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_data_array_addref = function=(o.obs_data_array_t--[[ obs_data_array_t * ]])>()
+type o.obs_data_array_count = function=(o.obs_data_array_t--[[ obs_data_array_t * ]])>(number)
+type o.obs_data_array_create = function=()>(o.obs_data_array_t | nil--[[ obs_data_array_t * ]])
+type o.obs_data_array_erase = function=(o.obs_data_array_t--[[ obs_data_array_t * ]], number)>()
+type o.obs_data_array_insert = function=(o.obs_data_array_t--[[ obs_data_array_t * ]], number, o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_data_array_item = function=(o.obs_data_array_t--[[ obs_data_array_t * ]], number)>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_data_array_push_back = function=(o.obs_data_array_t--[[ obs_data_array_t * ]], o.obs_data_t--[[ obs_data_t * ]])>(number)
+type o.obs_data_array_push_back_array = function=(o.obs_data_array_t--[[ obs_data_array_t * ]], o.obs_data_array_t--[[ obs_data_array_t * ]])>()
+type o.obs_data_array_release = function=(o.obs_data_array_t--[[ obs_data_array_t * ]])>()
+type o.obs_data_clear = function=(o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_data_create = function=()>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_data_create_from_json = function=(string)>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_data_create_from_json_file = function=(string)>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_data_create_from_json_file_safe = function=(string, string)>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_data_erase = function=(o.obs_data_t--[[ obs_data_t * ]], string)>()
+type o.obs_data_first = function=(o.obs_data_t--[[ obs_data_t * ]])>(o.obs_data_item_t | nil--[[ obs_data_item_t * ]])
+type o.obs_data_get_array = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(o.obs_data_array_t | nil--[[ obs_data_array_t * ]])
+type o.obs_data_get_autoselect_array = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(o.obs_data_array_t | nil--[[ obs_data_array_t * ]])
+type o.obs_data_get_autoselect_bool = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(boolean)
+type o.obs_data_get_autoselect_double = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(number)
+type o.obs_data_get_autoselect_frames_per_second = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.media_frames_per_second--[[ struct media_frames_per_second * ]], List<|string|>)>(boolean)
+type o.obs_data_get_autoselect_int = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(number)
+type o.obs_data_get_autoselect_obj = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_data_get_autoselect_quat = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.quat)>()
+type o.obs_data_get_autoselect_string = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(string)
+type o.obs_data_get_autoselect_vec2 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec2)>()
+type o.obs_data_get_autoselect_vec3 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec3)>()
+type o.obs_data_get_autoselect_vec4 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec4)>()
+type o.obs_data_get_bool = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(boolean)
+type o.obs_data_get_default_array = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(o.obs_data_array_t | nil--[[ obs_data_array_t * ]])
+type o.obs_data_get_default_bool = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(boolean)
+type o.obs_data_get_default_double = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(number)
+type o.obs_data_get_default_frames_per_second = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.media_frames_per_second--[[ struct media_frames_per_second * ]], List<|string|>)>(boolean)
+type o.obs_data_get_default_int = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(number)
+type o.obs_data_get_default_obj = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_data_get_default_quat = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.quat)>()
+type o.obs_data_get_default_string = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(string)
+type o.obs_data_get_default_vec2 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec2)>()
+type o.obs_data_get_default_vec3 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec3)>()
+type o.obs_data_get_default_vec4 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec4)>()
+type o.obs_data_get_double = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(number)
+type o.obs_data_get_frames_per_second = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.media_frames_per_second--[[ struct media_frames_per_second * ]], List<|string|>)>(boolean)
+type o.obs_data_get_int = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(number)
+type o.obs_data_get_json = function=(o.obs_data_t--[[ obs_data_t * ]])>(string)
+type o.obs_data_get_obj = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_data_get_quat = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.quat)>()
+type o.obs_data_get_string = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(string)
+type o.obs_data_get_vec2 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec2)>()
+type o.obs_data_get_vec3 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec3)>()
+type o.obs_data_get_vec4 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec4)>()
+type o.obs_data_has_autoselect_value = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(boolean)
+type o.obs_data_has_default_value = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(boolean)
+type o.obs_data_has_user_value = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(boolean)
+type o.obs_data_item_byname = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(o.obs_data_item_t | nil--[[ obs_data_item_t * ]])
+type o.obs_data_item_get_array = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(o.obs_data_array_t | nil--[[ obs_data_array_t * ]])
+type o.obs_data_item_get_autoselect_array = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(o.obs_data_array_t | nil--[[ obs_data_array_t * ]])
+type o.obs_data_item_get_autoselect_bool = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(boolean)
+type o.obs_data_item_get_autoselect_double = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(number)
+type o.obs_data_item_get_autoselect_frames_per_second = function=(o.obs_data_item_t--[[ obs_data_item_t * ]], o.media_frames_per_second--[[ struct media_frames_per_second * ]], List<|string|>)>(boolean)
+type o.obs_data_item_get_autoselect_int = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(number)
+type o.obs_data_item_get_autoselect_obj = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_data_item_get_autoselect_string = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(string)
+type o.obs_data_item_get_bool = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(boolean)
+type o.obs_data_item_get_default_array = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(o.obs_data_array_t | nil--[[ obs_data_array_t * ]])
+type o.obs_data_item_get_default_bool = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(boolean)
+type o.obs_data_item_get_default_double = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(number)
+type o.obs_data_item_get_default_frames_per_second = function=(o.obs_data_item_t--[[ obs_data_item_t * ]], o.media_frames_per_second--[[ struct media_frames_per_second * ]], List<|string|>)>(boolean)
+type o.obs_data_item_get_default_int = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(number)
+type o.obs_data_item_get_default_obj = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_data_item_get_default_string = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(string)
+type o.obs_data_item_get_double = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(number)
+type o.obs_data_item_get_frames_per_second = function=(o.obs_data_item_t--[[ obs_data_item_t * ]], o.media_frames_per_second--[[ struct media_frames_per_second * ]], List<|string|>)>(boolean)
+type o.obs_data_item_get_int = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(number)
+type o.obs_data_item_get_name = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(string)
+type o.obs_data_item_get_obj = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_data_item_get_string = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(string)
+type o.obs_data_item_gettype = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(number)
+type o.obs_data_item_has_autoselect_value = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(boolean)
+type o.obs_data_item_has_default_value = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(boolean)
+type o.obs_data_item_has_user_value = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(boolean)
+type o.obs_data_item_next = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]])>(boolean)
+type o.obs_data_item_numtype = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>(number)
+type o.obs_data_item_release = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]])>()
+type o.obs_data_item_remove = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]])>()
+type o.obs_data_item_set_array = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], o.obs_data_array_t--[[ obs_data_array_t * ]])>()
+type o.obs_data_item_set_autoselect_array = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], o.obs_data_array_t--[[ obs_data_array_t * ]])>()
+type o.obs_data_item_set_autoselect_bool = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], boolean)>()
+type o.obs_data_item_set_autoselect_double = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], number)>()
+type o.obs_data_item_set_autoselect_frames_per_second = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], o.media_frames_per_second--[[ struct media_frames_per_second ]], string)>()
+type o.obs_data_item_set_autoselect_int = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], number)>()
+type o.obs_data_item_set_autoselect_obj = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_data_item_set_autoselect_string = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], string)>()
+type o.obs_data_item_set_bool = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], boolean)>()
+type o.obs_data_item_set_default_array = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], o.obs_data_array_t--[[ obs_data_array_t * ]])>()
+type o.obs_data_item_set_default_bool = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], boolean)>()
+type o.obs_data_item_set_default_double = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], number)>()
+type o.obs_data_item_set_default_frames_per_second = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], o.media_frames_per_second--[[ struct media_frames_per_second ]], string)>()
+type o.obs_data_item_set_default_int = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], number)>()
+type o.obs_data_item_set_default_obj = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_data_item_set_default_string = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], string)>()
+type o.obs_data_item_set_double = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], number)>()
+type o.obs_data_item_set_frames_per_second = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], o.media_frames_per_second--[[ struct media_frames_per_second ]], string)>()
+type o.obs_data_item_set_int = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], number)>()
+type o.obs_data_item_set_obj = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_data_item_set_string = function=(o.obs_data_item_t--[[ obs_data_item_t ** ]], string)>()
+type o.obs_data_item_unset_autoselect_value = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>()
+type o.obs_data_item_unset_default_value = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>()
+type o.obs_data_item_unset_user_value = function=(o.obs_data_item_t--[[ obs_data_item_t * ]])>()
+type o.obs_data_newref = function=(o.obs_data_t--[[ obs_data_t * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_data_release = function=(o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_data_save_json = function=(o.obs_data_t--[[ obs_data_t * ]], string)>(boolean)
+type o.obs_data_save_json_safe = function=(o.obs_data_t--[[ obs_data_t * ]], string, string, string)>(boolean)
+type o.obs_data_set_array = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.obs_data_array_t--[[ obs_data_array_t * ]])>()
+type o.obs_data_set_autoselect_bool = function=(o.obs_data_t--[[ obs_data_t * ]], string, boolean)>()
+type o.obs_data_set_autoselect_double = function=(o.obs_data_t--[[ obs_data_t * ]], string, number)>()
+type o.obs_data_set_autoselect_frames_per_second = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.media_frames_per_second--[[ struct media_frames_per_second ]], string)>()
+type o.obs_data_set_autoselect_int = function=(o.obs_data_t--[[ obs_data_t * ]], string, number)>()
+type o.obs_data_set_autoselect_obj = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_data_set_autoselect_quat = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.quat)>()
+type o.obs_data_set_autoselect_string = function=(o.obs_data_t--[[ obs_data_t * ]], string, string)>()
+type o.obs_data_set_autoselect_vec2 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec2)>()
+type o.obs_data_set_autoselect_vec3 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec3)>()
+type o.obs_data_set_autoselect_vec4 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec4)>()
+type o.obs_data_set_bool = function=(o.obs_data_t--[[ obs_data_t * ]], string, boolean)>()
+type o.obs_data_set_default_bool = function=(o.obs_data_t--[[ obs_data_t * ]], string, boolean)>()
+type o.obs_data_set_default_double = function=(o.obs_data_t--[[ obs_data_t * ]], string, number)>()
+type o.obs_data_set_default_frames_per_second = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.media_frames_per_second--[[ struct media_frames_per_second ]], string)>()
+type o.obs_data_set_default_int = function=(o.obs_data_t--[[ obs_data_t * ]], string, number)>()
+type o.obs_data_set_default_obj = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_data_set_default_quat = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.quat)>()
+type o.obs_data_set_default_string = function=(o.obs_data_t--[[ obs_data_t * ]], string, string)>()
+type o.obs_data_set_default_vec2 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec2)>()
+type o.obs_data_set_default_vec3 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec3)>()
+type o.obs_data_set_default_vec4 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec4)>()
+type o.obs_data_set_double = function=(o.obs_data_t--[[ obs_data_t * ]], string, number)>()
+type o.obs_data_set_frames_per_second = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.media_frames_per_second--[[ struct media_frames_per_second ]], string)>()
+type o.obs_data_set_int = function=(o.obs_data_t--[[ obs_data_t * ]], string, number)>()
+type o.obs_data_set_obj = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_data_set_quat = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.quat)>()
+type o.obs_data_set_string = function=(o.obs_data_t--[[ obs_data_t * ]], string, string)>()
+type o.obs_data_set_vec2 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec2)>()
+type o.obs_data_set_vec3 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec3)>()
+type o.obs_data_set_vec4 = function=(o.obs_data_t--[[ obs_data_t * ]], string, o.vec4)>()
+type o.obs_data_unset_autoselect_value = function=(o.obs_data_t--[[ obs_data_t * ]], string)>()
+type o.obs_data_unset_default_value = function=(o.obs_data_t--[[ obs_data_t * ]], string)>()
+type o.obs_data_unset_user_value = function=(o.obs_data_t--[[ obs_data_t * ]], string)>()
+type o.obs_display_add_draw_callback = function=(o.obs_display_t--[[ obs_display_t * ]], any, any)>()
+type o.obs_display_create = function=(o.gs_init_data, number)>(o.obs_display_t | nil--[[ obs_display_t * ]])
+type o.obs_display_destroy = function=(o.obs_display_t--[[ obs_display_t * ]])>()
+type o.obs_display_enabled = function=(o.obs_display_t--[[ obs_display_t * ]])>(boolean)
+type o.obs_display_remove_draw_callback = function=(o.obs_display_t--[[ obs_display_t * ]], any, any)>()
+type o.obs_display_resize = function=(o.obs_display_t--[[ obs_display_t * ]], number, number)>()
+type o.obs_display_set_background_color = function=(o.obs_display_t--[[ obs_display_t * ]], number)>()
+type o.obs_display_set_enabled = function=(o.obs_display_t--[[ obs_display_t * ]], boolean)>()
+type o.obs_display_size = function=(o.obs_display_t--[[ obs_display_t * ]], List<|number|>, List<|number|>)>()
+type o.obs_encoder_active = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(boolean)
+type o.obs_encoder_addref = function=(o.obs_encoder_t--[[ obs_encoder_t * ]])>()
+type o.obs_encoder_audio = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(o.audio_t | nil--[[ audio_t * ]])
+type o.obs_encoder_create_rerouted = function=(o.obs_encoder_t--[[ obs_encoder_t * ]], string)>(any)
+type o.obs_encoder_defaults = function=(string)>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_encoder_get_caps = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(number)
+type o.obs_encoder_get_codec = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(string)
+type o.obs_encoder_get_defaults = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_encoder_get_display_name = function=(string)>(string)
+type o.obs_encoder_get_extra_data = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]], o.uint8_t--[[ uint8_t ** ]], List<|number|>)>(boolean)
+type o.obs_encoder_get_height = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(number)
+type o.obs_encoder_get_id = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(string)
+type o.obs_encoder_get_name = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(string)
+type o.obs_encoder_get_preferred_video_format = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(number)
+type o.obs_encoder_get_ref = function=(o.obs_encoder_t--[[ obs_encoder_t * ]])>(o.obs_encoder_t | nil--[[ obs_encoder_t * ]])
+type o.obs_encoder_get_sample_rate = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(number)
+type o.obs_encoder_get_settings = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_encoder_get_type = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(number)
+type o.obs_encoder_get_type_data = function=(o.obs_encoder_t--[[ obs_encoder_t * ]])>(any)
+type o.obs_encoder_get_weak_encoder = function=(o.obs_encoder_t--[[ obs_encoder_t * ]])>(o.obs_weak_encoder_t | nil--[[ obs_weak_encoder_t * ]])
+type o.obs_encoder_get_width = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(number)
+type o.obs_encoder_packet_ref = function=(o.encoder_packet--[[ struct encoder_packet * ]], o.encoder_packet--[[ struct encoder_packet * ]])>()
+type o.obs_encoder_packet_release = function=(o.encoder_packet--[[ struct encoder_packet * ]])>()
+type o.obs_encoder_paused = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(boolean)
+type o.obs_encoder_properties = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(o.obs_properties_t | nil--[[ obs_properties_t * ]])
+type o.obs_encoder_release = function=(o.obs_encoder_t--[[ obs_encoder_t * ]])>()
+type o.obs_encoder_scaling_enabled = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(boolean)
+type o.obs_encoder_set_audio = function=(o.obs_encoder_t--[[ obs_encoder_t * ]], o.audio_t--[[ audio_t * ]])>()
+type o.obs_encoder_set_name = function=(o.obs_encoder_t--[[ obs_encoder_t * ]], string)>()
+type o.obs_encoder_set_preferred_video_format = function=(o.obs_encoder_t--[[ obs_encoder_t * ]], number)>()
+type o.obs_encoder_set_scaled_size = function=(o.obs_encoder_t--[[ obs_encoder_t * ]], number, number)>()
+type o.obs_encoder_set_video = function=(o.obs_encoder_t--[[ obs_encoder_t * ]], o.video_t--[[ video_t * ]])>()
+type o.obs_encoder_update = function=(o.obs_encoder_t--[[ obs_encoder_t * ]], o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_encoder_video = function=(o.obs_encoder_t--[[ obs_encoder_t const * ]])>(o.video_t | nil--[[ video_t * ]])
+type o.obs_enter_graphics = function=()>()
+type o.obs_enum_audio_monitoring_devices = function=(o.obs_enum_audio_device_cb, any)>()
+type o.obs_enum_encoder_types = function=(number, List<|string|>)>(boolean)
+type o.obs_enum_encoders = function=(any, any)>()
+type o.obs_enum_filter_types = function=(number, List<|string|>)>(boolean)
+type o.obs_enum_hotkey_bindings = function=(o.obs_hotkey_binding_enum_func, any)>()
+type o.obs_enum_hotkeys = function=(o.obs_hotkey_enum_func, any)>()
+type o.obs_enum_input_types = function=(number, List<|string|>)>(boolean)
+type o.obs_enum_input_types2 = function=(number, List<|string|>, List<|string|>)>(boolean)
+type o.obs_enum_modules = function=(o.obs_enum_module_callback_t, any)>()
+type o.obs_enum_output_types = function=(number, List<|string|>)>(boolean)
+type o.obs_enum_outputs = function=(any, any)>()
+type o.obs_enum_scenes = function=(any, any)>()
+type o.obs_enum_service_types = function=(number, List<|string|>)>(boolean)
+type o.obs_enum_services = function=(any, any)>()
+type o.obs_enum_source_types = function=(number, List<|string|>)>(boolean)
+type o.obs_enum_transition_types = function=(number, List<|string|>)>(boolean)
+type o.obs_filter_get_parent = function=(o.obs_source_t--[[ obs_source_t const * ]])>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_filter_get_target = function=(o.obs_source_t--[[ obs_source_t const * ]])>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_find_data_file = function=(string)>(string)
+type o.obs_find_module_file = function=(o.obs_module_t--[[ obs_module_t * ]], string)>(string)
+type o.obs_frontend_defer_save_begin = function=()>()
+type o.obs_frontend_defer_save_end = function=()>()
+type o.obs_frontend_get_current_preview_scene = function=()>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_frontend_get_global_config = function=()>(o.config_t | nil--[[ config_t * ]])
+type o.obs_frontend_get_profile_config = function=()>(o.config_t | nil--[[ config_t * ]])
+type o.obs_frontend_get_recording_output = function=()>(o.obs_output_t | nil--[[ obs_output_t * ]])
+type o.obs_frontend_get_replay_buffer_output = function=()>(o.obs_output_t | nil--[[ obs_output_t * ]])
+type o.obs_frontend_get_streaming_output = function=()>(o.obs_output_t | nil--[[ obs_output_t * ]])
+type o.obs_frontend_get_streaming_service = function=()>(o.obs_service_t | nil--[[ obs_service_t * ]])
+type o.obs_frontend_open_projector = function=(string, number, string, string)>()
+type o.obs_frontend_preview_enabled = function=()>(boolean)
+type o.obs_frontend_preview_program_mode_active = function=()>(boolean)
+type o.obs_frontend_preview_program_trigger_transition = function=()>()
+type o.obs_frontend_recording_active = function=()>(boolean)
+type o.obs_frontend_recording_pause = function=(boolean)>()
+type o.obs_frontend_recording_paused = function=()>(boolean)
+type o.obs_frontend_recording_start = function=()>()
+type o.obs_frontend_recording_stop = function=()>()
+type o.obs_frontend_replay_buffer_active = function=()>(boolean)
+type o.obs_frontend_replay_buffer_save = function=()>()
+type o.obs_frontend_replay_buffer_start = function=()>()
+type o.obs_frontend_replay_buffer_stop = function=()>()
+type o.obs_frontend_save = function=()>()
+type o.obs_frontend_save_streaming_service = function=()>()
+type o.obs_frontend_set_current_preview_scene = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_frontend_set_preview_enabled = function=(boolean)>()
+type o.obs_frontend_set_preview_program_mode = function=(boolean)>()
+type o.obs_frontend_set_streaming_service = function=(o.obs_service_t--[[ obs_service_t * ]])>()
+type o.obs_frontend_streaming_active = function=()>(boolean)
+type o.obs_frontend_streaming_start = function=()>()
+type o.obs_frontend_streaming_stop = function=()>()
+type o.obs_get_active_fps = function=()>(number)
+type o.obs_get_audio = function=()>(o.audio_t | nil--[[ audio_t * ]])
+type o.obs_get_audio_info = function=(o.obs_audio_info)>(boolean)
+type o.obs_get_audio_monitoring_device = function=(List<|string|>, List<|string|>)>()
+type o.obs_get_average_frame_time_ns = function=()>(number)
+type o.obs_get_base_effect = function=(number)>(o.gs_effect_t | nil--[[ gs_effect_t * ]])
+type o.obs_get_cmdline_args = function=()>(o.obs_cmdline_args--[[ struct obs_cmdline_args ]])
+type o.obs_get_encoder_by_name = function=(string)>(o.obs_encoder_t | nil--[[ obs_encoder_t * ]])
+type o.obs_get_encoder_caps = function=(string)>(number)
+type o.obs_get_encoder_codec = function=(string)>(string)
+type o.obs_get_encoder_properties = function=(string)>(o.obs_properties_t | nil--[[ obs_properties_t * ]])
+type o.obs_get_encoder_type = function=(string)>(number)
+type o.obs_get_frame_interval_ns = function=()>(number)
+type o.obs_get_lagged_frames = function=()>(number)
+type o.obs_get_latest_input_type_id = function=(string)>(string)
+type o.obs_get_locale = function=()>(string)
+type o.obs_get_main_texture = function=()>(o.gs_texture_t | nil--[[ gs_texture_t * ]])
+type o.obs_get_master_volume = function=()>(number)
+type o.obs_get_module_author = function=(o.obs_module_t--[[ obs_module_t * ]])>(string)
+type o.obs_get_module_binary_path = function=(o.obs_module_t--[[ obs_module_t * ]])>(string)
+type o.obs_get_module_data_path = function=(o.obs_module_t--[[ obs_module_t * ]])>(string)
+type o.obs_get_module_description = function=(o.obs_module_t--[[ obs_module_t * ]])>(string)
+type o.obs_get_module_file_name = function=(o.obs_module_t--[[ obs_module_t * ]])>(string)
+type o.obs_get_module_name = function=(o.obs_module_t--[[ obs_module_t * ]])>(string)
+type o.obs_get_output_by_name = function=(string)>(o.obs_output_t | nil--[[ obs_output_t * ]])
+type o.obs_get_output_flags = function=(string)>(number)
+type o.obs_get_output_properties = function=(string)>(o.obs_properties_t | nil--[[ obs_properties_t * ]])
+type o.obs_get_output_source = function=(number)>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_get_private_data = function=()>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_get_proc_handler = function=()>(o.proc_handler_t | nil--[[ proc_handler_t * ]])
+type o.obs_get_profiler_name_store = function=()>(o.profiler_name_store_t | nil--[[ profiler_name_store_t * ]])
+type o.obs_get_service_by_name = function=(string)>(o.obs_service_t | nil--[[ obs_service_t * ]])
+type o.obs_get_service_properties = function=(string)>(o.obs_properties_t | nil--[[ obs_properties_t * ]])
+type o.obs_get_signal_handler = function=()>(o.signal_handler_t | nil--[[ signal_handler_t * ]])
+type o.obs_get_source_by_name = function=(string)>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_get_source_defaults = function=(string)>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_get_source_output_flags = function=(string)>(number)
+type o.obs_get_source_properties = function=(string)>(o.obs_properties_t | nil--[[ obs_properties_t * ]])
+type o.obs_get_total_frames = function=()>(number)
+type o.obs_get_version = function=()>(number)
+type o.obs_get_version_string = function=()>(string)
+type o.obs_get_video = function=()>(o.video_t | nil--[[ video_t * ]])
+type o.obs_get_video_frame_time = function=()>(number)
+type o.obs_get_video_info = function=(o.obs_video_info)>(boolean)
+type o.obs_group_from_source = function=(o.obs_source_t--[[ obs_source_t const * ]])>(o.obs_scene_t | nil--[[ obs_scene_t * ]])
+type o.obs_hotkey_binding_get_hotkey = function=(o.obs_hotkey_binding_t--[[ obs_hotkey_binding_t * ]])>(o.obs_hotkey_t | nil--[[ obs_hotkey_t * ]])
+type o.obs_hotkey_binding_get_hotkey_id = function=(o.obs_hotkey_binding_t--[[ obs_hotkey_binding_t * ]])>(o.obs_hotkey_id)
+type o.obs_hotkey_binding_get_key_combination = function=(o.obs_hotkey_binding_t--[[ obs_hotkey_binding_t * ]])>(o.obs_key_combination_t)
+type o.obs_hotkey_enable_background_press = function=(boolean)>()
+type o.obs_hotkey_enable_callback_rerouting = function=(boolean)>()
+type o.obs_hotkey_enable_strict_modifiers = function=(boolean)>()
+type o.obs_hotkey_get_description = function=(o.obs_hotkey_t--[[ obs_hotkey_t const * ]])>(string)
+type o.obs_hotkey_get_id = function=(o.obs_hotkey_t--[[ obs_hotkey_t const * ]])>(o.obs_hotkey_id)
+type o.obs_hotkey_get_name = function=(o.obs_hotkey_t--[[ obs_hotkey_t const * ]])>(string)
+type o.obs_hotkey_get_pair_partner_id = function=(o.obs_hotkey_t--[[ obs_hotkey_t const * ]])>(o.obs_hotkey_id)
+type o.obs_hotkey_get_registerer = function=(o.obs_hotkey_t--[[ obs_hotkey_t const * ]])>(any)
+type o.obs_hotkey_get_registerer_type = function=(o.obs_hotkey_t--[[ obs_hotkey_t const * ]])>(o.obs_hotkey_registerer_t)
+type o.obs_hotkey_inject_event = function=(o.obs_key_combination, boolean)>()
+type o.obs_hotkey_load = function=(o.obs_hotkey_id, o.obs_data_array_t--[[ obs_data_array_t * ]])>()
+type o.obs_hotkey_load_bindings = function=(o.obs_hotkey_id, o.obs_key_combination, number)>()
+type o.obs_hotkey_pair_load = function=(o.obs_hotkey_pair_id, o.obs_data_array_t--[[ obs_data_array_t * ]], o.obs_data_array_t--[[ obs_data_array_t * ]])>()
+type o.obs_hotkey_pair_save = function=(o.obs_hotkey_pair_id, o.obs_data_array_t--[[ obs_data_array_t ** ]], o.obs_data_array_t--[[ obs_data_array_t ** ]])>()
+type o.obs_hotkey_pair_set_descriptions = function=(o.obs_hotkey_pair_id, string, string)>()
+type o.obs_hotkey_pair_set_names = function=(o.obs_hotkey_pair_id, string, string)>()
+type o.obs_hotkey_pair_unregister = function=(o.obs_hotkey_pair_id)>()
+type o.obs_hotkey_save = function=(o.obs_hotkey_id)>(o.obs_data_array_t | nil--[[ obs_data_array_t * ]])
+type o.obs_hotkey_set_callback_routing_func = function=(o.obs_hotkey_callback_router_func, any)>()
+type o.obs_hotkey_set_description = function=(o.obs_hotkey_id, string)>()
+type o.obs_hotkey_set_name = function=(o.obs_hotkey_id, string)>()
+type o.obs_hotkey_trigger_routed_callback = function=(o.obs_hotkey_id, boolean)>()
+type o.obs_hotkey_update_atomic = function=(o.obs_hotkey_atomic_update_func, any)>()
+type o.obs_hotkeys_load_encoder = function=(o.obs_encoder_t--[[ obs_encoder_t * ]], o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_hotkeys_load_output = function=(o.obs_output_t--[[ obs_output_t * ]], o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_hotkeys_load_service = function=(o.obs_service_t--[[ obs_service_t * ]], o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_hotkeys_load_source = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_hotkeys_save_encoder = function=(o.obs_encoder_t--[[ obs_encoder_t * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_hotkeys_save_output = function=(o.obs_output_t--[[ obs_output_t * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_hotkeys_save_service = function=(o.obs_service_t--[[ obs_service_t * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_hotkeys_save_source = function=(o.obs_source_t--[[ obs_source_t * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_hotkeys_set_audio_hotkeys_translations = function=(string, string, string, string)>()
+type o.obs_hotkeys_set_sceneitem_hotkeys_translations = function=(string, string)>()
+type o.obs_init_module = function=(o.obs_module_t--[[ obs_module_t * ]])>(boolean)
+type o.obs_initialized = function=()>(boolean)
+type o.obs_is_source_configurable = function=(string)>(boolean)
+type o.obs_key_combination_is_empty = function=(o.obs_key_combination)>(boolean)
+type o.obs_key_combination_to_str = function=(o.obs_key_combination, o.dstr--[[ struct dstr * ]])>()
+type o.obs_key_from_name = function=(string)>(o.obs_key_t)
+type o.obs_key_from_virtual_key = function=(number)>(o.obs_key_t)
+type o.obs_key_to_name = function=(o.obs_key_t)>(string)
+type o.obs_key_to_str = function=(o.obs_key_t, o.dstr--[[ struct dstr * ]])>()
+type o.obs_key_to_virtual_key = function=(o.obs_key_t)>(number)
+type o.obs_leave_graphics = function=()>()
+type o.obs_load_all_modules = function=()>()
+type o.obs_load_source = function=(o.obs_data_t--[[ obs_data_t * ]])>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_load_sources = function=(o.obs_data_array_t--[[ obs_data_array_t * ]], o.obs_load_source_cb, any)>()
+type o.obs_log_loaded_modules = function=()>()
+type o.obs_module_get_config_path = function=(o.obs_module_t--[[ obs_module_t * ]], string)>(string)
+type o.obs_module_load_locale = function=(o.obs_module_t--[[ obs_module_t * ]], string, string)>(o.lookup_t | nil--[[ lookup_t * ]])
+type o.obs_nv12_tex_active = function=()>(boolean)
+type o.obs_obj_get_data = function=(any)>(any)
+type o.obs_obj_get_id = function=(any)>(string)
+type o.obs_obj_get_type = function=(any)>(number)
+type o.obs_obj_invalid = function=(any)>(boolean)
+type o.obs_open_module = function=(o.obs_module_t--[[ obs_module_t ** ]], string, string)>(number)
+type o.obs_output_active = function=(o.obs_output_t--[[ obs_output_t const * ]])>(boolean)
+type o.obs_output_addref = function=(o.obs_output_t--[[ obs_output_t * ]])>()
+type o.obs_output_audio = function=(o.obs_output_t--[[ obs_output_t const * ]])>(o.audio_t | nil--[[ audio_t * ]])
+type o.obs_output_begin_data_capture = function=(o.obs_output_t--[[ obs_output_t * ]], number)>(boolean)
+type o.obs_output_can_begin_data_capture = function=(o.obs_output_t--[[ obs_output_t const * ]], number)>(boolean)
+type o.obs_output_can_pause = function=(o.obs_output_t--[[ obs_output_t const * ]])>(boolean)
+type o.obs_output_create = function=(string, string, o.obs_data_t--[[ obs_data_t * ]], o.obs_data_t--[[ obs_data_t * ]])>(o.obs_output_t | nil--[[ obs_output_t * ]])
+type o.obs_output_defaults = function=(string)>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_output_end_data_capture = function=(o.obs_output_t--[[ obs_output_t * ]])>()
+type o.obs_output_force_stop = function=(o.obs_output_t--[[ obs_output_t * ]])>()
+type o.obs_output_get_active_delay = function=(o.obs_output_t--[[ obs_output_t const * ]])>(number)
+type o.obs_output_get_audio_encoder = function=(o.obs_output_t--[[ obs_output_t const * ]], number)>(o.obs_encoder_t | nil--[[ obs_encoder_t * ]])
+type o.obs_output_get_congestion = function=(o.obs_output_t--[[ obs_output_t * ]])>(number)
+type o.obs_output_get_connect_time_ms = function=(o.obs_output_t--[[ obs_output_t * ]])>(number)
+type o.obs_output_get_delay = function=(o.obs_output_t--[[ obs_output_t const * ]])>(number)
+type o.obs_output_get_display_name = function=(string)>(string)
+type o.obs_output_get_flags = function=(o.obs_output_t--[[ obs_output_t const * ]])>(number)
+type o.obs_output_get_frames_dropped = function=(o.obs_output_t--[[ obs_output_t const * ]])>(number)
+type o.obs_output_get_height = function=(o.obs_output_t--[[ obs_output_t const * ]])>(number)
+type o.obs_output_get_id = function=(o.obs_output_t--[[ obs_output_t const * ]])>(string)
+type o.obs_output_get_last_error = function=(o.obs_output_t--[[ obs_output_t * ]])>(string)
+type o.obs_output_get_mixer = function=(o.obs_output_t--[[ obs_output_t const * ]])>(number)
+type o.obs_output_get_mixers = function=(o.obs_output_t--[[ obs_output_t const * ]])>(number)
+type o.obs_output_get_name = function=(o.obs_output_t--[[ obs_output_t const * ]])>(string)
+type o.obs_output_get_pause_offset = function=(o.obs_output_t--[[ obs_output_t * ]])>(number)
+type o.obs_output_get_proc_handler = function=(o.obs_output_t--[[ obs_output_t const * ]])>(o.proc_handler_t | nil--[[ proc_handler_t * ]])
+type o.obs_output_get_ref = function=(o.obs_output_t--[[ obs_output_t * ]])>(o.obs_output_t | nil--[[ obs_output_t * ]])
+type o.obs_output_get_service = function=(o.obs_output_t--[[ obs_output_t const * ]])>(o.obs_service_t | nil--[[ obs_service_t * ]])
+type o.obs_output_get_settings = function=(o.obs_output_t--[[ obs_output_t const * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_output_get_signal_handler = function=(o.obs_output_t--[[ obs_output_t const * ]])>(o.signal_handler_t | nil--[[ signal_handler_t * ]])
+type o.obs_output_get_supported_audio_codecs = function=(o.obs_output_t--[[ obs_output_t const * ]])>(string)
+type o.obs_output_get_supported_video_codecs = function=(o.obs_output_t--[[ obs_output_t const * ]])>(string)
+type o.obs_output_get_total_bytes = function=(o.obs_output_t--[[ obs_output_t const * ]])>(number)
+type o.obs_output_get_total_frames = function=(o.obs_output_t--[[ obs_output_t const * ]])>(number)
+type o.obs_output_get_type_data = function=(o.obs_output_t--[[ obs_output_t * ]])>(any)
+type o.obs_output_get_video_encoder = function=(o.obs_output_t--[[ obs_output_t const * ]])>(o.obs_encoder_t | nil--[[ obs_encoder_t * ]])
+type o.obs_output_get_weak_output = function=(o.obs_output_t--[[ obs_output_t * ]])>(o.obs_weak_output_t | nil--[[ obs_weak_output_t * ]])
+type o.obs_output_get_width = function=(o.obs_output_t--[[ obs_output_t const * ]])>(number)
+type o.obs_output_initialize_encoders = function=(o.obs_output_t--[[ obs_output_t * ]], number)>(boolean)
+type o.obs_output_pause = function=(o.obs_output_t--[[ obs_output_t * ]], boolean)>(boolean)
+type o.obs_output_paused = function=(o.obs_output_t--[[ obs_output_t const * ]])>(boolean)
+type o.obs_output_properties = function=(o.obs_output_t--[[ obs_output_t const * ]])>(o.obs_properties_t | nil--[[ obs_properties_t * ]])
+type o.obs_output_reconnecting = function=(o.obs_output_t--[[ obs_output_t const * ]])>(boolean)
+type o.obs_output_release = function=(o.obs_output_t--[[ obs_output_t * ]])>()
+type o.obs_output_set_audio_conversion = function=(o.obs_output_t--[[ obs_output_t * ]], o.audio_convert_info--[[ struct audio_convert_info const * ]])>()
+type o.obs_output_set_audio_encoder = function=(o.obs_output_t--[[ obs_output_t * ]], o.obs_encoder_t--[[ obs_encoder_t * ]], number)>()
+type o.obs_output_set_delay = function=(o.obs_output_t--[[ obs_output_t * ]], number, number)>()
+type o.obs_output_set_last_error = function=(o.obs_output_t--[[ obs_output_t * ]], string)>()
+type o.obs_output_set_media = function=(o.obs_output_t--[[ obs_output_t * ]], o.video_t--[[ video_t * ]], o.audio_t--[[ audio_t * ]])>()
+type o.obs_output_set_mixer = function=(o.obs_output_t--[[ obs_output_t * ]], number)>()
+type o.obs_output_set_mixers = function=(o.obs_output_t--[[ obs_output_t * ]], number)>()
+type o.obs_output_set_preferred_size = function=(o.obs_output_t--[[ obs_output_t * ]], number, number)>()
+type o.obs_output_set_reconnect_settings = function=(o.obs_output_t--[[ obs_output_t * ]], number, number)>()
+type o.obs_output_set_service = function=(o.obs_output_t--[[ obs_output_t * ]], o.obs_service_t--[[ obs_service_t * ]])>()
+type o.obs_output_set_video_conversion = function=(o.obs_output_t--[[ obs_output_t * ]], o.video_scale_info--[[ struct video_scale_info const * ]])>()
+type o.obs_output_set_video_encoder = function=(o.obs_output_t--[[ obs_output_t * ]], o.obs_encoder_t--[[ obs_encoder_t * ]])>()
+type o.obs_output_signal_stop = function=(o.obs_output_t--[[ obs_output_t * ]], number)>()
+type o.obs_output_start = function=(o.obs_output_t--[[ obs_output_t * ]])>(boolean)
+type o.obs_output_stop = function=(o.obs_output_t--[[ obs_output_t * ]])>()
+type o.obs_output_update = function=(o.obs_output_t--[[ obs_output_t * ]], o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_post_load_modules = function=()>()
+type o.obs_properties_add_bool = function=(o.obs_properties_t--[[ obs_properties_t * ]], string, string)>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_add_button2 = function=(o.obs_properties_t--[[ obs_properties_t * ]], string, string, o.obs_property_clicked_t, any)>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_add_color = function=(o.obs_properties_t--[[ obs_properties_t * ]], string, string)>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_add_editable_list = function=(o.obs_properties_t--[[ obs_properties_t * ]], string, string, number, string, string)>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_add_float = function=(o.obs_properties_t--[[ obs_properties_t * ]], string, string, number, number, number)>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_add_float_slider = function=(o.obs_properties_t--[[ obs_properties_t * ]], string, string, number, number, number)>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_add_font = function=(o.obs_properties_t--[[ obs_properties_t * ]], string, string)>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_add_frame_rate = function=(o.obs_properties_t--[[ obs_properties_t * ]], string, string)>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_add_group = function=(o.obs_properties_t--[[ obs_properties_t * ]], string, string, number, o.obs_properties_t--[[ obs_properties_t * ]])>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_add_int = function=(o.obs_properties_t--[[ obs_properties_t * ]], string, string, number, number, number)>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_add_int_slider = function=(o.obs_properties_t--[[ obs_properties_t * ]], string, string, number, number, number)>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_add_list = function=(o.obs_properties_t--[[ obs_properties_t * ]], string, string, number, number)>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_add_path = function=(o.obs_properties_t--[[ obs_properties_t * ]], string, string, number, string, string)>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_add_text = function=(o.obs_properties_t--[[ obs_properties_t * ]], string, string, number)>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_apply_settings = function=(o.obs_properties_t--[[ obs_properties_t * ]], o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_properties_create = function=()>(o.obs_properties_t | nil--[[ obs_properties_t * ]])
+type o.obs_properties_create_param = function=(any, any)>(o.obs_properties_t | nil--[[ obs_properties_t * ]])
+type o.obs_properties_destroy = function=(o.obs_properties_t--[[ obs_properties_t * ]])>()
+type o.obs_properties_first = function=(o.obs_properties_t--[[ obs_properties_t * ]])>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_get = function=(o.obs_properties_t--[[ obs_properties_t * ]], string)>(o.obs_property_t | nil--[[ obs_property_t * ]])
+type o.obs_properties_get_flags = function=(o.obs_properties_t--[[ obs_properties_t * ]])>(number)
+type o.obs_properties_get_param = function=(o.obs_properties_t--[[ obs_properties_t * ]])>(any)
+type o.obs_properties_get_parent = function=(o.obs_properties_t--[[ obs_properties_t * ]])>(o.obs_properties_t | nil--[[ obs_properties_t * ]])
+type o.obs_properties_remove_by_name = function=(o.obs_properties_t--[[ obs_properties_t * ]], string)>()
+type o.obs_properties_set_flags = function=(o.obs_properties_t--[[ obs_properties_t * ]], number)>()
+type o.obs_properties_set_param = function=(o.obs_properties_t--[[ obs_properties_t * ]], any, any)>()
+type o.obs_property_button_clicked = function=(o.obs_property_t--[[ obs_property_t * ]], any)>(boolean)
+type o.obs_property_description = function=(o.obs_property_t--[[ obs_property_t * ]])>(string)
+type o.obs_property_editable_list_default_path = function=(o.obs_property_t--[[ obs_property_t * ]])>(string)
+type o.obs_property_editable_list_filter = function=(o.obs_property_t--[[ obs_property_t * ]])>(string)
+type o.obs_property_editable_list_type = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_enabled = function=(o.obs_property_t--[[ obs_property_t * ]])>(boolean)
+type o.obs_property_float_max = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_float_min = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_float_set_limits = function=(o.obs_property_t--[[ obs_property_t * ]], number, number, number)>()
+type o.obs_property_float_set_suffix = function=(o.obs_property_t--[[ obs_property_t * ]], string)>()
+type o.obs_property_float_step = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_float_suffix = function=(o.obs_property_t--[[ obs_property_t * ]])>(string)
+type o.obs_property_float_type = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_frame_rate_clear = function=(o.obs_property_t--[[ obs_property_t * ]])>()
+type o.obs_property_frame_rate_fps_range_add = function=(o.obs_property_t--[[ obs_property_t * ]], o.media_frames_per_second--[[ struct media_frames_per_second ]], o.media_frames_per_second--[[ struct media_frames_per_second ]])>(number)
+type o.obs_property_frame_rate_fps_range_insert = function=(o.obs_property_t--[[ obs_property_t * ]], number, o.media_frames_per_second--[[ struct media_frames_per_second ]], o.media_frames_per_second--[[ struct media_frames_per_second ]])>()
+type o.obs_property_frame_rate_fps_range_max = function=(o.obs_property_t--[[ obs_property_t * ]], number)>(o.media_frames_per_second--[[ struct media_frames_per_second ]])
+type o.obs_property_frame_rate_fps_range_min = function=(o.obs_property_t--[[ obs_property_t * ]], number)>(o.media_frames_per_second--[[ struct media_frames_per_second ]])
+type o.obs_property_frame_rate_fps_ranges_clear = function=(o.obs_property_t--[[ obs_property_t * ]])>()
+type o.obs_property_frame_rate_fps_ranges_count = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_frame_rate_option_add = function=(o.obs_property_t--[[ obs_property_t * ]], string, string)>(number)
+type o.obs_property_frame_rate_option_description = function=(o.obs_property_t--[[ obs_property_t * ]], number)>(string)
+type o.obs_property_frame_rate_option_insert = function=(o.obs_property_t--[[ obs_property_t * ]], number, string, string)>()
+type o.obs_property_frame_rate_option_name = function=(o.obs_property_t--[[ obs_property_t * ]], number)>(string)
+type o.obs_property_frame_rate_options_clear = function=(o.obs_property_t--[[ obs_property_t * ]])>()
+type o.obs_property_frame_rate_options_count = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_get_type = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_group_content = function=(o.obs_property_t--[[ obs_property_t * ]])>(o.obs_properties_t | nil--[[ obs_properties_t * ]])
+type o.obs_property_group_type = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_int_max = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_int_min = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_int_set_limits = function=(o.obs_property_t--[[ obs_property_t * ]], number, number, number)>()
+type o.obs_property_int_set_suffix = function=(o.obs_property_t--[[ obs_property_t * ]], string)>()
+type o.obs_property_int_step = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_int_suffix = function=(o.obs_property_t--[[ obs_property_t * ]])>(string)
+type o.obs_property_int_type = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_list_add_float = function=(o.obs_property_t--[[ obs_property_t * ]], string, number)>(number)
+type o.obs_property_list_add_int = function=(o.obs_property_t--[[ obs_property_t * ]], string, number)>(number)
+type o.obs_property_list_add_string = function=(o.obs_property_t--[[ obs_property_t * ]], string, string)>(number)
+type o.obs_property_list_clear = function=(o.obs_property_t--[[ obs_property_t * ]])>()
+type o.obs_property_list_format = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_list_insert_float = function=(o.obs_property_t--[[ obs_property_t * ]], number, string, number)>()
+type o.obs_property_list_insert_int = function=(o.obs_property_t--[[ obs_property_t * ]], number, string, number)>()
+type o.obs_property_list_insert_string = function=(o.obs_property_t--[[ obs_property_t * ]], number, string, string)>()
+type o.obs_property_list_item_count = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_list_item_disable = function=(o.obs_property_t--[[ obs_property_t * ]], number, boolean)>()
+type o.obs_property_list_item_disabled = function=(o.obs_property_t--[[ obs_property_t * ]], number)>(boolean)
+type o.obs_property_list_item_float = function=(o.obs_property_t--[[ obs_property_t * ]], number)>(number)
+type o.obs_property_list_item_int = function=(o.obs_property_t--[[ obs_property_t * ]], number)>(number)
+type o.obs_property_list_item_name = function=(o.obs_property_t--[[ obs_property_t * ]], number)>(string)
+type o.obs_property_list_item_remove = function=(o.obs_property_t--[[ obs_property_t * ]], number)>()
+type o.obs_property_list_item_string = function=(o.obs_property_t--[[ obs_property_t * ]], number)>(string)
+type o.obs_property_list_type = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_long_description = function=(o.obs_property_t--[[ obs_property_t * ]])>(string)
+type o.obs_property_modified = function=(o.obs_property_t--[[ obs_property_t * ]], o.obs_data_t--[[ obs_data_t * ]])>(boolean)
+type o.obs_property_name = function=(o.obs_property_t--[[ obs_property_t * ]])>(string)
+type o.obs_property_next = function=(o.obs_property_t--[[ obs_property_t ** ]])>(boolean)
+type o.obs_property_path_default_path = function=(o.obs_property_t--[[ obs_property_t * ]])>(string)
+type o.obs_property_path_filter = function=(o.obs_property_t--[[ obs_property_t * ]])>(string)
+type o.obs_property_path_type = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_set_description = function=(o.obs_property_t--[[ obs_property_t * ]], string)>()
+type o.obs_property_set_enabled = function=(o.obs_property_t--[[ obs_property_t * ]], boolean)>()
+type o.obs_property_set_long_description = function=(o.obs_property_t--[[ obs_property_t * ]], string)>()
+type o.obs_property_set_modified_callback2 = function=(o.obs_property_t--[[ obs_property_t * ]], o.obs_property_modified2_t, any)>()
+type o.obs_property_set_visible = function=(o.obs_property_t--[[ obs_property_t * ]], boolean)>()
+type o.obs_property_text_monospace = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_text_set_monospace = function=(o.obs_property_t--[[ obs_property_t * ]], boolean)>()
+type o.obs_property_text_type = function=(o.obs_property_t--[[ obs_property_t * ]])>(number)
+type o.obs_property_visible = function=(o.obs_property_t--[[ obs_property_t * ]])>(boolean)
+type o.obs_queue_task = function=(number, o.obs_task_t, any, boolean)>()
+type o.obs_remove_data_path = function=(string)>(boolean)
+type o.obs_remove_raw_video_callback = function=(any, any)>()
+type o.obs_render_main_texture = function=()>()
+type o.obs_render_main_texture_src_color_only = function=()>()
+type o.obs_reset_audio = function=(o.obs_audio_info)>(boolean)
+type o.obs_reset_video = function=(o.obs_video_info)>(number)
+type o.obs_save_source = function=(o.obs_source_t--[[ obs_source_t * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_save_sources = function=()>(o.obs_data_array_t | nil--[[ obs_data_array_t * ]])
+type o.obs_save_sources_filtered = function=(o.obs_save_source_filter_cb, any)>(o.obs_data_array_t | nil--[[ obs_data_array_t * ]])
+type o.obs_scene_add = function=(o.obs_scene_t--[[ obs_scene_t * ]], o.obs_source_t--[[ obs_source_t * ]])>(o.obs_sceneitem_t | nil--[[ obs_sceneitem_t * ]])
+type o.obs_scene_add_group = function=(o.obs_scene_t--[[ obs_scene_t * ]], string)>(o.obs_sceneitem_t | nil--[[ obs_sceneitem_t * ]])
+type o.obs_scene_add_group2 = function=(o.obs_scene_t--[[ obs_scene_t * ]], string, boolean)>(o.obs_sceneitem_t | nil--[[ obs_sceneitem_t * ]])
+type o.obs_scene_addref = function=(o.obs_scene_t--[[ obs_scene_t * ]])>()
+type o.obs_scene_atomic_update = function=(o.obs_scene_t--[[ obs_scene_t * ]], o.obs_scene_atomic_update_func, any)>()
+type o.obs_scene_create = function=(string)>(o.obs_scene_t | nil--[[ obs_scene_t * ]])
+type o.obs_scene_create_private = function=(string)>(o.obs_scene_t | nil--[[ obs_scene_t * ]])
+type o.obs_scene_duplicate = function=(o.obs_scene_t--[[ obs_scene_t * ]], string, number)>(o.obs_scene_t | nil--[[ obs_scene_t * ]])
+type o.obs_scene_find_sceneitem_by_id = function=(o.obs_scene_t--[[ obs_scene_t * ]], number)>(o.obs_sceneitem_t | nil--[[ obs_sceneitem_t * ]])
+type o.obs_scene_find_source = function=(o.obs_scene_t--[[ obs_scene_t * ]], string)>(o.obs_sceneitem_t | nil--[[ obs_sceneitem_t * ]])
+type o.obs_scene_find_source_recursive = function=(o.obs_scene_t--[[ obs_scene_t * ]], string)>(o.obs_sceneitem_t | nil--[[ obs_sceneitem_t * ]])
+type o.obs_scene_from_source = function=(o.obs_source_t--[[ obs_source_t const * ]])>(o.obs_scene_t | nil--[[ obs_scene_t * ]])
+type o.obs_scene_get_group = function=(o.obs_scene_t--[[ obs_scene_t * ]], string)>(o.obs_sceneitem_t | nil--[[ obs_sceneitem_t * ]])
+type o.obs_scene_get_source = function=(o.obs_scene_t--[[ obs_scene_t const * ]])>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_scene_insert_group = function=(o.obs_scene_t--[[ obs_scene_t * ]], string, o.obs_sceneitem_t--[[ obs_sceneitem_t ** ]], number)>(o.obs_sceneitem_t | nil--[[ obs_sceneitem_t * ]])
+type o.obs_scene_insert_group2 = function=(o.obs_scene_t--[[ obs_scene_t * ]], string, o.obs_sceneitem_t--[[ obs_sceneitem_t ** ]], number, boolean)>(o.obs_sceneitem_t | nil--[[ obs_sceneitem_t * ]])
+type o.obs_scene_is_group = function=(o.obs_scene_t--[[ obs_scene_t const * ]])>(boolean)
+type o.obs_scene_release = function=(o.obs_scene_t--[[ obs_scene_t * ]])>()
+type o.obs_scene_reorder_items = function=(o.obs_scene_t--[[ obs_scene_t * ]], o.obs_sceneitem_t--[[ obs_sceneitem_t *const * ]], number)>(boolean)
+type o.obs_scene_reorder_items2 = function=(o.obs_scene_t--[[ obs_scene_t * ]], o.obs_sceneitem_order_info, number)>(boolean)
+type o.obs_sceneitem_addref = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]])>()
+type o.obs_sceneitem_defer_group_resize_begin = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]])>()
+type o.obs_sceneitem_defer_group_resize_end = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]])>()
+type o.obs_sceneitem_defer_update_begin = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]])>()
+type o.obs_sceneitem_defer_update_end = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]])>()
+type o.obs_sceneitem_force_update_transform = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]])>()
+type o.obs_sceneitem_get_alignment = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]])>(number)
+type o.obs_sceneitem_get_bounds = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]], o.vec2)>()
+type o.obs_sceneitem_get_bounds_alignment = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]])>(number)
+type o.obs_sceneitem_get_bounds_type = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]])>(number)
+type o.obs_sceneitem_get_box_scale = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]], o.vec2)>()
+type o.obs_sceneitem_get_box_transform = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]], o.matrix4)>()
+type o.obs_sceneitem_get_crop = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]], o.obs_sceneitem_crop)>()
+type o.obs_sceneitem_get_draw_transform = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]], o.matrix4)>()
+type o.obs_sceneitem_get_group = function=(o.obs_scene_t--[[ obs_scene_t * ]], o.obs_sceneitem_t--[[ obs_sceneitem_t * ]])>(o.obs_sceneitem_t | nil--[[ obs_sceneitem_t * ]])
+type o.obs_sceneitem_get_id = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]])>(number)
+type o.obs_sceneitem_get_info = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]], o.obs_transform_info)>()
+type o.obs_sceneitem_get_pos = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]], o.vec2)>()
+type o.obs_sceneitem_get_private_settings = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_sceneitem_get_rot = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]])>(number)
+type o.obs_sceneitem_get_scale = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]], o.vec2)>()
+type o.obs_sceneitem_get_scale_filter = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]])>(number)
+type o.obs_sceneitem_get_scene = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]])>(o.obs_scene_t | nil--[[ obs_scene_t * ]])
+type o.obs_sceneitem_get_source = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]])>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_sceneitem_group_add_item = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], o.obs_sceneitem_t--[[ obs_sceneitem_t * ]])>()
+type o.obs_sceneitem_group_enum_items = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], any, any)>()
+type o.obs_sceneitem_group_get_scene = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]])>(o.obs_scene_t | nil--[[ obs_scene_t * ]])
+type o.obs_sceneitem_group_remove_item = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], o.obs_sceneitem_t--[[ obs_sceneitem_t * ]])>()
+type o.obs_sceneitem_group_ungroup = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]])>()
+type o.obs_sceneitem_group_ungroup2 = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], boolean)>()
+type o.obs_sceneitem_is_group = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]])>(boolean)
+type o.obs_sceneitem_locked = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]])>(boolean)
+type o.obs_sceneitem_release = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]])>()
+type o.obs_sceneitem_remove = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]])>()
+type o.obs_sceneitem_select = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], boolean)>()
+type o.obs_sceneitem_selected = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]])>(boolean)
+type o.obs_sceneitem_set_alignment = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], number)>()
+type o.obs_sceneitem_set_bounds = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], o.vec2)>()
+type o.obs_sceneitem_set_bounds_alignment = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], number)>()
+type o.obs_sceneitem_set_bounds_type = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], number)>()
+type o.obs_sceneitem_set_crop = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], o.obs_sceneitem_crop)>()
+type o.obs_sceneitem_set_info = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], o.obs_transform_info)>()
+type o.obs_sceneitem_set_locked = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], boolean)>(boolean)
+type o.obs_sceneitem_set_order = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], number)>()
+type o.obs_sceneitem_set_order_position = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], number)>()
+type o.obs_sceneitem_set_pos = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], o.vec2)>()
+type o.obs_sceneitem_set_rot = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], number)>()
+type o.obs_sceneitem_set_scale = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], o.vec2)>()
+type o.obs_sceneitem_set_scale_filter = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], number)>()
+type o.obs_sceneitem_set_visible = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t * ]], boolean)>(boolean)
+type o.obs_sceneitem_visible = function=(o.obs_sceneitem_t--[[ obs_sceneitem_t const * ]])>(boolean)
+type o.obs_service_addref = function=(o.obs_service_t--[[ obs_service_t * ]])>()
+type o.obs_service_apply_encoder_settings = function=(o.obs_service_t--[[ obs_service_t * ]], o.obs_data_t--[[ obs_data_t * ]], o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_service_create = function=(string, string, o.obs_data_t--[[ obs_data_t * ]], o.obs_data_t--[[ obs_data_t * ]])>(o.obs_service_t | nil--[[ obs_service_t * ]])
+type o.obs_service_create_private = function=(string, string, o.obs_data_t--[[ obs_data_t * ]])>(o.obs_service_t | nil--[[ obs_service_t * ]])
+type o.obs_service_defaults = function=(string)>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_service_get_display_name = function=(string)>(string)
+type o.obs_service_get_id = function=(o.obs_service_t--[[ obs_service_t const * ]])>(string)
+type o.obs_service_get_key = function=(o.obs_service_t--[[ obs_service_t const * ]])>(string)
+type o.obs_service_get_name = function=(o.obs_service_t--[[ obs_service_t const * ]])>(string)
+type o.obs_service_get_output_type = function=(o.obs_service_t--[[ obs_service_t const * ]])>(string)
+type o.obs_service_get_password = function=(o.obs_service_t--[[ obs_service_t const * ]])>(string)
+type o.obs_service_get_ref = function=(o.obs_service_t--[[ obs_service_t * ]])>(o.obs_service_t | nil--[[ obs_service_t * ]])
+type o.obs_service_get_settings = function=(o.obs_service_t--[[ obs_service_t const * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_service_get_type = function=(o.obs_service_t--[[ obs_service_t const * ]])>(string)
+type o.obs_service_get_type_data = function=(o.obs_service_t--[[ obs_service_t * ]])>(any)
+type o.obs_service_get_url = function=(o.obs_service_t--[[ obs_service_t const * ]])>(string)
+type o.obs_service_get_username = function=(o.obs_service_t--[[ obs_service_t const * ]])>(string)
+type o.obs_service_get_weak_service = function=(o.obs_service_t--[[ obs_service_t * ]])>(o.obs_weak_service_t | nil--[[ obs_weak_service_t * ]])
+type o.obs_service_properties = function=(o.obs_service_t--[[ obs_service_t const * ]])>(o.obs_properties_t | nil--[[ obs_properties_t * ]])
+type o.obs_service_release = function=(o.obs_service_t--[[ obs_service_t * ]])>()
+type o.obs_service_update = function=(o.obs_service_t--[[ obs_service_t * ]], o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_set_audio_monitoring_device = function=(string, string)>(boolean)
+type o.obs_set_cmdline_args = function=(number, List<|string|>)>()
+type o.obs_set_locale = function=(string)>()
+type o.obs_set_master_volume = function=(number)>()
+type o.obs_set_output_source = function=(number, o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_set_private_data = function=(o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_set_ui_task_handler = function=(o.obs_task_handler_t)>()
+type o.obs_shutdown = function=()>()
+type o.obs_source_active = function=(o.obs_source_t--[[ obs_source_t const * ]])>(boolean)
+type o.obs_source_add_active_child = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_t--[[ obs_source_t * ]])>(boolean)
+type o.obs_source_add_audio_capture_callback = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_audio_capture_t, any)>()
+type o.obs_source_addref = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_async_decoupled = function=(o.obs_source_t--[[ obs_source_t const * ]])>(boolean)
+type o.obs_source_async_unbuffered = function=(o.obs_source_t--[[ obs_source_t const * ]])>(boolean)
+type o.obs_source_audio_active = function=(o.obs_source_t--[[ obs_source_t const * ]])>(boolean)
+type o.obs_source_audio_pending = function=(o.obs_source_t--[[ obs_source_t const * ]])>(boolean)
+type o.obs_source_configurable = function=(o.obs_source_t--[[ obs_source_t const * ]])>(boolean)
+type o.obs_source_copy_filters = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_create = function=(string, string, o.obs_data_t--[[ obs_data_t * ]], o.obs_data_t--[[ obs_data_t * ]])>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_source_create_private = function=(string, string, o.obs_data_t--[[ obs_data_t * ]])>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_source_dec_active = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_dec_showing = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_default_render = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_draw = function=(o.gs_texture_t--[[ gs_texture_t * ]], number, number, number, number, boolean)>()
+type o.obs_source_draw_set_color_matrix = function=(o.matrix4, o.vec3, o.vec3)>()
+type o.obs_source_duplicate = function=(o.obs_source_t--[[ obs_source_t * ]], string, boolean)>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_source_enable_push_to_mute = function=(o.obs_source_t--[[ obs_source_t * ]], boolean)>()
+type o.obs_source_enable_push_to_talk = function=(o.obs_source_t--[[ obs_source_t * ]], boolean)>()
+type o.obs_source_enabled = function=(o.obs_source_t--[[ obs_source_t const * ]])>(boolean)
+type o.obs_source_enum_active_sources = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_enum_proc_t, any)>()
+type o.obs_source_enum_active_tree = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_enum_proc_t, any)>()
+type o.obs_source_enum_filters = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_enum_proc_t, any)>()
+type o.obs_source_filter_add = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_filter_remove = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_filter_set_order = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_source_frame_copy = function=(o.obs_source_frame, o.obs_source_frame)>()
+type o.obs_source_frame_create = function=(number, number, number)>(o.obs_source_frame | nil--[[ struct obs_source_frame * ]])
+type o.obs_source_frame_destroy = function=(o.obs_source_frame)>()
+type o.obs_source_frame_free = function=(o.obs_source_frame)>()
+type o.obs_source_frame_init = function=(o.obs_source_frame, number, number, number)>()
+type o.obs_source_get_audio_mix = function=(o.obs_source_t--[[ obs_source_t const * ]], o.obs_source_audio_mix)>()
+type o.obs_source_get_audio_mixers = function=(o.obs_source_t--[[ obs_source_t const * ]])>(number)
+type o.obs_source_get_audio_timestamp = function=(o.obs_source_t--[[ obs_source_t const * ]])>(number)
+type o.obs_source_get_balance_value = function=(o.obs_source_t--[[ obs_source_t const * ]])>(number)
+type o.obs_source_get_base_height = function=(o.obs_source_t--[[ obs_source_t * ]])>(number)
+type o.obs_source_get_base_width = function=(o.obs_source_t--[[ obs_source_t * ]])>(number)
+type o.obs_source_get_deinterlace_field_order = function=(o.obs_source_t--[[ obs_source_t const * ]])>(number)
+type o.obs_source_get_deinterlace_mode = function=(o.obs_source_t--[[ obs_source_t const * ]])>(number)
+type o.obs_source_get_display_name = function=(string)>(string)
+type o.obs_source_get_filter_by_name = function=(o.obs_source_t--[[ obs_source_t * ]], string)>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_source_get_flags = function=(o.obs_source_t--[[ obs_source_t const * ]])>(number)
+type o.obs_source_get_frame = function=(o.obs_source_t--[[ obs_source_t * ]])>(o.obs_source_frame | nil--[[ struct obs_source_frame * ]])
+type o.obs_source_get_height = function=(o.obs_source_t--[[ obs_source_t * ]])>(number)
+type o.obs_source_get_icon_type = function=(string)>(number)
+type o.obs_source_get_id = function=(o.obs_source_t--[[ obs_source_t const * ]])>(string)
+type o.obs_source_get_last_obs_version = function=(o.obs_source_t--[[ obs_source_t const * ]])>(number)
+type o.obs_source_get_monitoring_type = function=(o.obs_source_t--[[ obs_source_t const * ]])>(number)
+type o.obs_source_get_name = function=(o.obs_source_t--[[ obs_source_t const * ]])>(string)
+type o.obs_source_get_output_flags = function=(o.obs_source_t--[[ obs_source_t const * ]])>(number)
+type o.obs_source_get_private_settings = function=(o.obs_source_t--[[ obs_source_t * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_source_get_proc_handler = function=(o.obs_source_t--[[ obs_source_t const * ]])>(o.proc_handler_t | nil--[[ proc_handler_t * ]])
+type o.obs_source_get_push_to_mute_delay = function=(o.obs_source_t--[[ obs_source_t * ]])>(number)
+type o.obs_source_get_push_to_talk_delay = function=(o.obs_source_t--[[ obs_source_t * ]])>(number)
+type o.obs_source_get_ref = function=(o.obs_source_t--[[ obs_source_t * ]])>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_source_get_settings = function=(o.obs_source_t--[[ obs_source_t const * ]])>(o.obs_data_t | nil--[[ obs_data_t * ]])
+type o.obs_source_get_signal_handler = function=(o.obs_source_t--[[ obs_source_t const * ]])>(o.signal_handler_t | nil--[[ signal_handler_t * ]])
+type o.obs_source_get_speaker_layout = function=(o.obs_source_t--[[ obs_source_t * ]])>(number)
+type o.obs_source_get_sync_offset = function=(o.obs_source_t--[[ obs_source_t const * ]])>(number)
+type o.obs_source_get_type = function=(o.obs_source_t--[[ obs_source_t const * ]])>(number)
+type o.obs_source_get_type_data = function=(o.obs_source_t--[[ obs_source_t * ]])>(any)
+type o.obs_source_get_unversioned_id = function=(o.obs_source_t--[[ obs_source_t const * ]])>(string)
+type o.obs_source_get_volume = function=(o.obs_source_t--[[ obs_source_t const * ]])>(number)
+type o.obs_source_get_weak_source = function=(o.obs_source_t--[[ obs_source_t * ]])>(o.obs_weak_source_t | nil--[[ obs_weak_source_t * ]])
+type o.obs_source_get_width = function=(o.obs_source_t--[[ obs_source_t * ]])>(number)
+type o.obs_source_inc_active = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_inc_showing = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_is_group = function=(o.obs_source_t--[[ obs_source_t const * ]])>(boolean)
+type o.obs_source_load = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_media_ended = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_media_get_duration = function=(o.obs_source_t--[[ obs_source_t * ]])>(number)
+type o.obs_source_media_get_state = function=(o.obs_source_t--[[ obs_source_t * ]])>(number)
+type o.obs_source_media_get_time = function=(o.obs_source_t--[[ obs_source_t * ]])>(number)
+type o.obs_source_media_next = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_media_play_pause = function=(o.obs_source_t--[[ obs_source_t * ]], boolean)>()
+type o.obs_source_media_previous = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_media_restart = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_media_set_time = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_source_media_started = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_media_stop = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_muted = function=(o.obs_source_t--[[ obs_source_t const * ]])>(boolean)
+type o.obs_source_output_audio = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_audio)>()
+type o.obs_source_output_video = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_frame)>()
+type o.obs_source_output_video2 = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_frame2)>()
+type o.obs_source_preload_video = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_frame)>()
+type o.obs_source_preload_video2 = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_frame2)>()
+type o.obs_source_process_filter_begin = function=(o.obs_source_t--[[ obs_source_t * ]], number, number)>(boolean)
+type o.obs_source_process_filter_end = function=(o.obs_source_t--[[ obs_source_t * ]], o.gs_effect_t--[[ gs_effect_t * ]], number, number)>()
+type o.obs_source_process_filter_tech_end = function=(o.obs_source_t--[[ obs_source_t * ]], o.gs_effect_t--[[ gs_effect_t * ]], number, number, string)>()
+type o.obs_source_properties = function=(o.obs_source_t--[[ obs_source_t const * ]])>(o.obs_properties_t | nil--[[ obs_properties_t * ]])
+type o.obs_source_push_to_mute_enabled = function=(o.obs_source_t--[[ obs_source_t * ]])>(boolean)
+type o.obs_source_push_to_talk_enabled = function=(o.obs_source_t--[[ obs_source_t * ]])>(boolean)
+type o.obs_source_release = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_release_frame = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_frame)>()
+type o.obs_source_remove = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_remove_active_child = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_remove_audio_capture_callback = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_audio_capture_t, any)>()
+type o.obs_source_removed = function=(o.obs_source_t--[[ obs_source_t const * ]])>(boolean)
+type o.obs_source_save = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_send_focus = function=(o.obs_source_t--[[ obs_source_t * ]], boolean)>()
+type o.obs_source_send_key_click = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_key_event, boolean)>()
+type o.obs_source_send_mouse_click = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_mouse_event, number, boolean, number)>()
+type o.obs_source_send_mouse_move = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_mouse_event, boolean)>()
+type o.obs_source_send_mouse_wheel = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_mouse_event, number, number)>()
+type o.obs_source_set_async_decoupled = function=(o.obs_source_t--[[ obs_source_t * ]], boolean)>()
+type o.obs_source_set_async_rotation = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_source_set_async_unbuffered = function=(o.obs_source_t--[[ obs_source_t * ]], boolean)>()
+type o.obs_source_set_audio_active = function=(o.obs_source_t--[[ obs_source_t * ]], boolean)>()
+type o.obs_source_set_audio_mixers = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_source_set_balance_value = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_source_set_default_flags = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_source_set_deinterlace_field_order = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_source_set_deinterlace_mode = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_source_set_enabled = function=(o.obs_source_t--[[ obs_source_t * ]], boolean)>()
+type o.obs_source_set_flags = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_source_set_monitoring_type = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_source_set_muted = function=(o.obs_source_t--[[ obs_source_t * ]], boolean)>()
+type o.obs_source_set_name = function=(o.obs_source_t--[[ obs_source_t * ]], string)>()
+type o.obs_source_set_push_to_mute_delay = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_source_set_push_to_talk_delay = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_source_set_sync_offset = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_source_set_volume = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_source_show_preloaded_video = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_showing = function=(o.obs_source_t--[[ obs_source_t const * ]])>(boolean)
+type o.obs_source_skip_video_filter = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_update = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_data_t--[[ obs_data_t * ]])>()
+type o.obs_source_update_properties = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_source_video_render = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_startup = function=(string, string, o.profiler_name_store_t--[[ profiler_name_store_t * ]])>(boolean)
+type o.obs_transition_audio_render = function=(o.obs_source_t--[[ obs_source_t * ]], o.uint64_t--[[ uint64_t * ]], o.obs_source_audio_mix, number, number, number, o.obs_transition_audio_mix_callback_t, o.obs_transition_audio_mix_callback_t)>(boolean)
+type o.obs_transition_clear = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_transition_enable_fixed = function=(o.obs_source_t--[[ obs_source_t * ]], boolean, number)>()
+type o.obs_transition_fixed = function=(o.obs_source_t--[[ obs_source_t * ]])>(boolean)
+type o.obs_transition_force_stop = function=(o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_transition_get_active_source = function=(o.obs_source_t--[[ obs_source_t * ]])>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_transition_get_alignment = function=(o.obs_source_t--[[ obs_source_t const * ]])>(number)
+type o.obs_transition_get_scale_type = function=(o.obs_source_t--[[ obs_source_t const * ]])>(number)
+type o.obs_transition_get_size = function=(o.obs_source_t--[[ obs_source_t const * ]], List<|number|>, List<|number|>)>()
+type o.obs_transition_get_source = function=(o.obs_source_t--[[ obs_source_t * ]], number)>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_transition_get_time = function=(o.obs_source_t--[[ obs_source_t * ]])>(number)
+type o.obs_transition_set = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_transition_set_alignment = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_transition_set_manual_time = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_transition_set_manual_torque = function=(o.obs_source_t--[[ obs_source_t * ]], number, number)>()
+type o.obs_transition_set_scale_type = function=(o.obs_source_t--[[ obs_source_t * ]], number)>()
+type o.obs_transition_set_size = function=(o.obs_source_t--[[ obs_source_t * ]], number, number)>()
+type o.obs_transition_start = function=(o.obs_source_t--[[ obs_source_t * ]], number, number, o.obs_source_t--[[ obs_source_t * ]])>(boolean)
+type o.obs_transition_swap_begin = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_transition_swap_end = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_transition_video_render = function=(o.obs_source_t--[[ obs_source_t * ]], o.obs_transition_video_render_callback_t)>()
+type o.obs_transition_video_render_direct = function=(o.obs_source_t--[[ obs_source_t * ]], number)>(boolean)
+type o.obs_video_active = function=()>(boolean)
+type o.obs_video_encoder_create = function=(string, string, o.obs_data_t--[[ obs_data_t * ]], o.obs_data_t--[[ obs_data_t * ]])>(o.obs_encoder_t | nil--[[ obs_encoder_t * ]])
+type o.obs_view_create = function=()>(o.obs_view_t | nil--[[ obs_view_t * ]])
+type o.obs_view_destroy = function=(o.obs_view_t--[[ obs_view_t * ]])>()
+type o.obs_view_get_source = function=(o.obs_view_t--[[ obs_view_t * ]], number)>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_view_render = function=(o.obs_view_t--[[ obs_view_t * ]])>()
+type o.obs_view_set_source = function=(o.obs_view_t--[[ obs_view_t * ]], number, o.obs_source_t--[[ obs_source_t * ]])>()
+type o.obs_weak_encoder_addref = function=(o.obs_weak_encoder_t--[[ obs_weak_encoder_t * ]])>()
+type o.obs_weak_encoder_get_encoder = function=(o.obs_weak_encoder_t--[[ obs_weak_encoder_t * ]])>(o.obs_encoder_t | nil--[[ obs_encoder_t * ]])
+type o.obs_weak_encoder_references_encoder = function=(o.obs_weak_encoder_t--[[ obs_weak_encoder_t * ]], o.obs_encoder_t--[[ obs_encoder_t * ]])>(boolean)
+type o.obs_weak_encoder_release = function=(o.obs_weak_encoder_t--[[ obs_weak_encoder_t * ]])>()
+type o.obs_weak_output_addref = function=(o.obs_weak_output_t--[[ obs_weak_output_t * ]])>()
+type o.obs_weak_output_get_output = function=(o.obs_weak_output_t--[[ obs_weak_output_t * ]])>(o.obs_output_t | nil--[[ obs_output_t * ]])
+type o.obs_weak_output_references_output = function=(o.obs_weak_output_t--[[ obs_weak_output_t * ]], o.obs_output_t--[[ obs_output_t * ]])>(boolean)
+type o.obs_weak_output_release = function=(o.obs_weak_output_t--[[ obs_weak_output_t * ]])>()
+type o.obs_weak_service_addref = function=(o.obs_weak_service_t--[[ obs_weak_service_t * ]])>()
+type o.obs_weak_service_get_service = function=(o.obs_weak_service_t--[[ obs_weak_service_t * ]])>(o.obs_service_t | nil--[[ obs_service_t * ]])
+type o.obs_weak_service_references_service = function=(o.obs_weak_service_t--[[ obs_weak_service_t * ]], o.obs_service_t--[[ obs_service_t * ]])>(boolean)
+type o.obs_weak_service_release = function=(o.obs_weak_service_t--[[ obs_weak_service_t * ]])>()
+type o.obs_weak_source_addref = function=(o.obs_weak_source_t--[[ obs_weak_source_t * ]])>()
+type o.obs_weak_source_get_source = function=(o.obs_weak_source_t--[[ obs_weak_source_t * ]])>(o.obs_source_t | nil--[[ obs_source_t * ]])
+type o.obs_weak_source_references_source = function=(o.obs_weak_source_t--[[ obs_weak_source_t * ]], o.obs_source_t--[[ obs_source_t * ]])>(boolean)
+type o.obs_weak_source_release = function=(o.obs_weak_source_t--[[ obs_weak_source_t * ]])>()
+type o.proc_handler_add = function=(o.proc_handler_t--[[ proc_handler_t * ]], string, o.proc_handler_proc_t, any)>()
+type o.proc_handler_call = function=(o.proc_handler_t--[[ proc_handler_t * ]], string, o.calldata)>(boolean)
+type o.proc_handler_create = function=()>(o.proc_handler_t | nil--[[ proc_handler_t * ]])
+type o.proc_handler_destroy = function=(o.proc_handler_t--[[ proc_handler_t * ]])>()
+type o.quat_add = function=(o.quat, o.quat, o.quat)>()
+type o.quat_addf = function=(o.quat, o.quat, number)>()
+type o.quat_close = function=(o.quat, o.quat, number)>(boolean)
+type o.quat_copy = function=(o.quat, o.quat)>()
+type o.quat_dist = function=(o.quat, o.quat)>(number)
+type o.quat_divf = function=(o.quat, o.quat, number)>()
+type o.quat_dot = function=(o.quat, o.quat)>(number)
+type o.quat_exp = function=(o.quat, o.quat)>()
+type o.quat_from_axisang = function=(o.quat, o.axisang--[[ struct axisang const * ]])>()
+type o.quat_from_matrix3 = function=(o.quat, o.matrix3)>()
+type o.quat_from_matrix4 = function=(o.quat, o.matrix4)>()
+type o.quat_get_dir = function=(o.vec3, o.quat)>()
+type o.quat_get_tangent = function=(o.quat, o.quat, o.quat, o.quat)>()
+type o.quat_identity = function=(o.quat)>()
+type o.quat_interpolate = function=(o.quat, o.quat, o.quat, number)>()
+type o.quat_interpolate_cubic = function=(o.quat, o.quat, o.quat, o.quat, o.quat, number)>()
+type o.quat_inv = function=(o.quat, o.quat)>()
+type o.quat_len = function=(o.quat)>(number)
+type o.quat_log = function=(o.quat, o.quat)>()
+type o.quat_mul = function=(o.quat, o.quat, o.quat)>()
+type o.quat_mulf = function=(o.quat, o.quat, number)>()
+type o.quat_neg = function=(o.quat, o.quat)>()
+type o.quat_norm = function=(o.quat, o.quat)>()
+type o.quat_set = function=(o.quat, number, number, number, number)>()
+type o.quat_set_look_dir = function=(o.quat, o.vec3)>()
+type o.quat_sub = function=(o.quat, o.quat, o.quat)>()
+type o.quat_subf = function=(o.quat, o.quat, number)>()
+type o.signal_handler_add = function=(o.signal_handler_t--[[ signal_handler_t * ]], string)>(boolean)
+type o.signal_handler_add_array = function=(o.signal_handler_t--[[ signal_handler_t * ]], List<|string|>)>(boolean)
+type o.signal_handler_connect_ref = function=(o.signal_handler_t--[[ signal_handler_t * ]], string, o.signal_callback_t, any)>()
+type o.signal_handler_create = function=()>(o.signal_handler_t | nil--[[ signal_handler_t * ]])
+type o.signal_handler_destroy = function=(o.signal_handler_t--[[ signal_handler_t * ]])>()
+type o.signal_handler_signal = function=(o.signal_handler_t--[[ signal_handler_t * ]], string, o.calldata)>()
+type o.vec2_abs = function=(o.vec2, o.vec2)>()
+type o.vec2_add = function=(o.vec2, o.vec2, o.vec2)>()
+type o.vec2_addf = function=(o.vec2, o.vec2, number)>()
+type o.vec2_ceil = function=(o.vec2, o.vec2)>()
+type o.vec2_close = function=(o.vec2, o.vec2, number)>(number)
+type o.vec2_copy = function=(o.vec2, o.vec2)>()
+type o.vec2_dist = function=(o.vec2, o.vec2)>(number)
+type o.vec2_div = function=(o.vec2, o.vec2, o.vec2)>()
+type o.vec2_divf = function=(o.vec2, o.vec2, number)>()
+type o.vec2_dot = function=(o.vec2, o.vec2)>(number)
+type o.vec2_floor = function=(o.vec2, o.vec2)>()
+type o.vec2_len = function=(o.vec2)>(number)
+type o.vec2_max = function=(o.vec2, o.vec2, o.vec2)>()
+type o.vec2_maxf = function=(o.vec2, o.vec2, number)>()
+type o.vec2_min = function=(o.vec2, o.vec2, o.vec2)>()
+type o.vec2_minf = function=(o.vec2, o.vec2, number)>()
+type o.vec2_mul = function=(o.vec2, o.vec2, o.vec2)>()
+type o.vec2_mulf = function=(o.vec2, o.vec2, number)>()
+type o.vec2_neg = function=(o.vec2, o.vec2)>()
+type o.vec2_norm = function=(o.vec2, o.vec2)>()
+type o.vec2_set = function=(o.vec2, number, number)>()
+type o.vec2_sub = function=(o.vec2, o.vec2, o.vec2)>()
+type o.vec2_subf = function=(o.vec2, o.vec2, number)>()
+type o.vec2_zero = function=(o.vec2)>()
+type o.vec3_abs = function=(o.vec3, o.vec3)>()
+type o.vec3_add = function=(o.vec3, o.vec3, o.vec3)>()
+type o.vec3_addf = function=(o.vec3, o.vec3, number)>()
+type o.vec3_ceil = function=(o.vec3, o.vec3)>()
+type o.vec3_close = function=(o.vec3, o.vec3, number)>(boolean)
+type o.vec3_copy = function=(o.vec3, o.vec3)>()
+type o.vec3_cross = function=(o.vec3, o.vec3, o.vec3)>()
+type o.vec3_dist = function=(o.vec3, o.vec3)>(number)
+type o.vec3_div = function=(o.vec3, o.vec3, o.vec3)>()
+type o.vec3_divf = function=(o.vec3, o.vec3, number)>()
+type o.vec3_dot = function=(o.vec3, o.vec3)>(number)
+type o.vec3_floor = function=(o.vec3, o.vec3)>()
+type o.vec3_from_vec4 = function=(o.vec3, o.vec4)>()
+type o.vec3_len = function=(o.vec3)>(number)
+type o.vec3_max = function=(o.vec3, o.vec3, o.vec3)>()
+type o.vec3_maxf = function=(o.vec3, o.vec3, number)>()
+type o.vec3_min = function=(o.vec3, o.vec3, o.vec3)>()
+type o.vec3_minf = function=(o.vec3, o.vec3, number)>()
+type o.vec3_mirror = function=(o.vec3, o.vec3, o.plane--[[ struct plane const * ]])>()
+type o.vec3_mirrorv = function=(o.vec3, o.vec3, o.vec3)>()
+type o.vec3_mul = function=(o.vec3, o.vec3, o.vec3)>()
+type o.vec3_mulf = function=(o.vec3, o.vec3, number)>()
+type o.vec3_neg = function=(o.vec3, o.vec3)>()
+type o.vec3_norm = function=(o.vec3, o.vec3)>()
+type o.vec3_plane_dist = function=(o.vec3, o.plane--[[ struct plane const * ]])>(number)
+type o.vec3_rand = function=(o.vec3, number)>()
+type o.vec3_rotate = function=(o.vec3, o.vec3, o.matrix3)>()
+type o.vec3_set = function=(o.vec3, number, number, number)>()
+type o.vec3_sub = function=(o.vec3, o.vec3, o.vec3)>()
+type o.vec3_subf = function=(o.vec3, o.vec3, number)>()
+type o.vec3_transform = function=(o.vec3, o.vec3, o.matrix4)>()
+type o.vec3_transform3x4 = function=(o.vec3, o.vec3, o.matrix3)>()
+type o.vec3_zero = function=(o.vec3)>()
+type o.vec4_abs = function=(o.vec4, o.vec4)>()
+type o.vec4_add = function=(o.vec4, o.vec4, o.vec4)>()
+type o.vec4_addf = function=(o.vec4, o.vec4, number)>()
+type o.vec4_ceil = function=(o.vec4, o.vec4)>()
+type o.vec4_close = function=(o.vec4, o.vec4, number)>(number)
+type o.vec4_copy = function=(o.vec4, o.vec4)>()
+type o.vec4_dist = function=(o.vec4, o.vec4)>(number)
+type o.vec4_div = function=(o.vec4, o.vec4, o.vec4)>()
+type o.vec4_divf = function=(o.vec4, o.vec4, number)>()
+type o.vec4_dot = function=(o.vec4, o.vec4)>(number)
+type o.vec4_floor = function=(o.vec4, o.vec4)>()
+type o.vec4_from_bgra = function=(o.vec4, number)>()
+type o.vec4_from_rgba = function=(o.vec4, number)>()
+type o.vec4_from_vec3 = function=(o.vec4, o.vec3)>()
+type o.vec4_len = function=(o.vec4)>(number)
+type o.vec4_max = function=(o.vec4, o.vec4, o.vec4)>()
+type o.vec4_maxf = function=(o.vec4, o.vec4, number)>()
+type o.vec4_min = function=(o.vec4, o.vec4, o.vec4)>()
+type o.vec4_minf = function=(o.vec4, o.vec4, number)>()
+type o.vec4_mul = function=(o.vec4, o.vec4, o.vec4)>()
+type o.vec4_mulf = function=(o.vec4, o.vec4, number)>()
+type o.vec4_neg = function=(o.vec4, o.vec4)>()
+type o.vec4_norm = function=(o.vec4, o.vec4)>()
+type o.vec4_set = function=(o.vec4, number, number, number, number)>()
+type o.vec4_sub = function=(o.vec4, o.vec4, o.vec4)>()
+type o.vec4_subf = function=(o.vec4, o.vec4, number)>()
+type o.vec4_to_bgra = function=(o.vec4)>(number)
+type o.vec4_to_rgba = function=(o.vec4)>(number)
+type o.vec4_transform = function=(o.vec4, o.vec4, o.matrix4)>()
+type o.vec4_zero = function=(o.vec4)>()
+
+type o.source_list = {__name = "source_list"} 
+
+type o.obs_enum_sources = function=()>(o.source_list)
+type o.obs_scene_enum_items = function=(o.obs_scene_t)>(any)
+type o.obs_add_main_render_callback = function=(function=()>())>()
+type o.obs_remove_main_render_callback = function=(function=()>())>()
+type o.signal_handler_connect = function=(o.signal_handler_t, string, function=(o.calldata_t)>())>()
+type o.signal_handler_disconnect = function=(o.signal_handler_t, string, function=(o.calldata_t)>())>()
+type o.signal_handler_connect_global = function=(o.signal_handler_t, function=(o.calldata_t)>())>()
+type o.signal_handler_disconnect_global = function=(o.signal_handler_t, function=(o.calldata_t)>())>()
+type o.obs_hotkey_register_frontend = function=(string, string, function=(boolean)>())>(o.obs_hotkey_id)
+type o.obs_hotkey_unregister = function=(o.obs_hotkey_id)>()
+type o.obs_properties_add_button = function=(o.obs_properties_t, string, string, function=(o.obs_properties_t, o.obs_property_t)>())>()
+type o.remove_current_callback = function=()>()
+type o.source_list_release = function=(o.source_list)>()
+type o.sceneitem_list_release = function=(any)>()
+
+type script_load = function=(o.obs_data_t)>()
+type script_unload = function=()>()
+type script_save = function=(o.obs_data_t)>()
+type script_defaults = function=(o.obs_data_t)>()
+type script_update = function=(o.obs_data_t)>()
+type script_properties = function=()>(o.obs_properties_t)
+type script_tick = function=(number)>()
+
+type o.obs_register_source = function=(Partial<|{
+
+    --[[
+    const char *obs_source_info.id
+    enum obs_source_type obs_source_info.type
+    uint32_t obs_source_info.output_flags
+    const char *(*obs_source_info.get_name)(void *type_data)
+    void *(*obs_source_info.create)(obs_data_t *settings, obs_source_t *source)
+    void (*obs_source_info.destroy)(void *data)
+    uint32_t (*obs_source_info.get_width)(void *data)
+    uint32_t (*obs_source_info.get_height)(void *data)
+    void (*obs_source_info.get_defaults)(obs_data_t *settings)
+    void (*obs_source_info.get_defaults2)(void *type_data, obs_data_t *settings)
+    obs_properties_t *(*obs_source_info.get_properties)(void *data)
+    obs_properties_t *(*obs_source_info.get_properties2)(void *data, void *type_data)
+    void (*obs_source_info.update)(void *data, obs_data_t *settings)
+    void (*obs_source_info.activate)(void *data)
+    void (*obs_source_info.deactivate)(void *data)
+    void (*obs_source_info.show)(void *data)
+    void (*obs_source_info.hide)(void *data)
+    void (*obs_source_info.video_tick)(void *data, float seconds)
+    void (*obs_source_info.video_render)(void *data, gs_effect_t *effect)
+    struct obs_source_frame *(*obs_source_info.filter_video)(void *data, struct obs_source_frame *frame)
+    struct obs_audio_data *(*obs_source_info.filter_audio)(void *data, struct obs_audio_data *audio)
+    void (*obs_source_info.enum_active_sources)(void *data, obs_source_enum_proc_t enum_callback, void *param)
+    void (*obs_source_info.save)(void *data, obs_data_t *settings)
+    void (*obs_source_info.load)(void *data, obs_data_t *settings)
+    void (*obs_source_info.mouse_click)(void *data, const struct obs_mouse_event *event, int32_t type, bool mouse_up, uint32_t click_count)
+    void (*obs_source_info.mouse_move)(void *data, const struct obs_mouse_event *event, bool mouse_leave)
+    void (*obs_source_info.mouse_wheel)(void *data, const struct obs_mouse_event *event, int x_delta, int y_delta)
+    void (*obs_source_info.focus)(void *data, bool focus)
+    void (*obs_source_info.key_click)(void *data, const struct obs_key_event *event, bool key_up)
+    void (*obs_source_info.filter_remove)(void *data, obs_source_t *source)
+    void *obs_source_info.type_data
+    void (*obs_source_info.free_type_data)(void *type_data)
+    bool (*obs_source_info.audio_render)(void *data, uint64_t *ts_out, struct obs_source_audio_mix *audio_output, uint32_t mixers, size_t channels, size_t sample_rate)
+    void (*obs_source_info.enum_all_sources)(void *data, obs_source_enum_proc_t enum_callback, void *param)
+    void (*obs_source_info.transition_start)(void *data)
+    void (*obs_source_info.transition_stop)(void *data)
+    enum obs_icon_type obs_source_info.icon_type
+    void (*obs_source_info.media_play_pause)(void *data, bool pause)
+    void (*obs_source_info.media_restart)(void *data)
+    void (*obs_source_info.media_stop)(void *data)
+    void (*obs_source_info.media_next)(void *data)
+    void (*obs_source_info.media_previous)(void *data)
+    int64_t (*obs_source_info.media_get_duration)(void *data)
+    int64_t (*obs_source_info.media_get_time)(void *data)
+    void (*obs_source_info.media_set_time)(void *data, int64_t miliseconds)
+    enum obs_media_state (*obs_source_info.media_get_state)(void *data)
+    enum gs_color_space (*obs_source_info.video_get_color_space)(void *data, size_t count, const enum gs_color_space *preferred_spaces)¶
+    ]]
+
+
+    id = string,
+    type = number,
+    output_flags = number,
+    get_name = function=(any)>(string),
+    create = function=(o.obs_data_t, o.obs_source_t)>(any),
+    destroy = function=(any)>(),
+    get_width = function=(number)>(),
+    get_height = function=(number)>(),
+    get_defaults = function=(o.obs_data_t)>(),
+    get_defaults2 = function=(any, o.obs_data_t)>(),
+    get_properties = function=(any)>(o.obs_properties_t),
+    get_properties2 = function=(any, any)>(o.obs_properties_t),
+    update = function=(any, o.obs_data_t)>(),
+    activate = function=(any)>(),
+    deactivate = function=(any)>(),
+    show = function=(any)>(),
+    hide = function=(any)>(),
+    video_tick = function=(any, number)>(),
+    video_render = function=(any, o.gs_effect_t)>(),
+    filter_video = function=(any, o.obs_source_frame)>(o.obs_source_frame),
+    filter_audio = function=(any, o.obs_audio_data)>(o.obs_audio_data),
+    enum_active_sources = function=(any, o.obs_source_enum_proc_t, any)>(),
+    save = function=(any, o.obs_data_t)>(),
+    load = function=(any, o.obs_data_t)>(),
+    mouse_click = function=(any, o.obs_mouse_event, number, boolean, number)>(),
+    mouse_move = function=(any, o.obs_mouse_event, boolean)>(),
+    mouse_wheel = function=(any, o.obs_mouse_event, number, number)>(),
+    focus = function=(any, boolean)>(),
+    key_click = function=(any, o.obs_key_event, boolean)>(),
+    filter_remove = function=(any, o.obs_source_t)>(),
+    type_data = any,
+    free_type_data = function=(any)>(),
+    audio_render = function=(any, number, o.obs_source_audio_mix, number, number, number)>(boolean),
+    enum_all_sources = function=(any, o.obs_source_enum_proc_t, any)>(),
+    transition_start = function=(any)>(),
+    transition_stop = function=(any)>(),
+    icon_type = number,
+    media_play_pause = function=(any, boolean)>(),
+    media_restart = function=(any)>(),
+    media_stop = function=(any)>(),
+    media_next = function=(any)>(),
+    media_previous = function=(any)>(),
+    media_get_duration = function=(any)>(number),
+    media_get_time = function=(any)>(number),
+    media_set_time = function=(any, number)>(),
+    media_get_state = function=(any)>(number),
+    video_get_color_space = function=(any, number, any)>(number),
+}|>)>()
+
+o.obs_frontend_get_current_scene = o.obs_frontend_get_current_preview_scene
+
+type obslua = o
