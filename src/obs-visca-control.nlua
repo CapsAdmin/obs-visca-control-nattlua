@@ -49,7 +49,11 @@ local camera_action_active = {
 	Always = 3,
 }
 
-local function log(fmt: string, ...: ...(string | number)) do return end
+local function log(fmt: string, ...: ...(string | number))
+	do
+		return
+	end
+
 	if plugin_data.debug or obs.obs_data_get_bool(plugin_settings, "debug_logging") then
 		local info = assert(debug.getinfo(2, "nl"))
 		local func = info.name or "?"
@@ -105,14 +109,18 @@ local function parse_preset_value(preset_value: string)
 	return preset_name, preset_id
 end
 
-local function prop_presets_validate(props, property, settings)
-	local presets = obs.obs_data_get_array(settings, obs.obs_property_name(property))
+local function prop_presets_validate(
+	props: obs.obs_properties_t,
+	property: obs.obs_property_t,
+	settings: obs.obs_data_t
+)
+	local presets = assert(obs.obs_data_get_array(settings, obs.obs_property_name(property)))
 	local num_presets = obs.obs_data_array_count(presets)
 	log("prop_presets_validate %s %d", obs.obs_property_name(property), num_presets)
 
 	if num_presets > 0 then
 		for i = 0, num_presets - 1 do
-			local preset = obs.obs_data_array_item(presets, i)
+			local preset = assert(obs.obs_data_array_item(presets, i))
 			--log(obs.obs_data_get_json(preset))
 			local preset_value = obs.obs_data_get_string(preset, "value")
 			--log("check %s", preset_value)
@@ -129,7 +137,7 @@ local function prop_presets_validate(props, property, settings)
 	obs.obs_data_array_release(presets)
 end
 
-local function create_camera_controls(props, camera_id, settings)
+local function create_camera_controls(props: obs.obs_properties_t, camera_id: number, settings: obs.obs_data_t)
 	local cams = obs.obs_properties_get(props, "cameras")
 
 	if cams then
@@ -170,13 +178,15 @@ local function create_camera_controls(props, camera_id, settings)
 			obs.obs_data_set_default_int(settings, cam_prop_prefix .. "port", Visca.default_port)
 		end
 
-		local prop_mode = assert(obs.obs_properties_add_list(
-			props,
-			cam_prop_prefix .. "mode",
-			"Mode" .. cam_name_suffix,
-			obs.OBS_COMBO_TYPE_LIST,
-			obs.OBS_COMBO_FORMAT_INT
-		))
+		local prop_mode = assert(
+			obs.obs_properties_add_list(
+				props,
+				cam_prop_prefix .. "mode",
+				"Mode" .. cam_name_suffix,
+				obs.OBS_COMBO_TYPE_LIST,
+				obs.OBS_COMBO_FORMAT_INT
+			)
+		)
 		obs.obs_property_list_add_int(prop_mode, "Generic", Visca.modes.generic)
 		obs.obs_property_list_add_int(prop_mode, "PTZOptics", Visca.modes.ptzoptics)
 		obs.obs_data_set_default_int(settings, cam_prop_prefix .. "mode", Visca.modes.generic)
@@ -197,7 +207,11 @@ local function create_camera_controls(props, camera_id, settings)
 	end
 end
 
-local function prop_set_attrs_values(props: any, property: any, settings: any)
+local function prop_set_attrs_values(
+	props: obs.obs_properties_t,
+	property: obs.obs_property_t,
+	settings: obs.obs_data_t
+)
 	local changed = false
 	local num_cameras = obs.obs_data_get_int(plugin_settings, "num_cameras")
 	local cam_idx = obs.obs_data_get_int(settings, "cameras")
@@ -225,7 +239,11 @@ local function prop_set_attrs_values(props: any, property: any, settings: any)
 	return changed
 end
 
-local function prop_num_cams(props: any, property: any, settings: any)
+local function prop_num_cams(
+	props: obs.obs_properties_t,
+	property: obs.obs_property_t,
+	settings: obs.obs_data_t
+)
 	local cam_added = false
 	local num_cameras = obs.obs_data_get_int(plugin_settings, "num_cameras")
 	log("num_cameras %d", num_cameras)
@@ -246,7 +264,7 @@ local function prop_num_cams(props: any, property: any, settings: any)
 	return cam_added
 end
 
-local function close_visca_connection(camera_id: any)
+local function close_visca_connection(camera_id: number)
 	local connection = plugin_data.connections[camera_id]
 
 	if connection ~= nil then
@@ -256,7 +274,12 @@ local function close_visca_connection(camera_id: any)
 	end
 end
 
-local function open_visca_connection(camera_id, camera_address, camera_port, camera_mode)
+local function open_visca_connection(
+	camera_id: number,
+	camera_address: string,
+	camera_port: number,
+	camera_mode: 0 | 1
+)
 	local connection = plugin_data.connections[camera_id]
 
 	if connection == nil then
@@ -269,7 +292,8 @@ local function open_visca_connection(camera_id, camera_address, camera_port, cam
 
 			plugin_data.connections[camera_id] = connection
 		else
-			--log(connection_error)
+
+		--log(connection_error)
 		end
 	end
 
@@ -286,7 +310,7 @@ local function do_cam_action_start(camera_id: number, camera_action: number, act
 	local cam_prop_prefix = string.format("cam_%d_", camera_id)
 	local camera_address = obs.obs_data_get_string(plugin_settings, cam_prop_prefix .. "address")
 	local camera_port = obs.obs_data_get_int(plugin_settings, cam_prop_prefix .. "port")
-	local camera_mode = obs.obs_data_get_int(plugin_settings, cam_prop_prefix .. "mode")
+	local camera_mode = obs.obs_data_get_int(plugin_settings, cam_prop_prefix .. "mode") as 0 | 1
 	action_args = action_args or {}
 	log(
 		"Start cam %d @%s:%d action %d (args %s)",
@@ -348,7 +372,7 @@ local function do_cam_action_stop(camera_id: number, camera_action: number, acti
 	local cam_prop_prefix = string.format("cam_%d_", camera_id)
 	local camera_address = obs.obs_data_get_string(plugin_settings, cam_prop_prefix .. "address")
 	local camera_port = obs.obs_data_get_int(plugin_settings, cam_prop_prefix .. "port")
-	local camera_mode = obs.obs_data_get_int(plugin_settings, cam_prop_prefix .. "mode")
+	local camera_mode = obs.obs_data_get_int(plugin_settings, cam_prop_prefix .. "mode") as 0 | 1
 	action_args = action_args or {}
 	log(
 		"Stop cam %d @%s action %d (arg %s)",
@@ -386,11 +410,11 @@ function script_description()
 	return "<b>" .. plugin_info.description .. "</b><br>" .. "Version: " .. plugin_info.version .. "<br>" .. "<a href=\"" .. plugin_info.url .. "\">" .. plugin_info.url .. "</a><br><br>" .. "Usage:<br>" .. "To add a preset in the list, use one the following naming conventions:<ul>" .. "<li>&lt;name&gt;&lt;separator&gt;&lt;preset id&gt;, e.g. 'Stage: 6'</li>" .. "<li>&lt;preset id&gt;&lt;separator&gt;&lt;name&gt;, e.g. '5 = Pastor'</li>" .. "</ul>where &lt;separator&gt; is one of ':', '=' or '-'."
 end
 
-function script_update(settings: o.obs_data_t)
+function script_update(settings: obs.obs_data_t)
 	plugin_settings = settings
 end
 
-function script_save(settings: o.obs_data_t)
+function script_save(settings: obs.obs_data_t)
 	for _, hotkey in pairs(plugin_data.hotkeys) do
 		local a = assert(obs.obs_hotkey_save(hotkey.id))
 		obs.obs_data_set_array(settings, hotkey.name .. "_hotkey", a)
@@ -398,7 +422,7 @@ function script_save(settings: o.obs_data_t)
 	end
 end
 
-function script_load(settings: o.obs_data_t)
+function script_load(settings: obs.obs_data_t)
 	plugin_settings = settings
 	local plugin_hotkey_actions = {
 		{
@@ -414,7 +438,7 @@ function script_load(settings: o.obs_data_t)
 			cb_plugin_hotkey(pressed, {name = hotkey_name, action = v.action, action_args = v.action_args})
 		end)
 		local a = assert(obs.obs_data_get_array(settings, hotkey_name .. "_hotkey"))
-		obs.obs_hotkey_load(hotkey_id, a) 
+		obs.obs_hotkey_load(hotkey_id, a)
 		obs.obs_data_array_release(a)
 		table.insert(
 			plugin_data.hotkeys,
@@ -582,7 +606,7 @@ function script_load(settings: o.obs_data_t)
 end
 
 function script_properties()
-	local props = obs.obs_properties_create()
+	local props = assert(obs.obs_properties_create())
 	local num_cams = obs.obs_properties_add_int(props, "num_cameras", "Number of cameras", 0, 42, 1)
 	obs.obs_property_set_modified_callback(num_cams, prop_num_cams)
 	local num_cameras = obs.obs_data_get_int(plugin_settings, "num_cameras")
@@ -766,7 +790,7 @@ local function fe_callback(event: number, data: any)
 						local source_id = obs.obs_source_get_unversioned_id(source)
 
 						if source_id == plugin_def.id then
-							local settings = obs.obs_source_get_settings(source)
+							local settings = assert(obs.obs_source_get_settings(source))
 							local source_name = obs.obs_source_get_name(source)
 							local visible = obs.obs_source_showing(source)
 
@@ -818,9 +842,12 @@ local function fe_callback(event: number, data: any)
 	end
 end
 
-local function source_signal_handler(calldata: any, signal: any)
+local function source_signal_handler(
+	calldata: obs.calldata_t,
+	signal: {hide = nil | true, activate = nil | true, deactivate = nil | true}
+)
 	local source = obs.calldata_source(calldata, "source")
-	local settings = obs.obs_source_get_settings(source)
+	local settings = assert(obs.obs_source_get_settings(source))
 	local source_name = obs.obs_source_get_name(source)
 	log(
 		"%s source %s",
@@ -859,29 +886,29 @@ local function source_signal_handler(calldata: any, signal: any)
 	obs.obs_data_release(settings)
 end
 
-plugin_def.get_name = function()
+plugin_def.get_name = function(huh: any)
 	return plugin_info.name
 end
-plugin_def.create = function(settings, source)
+plugin_def.create = function(settings: obs.obs_data_t, source: obs.obs_source_t)
 	local data = {}
-	local source_sh = obs.obs_source_get_signal_handler(source)
+	local source_sh = assert(obs.obs_source_get_signal_handler(source))
 
-	obs.signal_handler_connect(source_sh, "hide", function(calldata)
+	obs.signal_handler_connect(source_sh, "hide", function(calldata: obs.calldata_t)
 		source_signal_handler(calldata, {hide = true})
 	end)
 
-	obs.signal_handler_connect(source_sh, "activate", function(calldata)
+	obs.signal_handler_connect(source_sh, "activate", function(calldata: obs.calldata_t)
 		source_signal_handler(calldata, {activate = true})
 	end)
 
-	obs.signal_handler_connect(source_sh, "deactivate", function(calldata)
+	obs.signal_handler_connect(source_sh, "deactivate", function(calldata: obs.calldata_t)
 		source_signal_handler(calldata, {deactivate = true})
 	end)
 
 	obs.obs_frontend_add_event_callback(fe_callback)
 	return data
 end
-plugin_def.destroy = function()
+plugin_def.destroy = function(huh: any)
 	for camera_id, connection in pairs(plugin_data.connections) do
 		if connection ~= nil then
 			connection.close()
@@ -891,23 +918,27 @@ plugin_def.destroy = function()
 
 	plugin_data.connections = {}
 end
-plugin_def.get_properties = function()
+plugin_def.get_properties = function(huh: any)
 	local props = assert(obs.obs_properties_create())
 	local num_cameras = obs.obs_data_get_int(plugin_settings, "num_cameras")
-	local prop_camera = assert(obs.obs_properties_add_list(
-		props,
-		"scene_camera",
-		"Camera",
-		obs.OBS_COMBO_TYPE_LIST,
-		obs.OBS_COMBO_FORMAT_INT
-	))
-	local prop_action = assert(obs.obs_properties_add_list(
-		props,
-		"scene_action",
-		"Action",
-		obs.OBS_COMBO_TYPE_LIST,
-		obs.OBS_COMBO_FORMAT_INT
-	))
+	local prop_camera = assert(
+		obs.obs_properties_add_list(
+			props,
+			"scene_camera",
+			"Camera",
+			obs.OBS_COMBO_TYPE_LIST,
+			obs.OBS_COMBO_FORMAT_INT
+		)
+	)
+	local prop_action = assert(
+		obs.obs_properties_add_list(
+			props,
+			"scene_action",
+			"Action",
+			obs.OBS_COMBO_TYPE_LIST,
+			obs.OBS_COMBO_FORMAT_INT
+		)
+	)
 	obs.obs_property_list_add_int(prop_action, "Camera Off", camera_actions.Camera_Off)
 	obs.obs_property_list_add_int(prop_action, "Camera On", camera_actions.Camera_On)
 	obs.obs_property_list_add_int(prop_action, "Preset Recall", camera_actions.Preset_Recal)
@@ -923,12 +954,14 @@ plugin_def.get_properties = function()
 		if #cam_name == 0 then cam_name = string.format("Camera %d", camera_id) end
 
 		obs.obs_property_list_add_int(prop_camera, cam_name, camera_id)
-		local prop_presets = obs.obs_properties_add_list(
-			props,
-			"scene_" .. cam_prop_prefix .. "preset",
-			"Presets" .. cam_name_suffix,
-			obs.OBS_COMBO_TYPE_LIST,
-			obs.OBS_COMBO_FORMAT_INT
+		local prop_presets = assert(
+			obs.obs_properties_add_list(
+				props,
+				"scene_" .. cam_prop_prefix .. "preset",
+				"Presets" .. cam_name_suffix,
+				obs.OBS_COMBO_TYPE_LIST,
+				obs.OBS_COMBO_FORMAT_INT
+			)
 		)
 		local presets = assert(obs.obs_data_get_array(plugin_settings, cam_prop_prefix .. "presets"))
 		local num_presets = obs.obs_data_array_count(presets)
@@ -938,7 +971,7 @@ plugin_def.get_properties = function()
 			local first_preset = true
 
 			for i = 0, num_presets - 1 do
-				local preset = obs.obs_data_array_item(presets, i)
+				local preset = assert(obs.obs_data_array_item(presets, i))
 				--log(obs.obs_data_get_json(preset))
 				local preset_value = obs.obs_data_get_string(preset, "value")
 				--log("check %s", preset_value)
@@ -965,12 +998,14 @@ plugin_def.get_properties = function()
 	end
 
 	table.sort(direction_names)
-	local prop_pantilt_direction = obs.obs_properties_add_list(
-		props,
-		"scene_direction",
-		"Animation Direction",
-		obs.OBS_COMBO_TYPE_LIST,
-		obs.OBS_COMBO_FORMAT_INT
+	local prop_pantilt_direction = assert(
+		obs.obs_properties_add_list(
+			props,
+			"scene_direction",
+			"Animation Direction",
+			obs.OBS_COMBO_TYPE_LIST,
+			obs.OBS_COMBO_FORMAT_INT
+		)
 	)
 	obs.obs_property_list_add_int(prop_pantilt_direction, "None", 0)
 
@@ -990,12 +1025,14 @@ plugin_def.get_properties = function()
 		Visca.limits.PAN_MAX_SPEED,
 		1
 	)
-	local prop_active = obs.obs_properties_add_list(
-		props,
-		"scene_active",
-		"Action Active",
-		obs.OBS_COMBO_TYPE_LIST,
-		obs.OBS_COMBO_FORMAT_INT
+	local prop_active = assert(
+		obs.obs_properties_add_list(
+			props,
+			"scene_active",
+			"Action Active",
+			obs.OBS_COMBO_TYPE_LIST,
+			obs.OBS_COMBO_FORMAT_INT
+		)
 	)
 	obs.obs_property_list_add_int(prop_active, "On Program", camera_action_active.Program)
 	obs.obs_property_list_add_int(prop_active, "On Preview", camera_action_active.Preview)
@@ -1008,7 +1045,6 @@ plugin_def.get_properties = function()
 	obs.obs_properties_add_int(props, "scene_action_delay", "Delay Action (ms)", 0, 777333, 1)
 	--obs.obs_properties_add_button(props, "run_action", "Perform action now", cb_run_action)
 	obs.obs_property_set_modified_callback(prop_camera, cb_camera_action_changed)
-	obs.obs_property_set_modified_callback(prop_action, cb_camera_action_changed)
 	return props
 end
-obs.obs_register_source(plugin_def) 
+obs.obs_register_source(plugin_def)

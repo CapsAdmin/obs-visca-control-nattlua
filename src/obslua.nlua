@@ -1896,7 +1896,7 @@ type o.vec4_zero = function=(o.vec4)>()
 type o.source_list = {__name = "source_list"} 
 
 type o.obs_enum_sources = function=()>(o.source_list)
-type o.obs_scene_enum_items = function=(o.obs_scene_t)>(any)
+type o.obs_scene_enum_items = function=(o.obs_scene_t)>(List<|o.obs_sceneitem_t|>)
 type o.obs_add_main_render_callback = function=(function=()>())>()
 type o.obs_remove_main_render_callback = function=(function=()>())>()
 type o.signal_handler_connect = function=(o.signal_handler_t, string, function=(o.calldata_t)>())>()
@@ -1909,6 +1909,13 @@ type o.obs_properties_add_button = function=(o.obs_properties_t, string, string,
 type o.remove_current_callback = function=()>()
 type o.source_list_release = function=(o.source_list)>()
 type o.sceneitem_list_release = function=(any)>()
+type o.calldata_source = function=(o.calldata_t, string)>(o.obs_source_t)
+type o.obs_sceneitem_t = function=(o.calldata_t, string)>(o.obs_sceneitem_t)
+type o.timer_add = function=(function=()>(), number)>()
+type o.timer_remove = function=(function=()>())>()
+type o.obs_frontend_add_event_callback = function=(function=(number, any)>(), any)>()
+type o.obs_property_set_modified_callback = function=(o.obs_property_t, function=(o.obs_properties_t, o.obs_property_t, o.obs_data_t)>(boolean))>()
+type o.obs_property_set_modified_callback2 = function=(o.obs_property_t, function=(any, o.obs_properties_t, o.obs_property_t, o.obs_data_t)>(boolean))>()
 
 type script_load = function=(o.obs_data_t)>()
 type script_unload = function=()>()
@@ -1919,58 +1926,6 @@ type script_properties = function=()>(o.obs_properties_t)
 type script_tick = function=(number)>()
 
 type o.obs_register_source = function=(Partial<|{
-
-    --[[
-    const char *obs_source_info.id
-    enum obs_source_type obs_source_info.type
-    uint32_t obs_source_info.output_flags
-    const char *(*obs_source_info.get_name)(void *type_data)
-    void *(*obs_source_info.create)(obs_data_t *settings, obs_source_t *source)
-    void (*obs_source_info.destroy)(void *data)
-    uint32_t (*obs_source_info.get_width)(void *data)
-    uint32_t (*obs_source_info.get_height)(void *data)
-    void (*obs_source_info.get_defaults)(obs_data_t *settings)
-    void (*obs_source_info.get_defaults2)(void *type_data, obs_data_t *settings)
-    obs_properties_t *(*obs_source_info.get_properties)(void *data)
-    obs_properties_t *(*obs_source_info.get_properties2)(void *data, void *type_data)
-    void (*obs_source_info.update)(void *data, obs_data_t *settings)
-    void (*obs_source_info.activate)(void *data)
-    void (*obs_source_info.deactivate)(void *data)
-    void (*obs_source_info.show)(void *data)
-    void (*obs_source_info.hide)(void *data)
-    void (*obs_source_info.video_tick)(void *data, float seconds)
-    void (*obs_source_info.video_render)(void *data, gs_effect_t *effect)
-    struct obs_source_frame *(*obs_source_info.filter_video)(void *data, struct obs_source_frame *frame)
-    struct obs_audio_data *(*obs_source_info.filter_audio)(void *data, struct obs_audio_data *audio)
-    void (*obs_source_info.enum_active_sources)(void *data, obs_source_enum_proc_t enum_callback, void *param)
-    void (*obs_source_info.save)(void *data, obs_data_t *settings)
-    void (*obs_source_info.load)(void *data, obs_data_t *settings)
-    void (*obs_source_info.mouse_click)(void *data, const struct obs_mouse_event *event, int32_t type, bool mouse_up, uint32_t click_count)
-    void (*obs_source_info.mouse_move)(void *data, const struct obs_mouse_event *event, bool mouse_leave)
-    void (*obs_source_info.mouse_wheel)(void *data, const struct obs_mouse_event *event, int x_delta, int y_delta)
-    void (*obs_source_info.focus)(void *data, bool focus)
-    void (*obs_source_info.key_click)(void *data, const struct obs_key_event *event, bool key_up)
-    void (*obs_source_info.filter_remove)(void *data, obs_source_t *source)
-    void *obs_source_info.type_data
-    void (*obs_source_info.free_type_data)(void *type_data)
-    bool (*obs_source_info.audio_render)(void *data, uint64_t *ts_out, struct obs_source_audio_mix *audio_output, uint32_t mixers, size_t channels, size_t sample_rate)
-    void (*obs_source_info.enum_all_sources)(void *data, obs_source_enum_proc_t enum_callback, void *param)
-    void (*obs_source_info.transition_start)(void *data)
-    void (*obs_source_info.transition_stop)(void *data)
-    enum obs_icon_type obs_source_info.icon_type
-    void (*obs_source_info.media_play_pause)(void *data, bool pause)
-    void (*obs_source_info.media_restart)(void *data)
-    void (*obs_source_info.media_stop)(void *data)
-    void (*obs_source_info.media_next)(void *data)
-    void (*obs_source_info.media_previous)(void *data)
-    int64_t (*obs_source_info.media_get_duration)(void *data)
-    int64_t (*obs_source_info.media_get_time)(void *data)
-    void (*obs_source_info.media_set_time)(void *data, int64_t miliseconds)
-    enum obs_media_state (*obs_source_info.media_get_state)(void *data)
-    enum gs_color_space (*obs_source_info.video_get_color_space)(void *data, size_t count, const enum gs_color_space *preferred_spaces)¶
-    ]]
-
-
     id = string,
     type = number,
     output_flags = number,

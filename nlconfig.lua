@@ -1,17 +1,27 @@
+local nl = require("nattlua")
 local cmd = ...
+local input_dir = "src/"
+local input_file = "obs-visca-control.nlua"
+local output_dir = "dist/"
+local output_file = "obs-visca-control.lua"
 local analyzer_config = {
-	working_directory = "src/",
+	working_directory = input_dir,
 	inline_require = true,
 }
 
 if cmd == "get-analyzer-config" then
-	analyzer_config.entry_point = "obs-visca-control.nlua"
+	local analyzer_config = {
+		working_directory = input_dir,
+		inline_require = true,
+		entry_point = input_file,
+	}
 	return analyzer_config
 elseif cmd == "check" then
+	require("nattlua.other.profiler").Start()
 	local compiler = assert(
 		nl.Compiler(
-			[[return import("./obs-visca-control.nlua")]],
-			"src/obs-visca-control.nlua",
+			[[return import("]] .. input_file .. [[")]],
+			input_dir .. input_file,
 			analyzer_config
 		)
 	)
@@ -19,13 +29,14 @@ elseif cmd == "check" then
 	if cmd == "check-language-server" then return compiler end
 
 	assert(compiler:Analyze())
+	require("nattlua.other.profiler").Stop()
 elseif cmd == "build" then
 	local nl = require("nattlua")
 	local compiler = assert(
 		nl.File(
-			"src/obs-visca-control.nlua",
+			input_dir .. input_file,
 			{
-				working_directory = "src/",
+				working_directory = input_dir,
 				inline_require = true,
 			}
 		)
@@ -45,7 +56,7 @@ elseif cmd == "build" then
 			},
 		}
 	)
-	local f = assert(io.open("dist/obs-visca-control.lua", "w"))
+	local f = assert(io.open(output_dir .. output_file, "w"))
 	f:write(code)
 	f:close()
 	-- analyze after file write so hotreload is faster
