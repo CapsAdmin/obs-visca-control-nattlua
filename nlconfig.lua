@@ -28,7 +28,7 @@ elseif cmd == "check" then
 
 	if cmd == "check-language-server" then return compiler end
 
-	assert(compiler:Analyze())
+	compiler:Analyze()
 	require("nattlua.other.profiler").Stop()
 elseif cmd == "build" then
 	local nl = require("nattlua")

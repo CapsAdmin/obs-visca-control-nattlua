@@ -628,7 +628,7 @@ function script_properties()
 	return props
 end
 
-local function set_property_visibility(props, name, visible)
+local function set_property_visibility(props: o.obs_properties_t, name: string, visible: boolean)
 	local changed = false
 	local prop = obs.obs_properties_get(props, name)
 
@@ -642,7 +642,7 @@ local function set_property_visibility(props, name, visible)
 	return changed
 end
 
-local function cb_camera_action_changed(props, property, data)
+local function cb_camera_action_changed(props: o.obs_properties_t, property: o.obs_property_t, data: o.obs_data_t)
 	local changed = false
 	local num_cameras = obs.obs_property_list_item_count(property)
 	local scene_camera = obs.obs_data_get_int(data, "scene_camera")
@@ -676,7 +676,7 @@ local function cb_camera_action_changed(props, property, data)
 	return changed
 end
 
-local function camera_active_in_scene(program, camera_id)
+local function camera_active_in_scene(program: boolean, camera_id: number)
 	local active = false
 	local scene_source = program and
 		obs.obs_frontend_get_current_scene() or
@@ -729,7 +729,7 @@ local function camera_active_in_scene(program, camera_id)
 	return active
 end
 
-local function do_cam_scene_action(settings, action_at)
+local function do_cam_scene_action(settings: o.obs_data_t, action_at: number)
 	local camera_id = obs.obs_data_get_int(settings, "scene_camera")
 	local scene_action = obs.obs_data_get_int(settings, "scene_action")
 	local cam_prop_prefix = string.format("cam_%d_", camera_id)
