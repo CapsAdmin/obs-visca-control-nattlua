@@ -131,6 +131,8 @@ local function prop_presets_validate(
 					"Warning: preset '" .. preset_value .. "' has an unsupported syntax and cannot be used."
 				)
 			end
+
+			obs.obs_data_release(preset)
 		end
 	end
 
@@ -193,13 +195,15 @@ local function create_camera_controls(props: obs.obs_properties_t, camera_id: nu
 		local prop_presets = obs.obs_properties_get(props, cam_prop_prefix .. "presets")
 
 		if prop_presets == nil then
-			prop_presets = obs.obs_properties_add_editable_list(
-				props,
-				cam_prop_prefix .. "presets",
-				"Presets" .. cam_name_suffix,
-				obs.OBS_EDITABLE_LIST_TYPE_STRINGS,
-				"",
-				""
+			prop_presets = assert(
+				obs.obs_properties_add_editable_list(
+					props,
+					cam_prop_prefix .. "presets",
+					"Presets" .. cam_name_suffix,
+					obs.OBS_EDITABLE_LIST_TYPE_STRINGS,
+					"",
+					""
+				)
 			)
 		end
 
@@ -578,7 +582,7 @@ function script_load(settings: obs.obs_data_t)
 
 		for _, v in pairs(camera_hotkey_actions) do
 			local hotkey_name = cam_prop_prefix .. v.name
-			local hotkey_id = obs.obs_hotkey_register_frontend(hotkey_name, v.descr .. " on " .. cam_name, function(pressed)
+			local hotkey_id = obs.obs_hotkey_register_frontend(hotkey_name, v.descr .. " on " .. cam_name, function(pressed: boolean)
 				cb_camera_hotkey(
 					pressed,
 					{
@@ -987,6 +991,8 @@ plugin_def.get_properties = function(huh: any)
 						first_preset = false
 					end
 				end
+
+				obs.obs_data_release(preset)
 			end
 		end
 
