@@ -592,8 +592,8 @@ function Visca.connect(address: string, port: number)
 
 	function connection.Cam_PanTilt(
 		direction: Visca.PanTilt_directions[keysof<|Visca.PanTilt_directions|>],
-		pan_speed: Visca.limits.PAN_MIN_SPEED .. Visca.limits.PAN_MAX_SPEED,
-		tilt_speed: Visca.limits.TILT_MIN_SPEED .. Visca.limits.TILT_MAX_SPEED
+		pan_speed: nil | (Visca.limits.PAN_MIN_SPEED .. Visca.limits.PAN_MAX_SPEED),
+		tilt_speed: nil | (Visca.limits.TILT_MIN_SPEED .. Visca.limits.TILT_MAX_SPEED)
 	)
 		if
 			not has_value(Visca.PanTilt_directions, direction or Visca.PanTilt_directions.stop)

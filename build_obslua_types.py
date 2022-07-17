@@ -153,7 +153,8 @@ type o.timer_remove = function=(function=()>())>()
 type o.obs_frontend_add_event_callback = function=(function=(number, any)>(), any)>()
 type o.obs_property_set_modified_callback = function=(o.obs_property_t, function=(o.obs_properties_t, o.obs_property_t, o.obs_data_t)>(boolean))>()
 type o.obs_property_set_modified_callback2 = function=(o.obs_property_t, function=(any, o.obs_properties_t, o.obs_property_t, o.obs_data_t)>(boolean))>()
-
+type o.obs_source_get_settings = function=(o.obs_source_t)>(o.obs_data_t)
+ 
 type script_load = function=(o.obs_data_t)>()
 type script_unload = function=()>()
 type script_save = function=(o.obs_data_t)>()

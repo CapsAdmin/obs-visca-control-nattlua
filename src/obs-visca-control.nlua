@@ -434,7 +434,7 @@ function script_load(settings: obs.obs_data_t)
 
 	for _, v in pairs(plugin_hotkey_actions) do
 		local hotkey_name = "visca_" .. v.name
-		local hotkey_id = obs.obs_hotkey_register_frontend(hotkey_name, v.descr .. " for Visca cams", function(pressed)
+		local hotkey_id = obs.obs_hotkey_register_frontend(hotkey_name, v.descr .. " for Visca cams", function(pressed: boolean)
 			cb_plugin_hotkey(pressed, {name = hotkey_name, action = v.action, action_args = v.action_args})
 		end)
 		local a = assert(obs.obs_data_get_array(settings, hotkey_name .. "_hotkey"))
@@ -607,16 +607,18 @@ end
 
 function script_properties()
 	local props = assert(obs.obs_properties_create())
-	local num_cams = obs.obs_properties_add_int(props, "num_cameras", "Number of cameras", 0, 42, 1)
+	local num_cams = assert(obs.obs_properties_add_int(props, "num_cameras", "Number of cameras", 0, 42, 1))
 	obs.obs_property_set_modified_callback(num_cams, prop_num_cams)
 	local num_cameras = obs.obs_data_get_int(plugin_settings, "num_cameras")
 	log("num_cameras %d", num_cameras)
-	local cams = obs.obs_properties_add_list(
-		props,
-		"cameras",
-		"Camera",
-		obs.OBS_COMBO_TYPE_LIST,
-		obs.OBS_COMBO_FORMAT_INT
+	local cams = assert(
+		obs.obs_properties_add_list(
+			props,
+			"cameras",
+			"Camera",
+			obs.OBS_COMBO_TYPE_LIST,
+			obs.OBS_COMBO_FORMAT_INT
+		)
 	)
 
 	for camera_id = 1, num_cameras do
@@ -628,7 +630,7 @@ function script_properties()
 	return props
 end
 
-local function set_property_visibility(props: o.obs_properties_t, name: string, visible: boolean)
+local function set_property_visibility(props: obs.obs_properties_t, name: string, visible: boolean)
 	local changed = false
 	local prop = obs.obs_properties_get(props, name)
 
@@ -642,7 +644,7 @@ local function set_property_visibility(props: o.obs_properties_t, name: string, 
 	return changed
 end
 
-local function cb_camera_action_changed(props: o.obs_properties_t, property: o.obs_property_t, data: o.obs_data_t)
+local function cb_camera_action_changed(props: obs.obs_properties_t, property: obs.obs_property_t, data: obs.obs_data_t)
 	local changed = false
 	local num_cameras = obs.obs_property_list_item_count(property)
 	local scene_camera = obs.obs_data_get_int(data, "scene_camera")
@@ -729,7 +731,7 @@ local function camera_active_in_scene(program: boolean, camera_id: number)
 	return active
 end
 
-local function do_cam_scene_action(settings: o.obs_data_t, action_at: number)
+local function do_cam_scene_action(settings: obs.obs_data_t, action_at: boolean)
 	local camera_id = obs.obs_data_get_int(settings, "scene_camera")
 	local scene_action = obs.obs_data_get_int(settings, "scene_action")
 	local cam_prop_prefix = string.format("cam_%d_", camera_id)
