@@ -160,6 +160,200 @@ Visca.limits = {
 	ZOOM_MIN_VALUE = 0x0000,
 	ZOOM_MAX_VALUE = 0x4000,
 }
+Visca.CameraActions = {
+	Cam_Focus_Mode = function(mode: Visca.Focus_modes[keysof<|Visca.Focus_modes|>])
+		local msg = Visca.Message()
+		msg.payload_type = Visca.payload_types.visca_command
+		msg.payload = {
+			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
+			Visca.packet_consts.command,
+			Visca.categories.focus,
+			bit.band(bit.rshift(mode, 8), 0xFF),
+			bit.band(mode, 0xFF),
+			Visca.packet_consts.terminator,
+		}
+		return msg
+	end,
+	Cam_Focus_Stop = function()
+		local msg = Visca.Message()
+		msg.payload_type = Visca.payload_types.visca_command
+		msg.payload = {
+			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
+			Visca.packet_consts.command,
+			Visca.categories.focus,
+			Visca.commands.focus,
+			Visca.command_arguments.focus_stop,
+			Visca.packet_consts.terminator,
+		}
+		return msg
+	end,
+	Cam_Focus_Far = function(speed: nil | Visca.limits.FOCUS_MIN_SPEED .. Visca.limits.FOCUS_MAX_SPEED)
+		speed = speed or Visca.command_arguments.focus_far_std
+		speed = math.min(math.max(speed, Visca.limits.FOCUS_MIN_SPEED), Visca.limits.FOCUS_MAX_SPEED)
+		local msg = Visca.Message()
+		msg.payload_type = Visca.payload_types.visca_command
+		msg.payload = {
+			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
+			Visca.packet_consts.command,
+			Visca.categories.focus,
+			Visca.commands.focus,
+			bit.bor(Visca.command_arguments.focus_far_var, bit.band(speed, 0x07)),
+			Visca.packet_consts.terminator,
+		}
+		return msg
+	end,
+	Cam_Focus_Near = function(speed: nil | Visca.limits.FOCUS_MIN_SPEED .. Visca.limits.FOCUS_MAX_SPEED)
+		speed = speed or Visca.command_arguments.focus_near_std
+		speed = math.min(math.max(speed, Visca.limits.FOCUS_MIN_SPEED), Visca.limits.FOCUS_MAX_SPEED)
+		local msg = Visca.Message()
+		msg.payload_type = Visca.payload_types.visca_command
+		msg.payload = {
+			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
+			Visca.packet_consts.command,
+			Visca.categories.focus,
+			Visca.commands.focus,
+			bit.bor(Visca.command_arguments.focus_near_var, bit.band(speed, 0x07)),
+			Visca.packet_consts.terminator,
+		}
+		return msg
+	end,
+	Cam_Power = function(on: boolean)
+		local msg = Visca.Message()
+		msg.payload_type = Visca.payload_types.visca_command
+		msg.payload = {
+			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
+			Visca.packet_consts.command,
+			Visca.categories.camera,
+			Visca.commands.power,
+			on and
+			Visca.command_arguments.power_on or
+			Visca.command_arguments.power_standby,
+			Visca.packet_consts.terminator,
+		}
+		return msg
+	end,
+	Cam_Preset_Recall = function(preset: 0 .. 127)
+		local msg = Visca.Message()
+		msg.payload_type = Visca.payload_types.visca_command
+		msg.payload = {
+			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
+			Visca.packet_consts.command,
+			Visca.categories.camera,
+			Visca.commands.preset,
+			Visca.command_arguments.preset_recall,
+			bit.band(preset, 0x7F), -- Preset Number(=0 to 127)
+			Visca.packet_consts.terminator,
+		}
+		return msg
+	end,
+	Cam_PanTilt = function(
+		direction: Visca.PanTilt_directions[keysof<|Visca.PanTilt_directions|>],
+		pan_speed: nil | (Visca.limits.PAN_MIN_SPEED .. Visca.limits.PAN_MAX_SPEED),
+		tilt_speed: nil | (Visca.limits.TILT_MIN_SPEED .. Visca.limits.TILT_MAX_SPEED)
+	)
+		pan_speed = math.min(math.max(pan_speed or 1, Visca.limits.PAN_MIN_SPEED), Visca.limits.PAN_MAX_SPEED)
+		tilt_speed = math.min(math.max(tilt_speed or 1, Visca.limits.TILT_MIN_SPEED), Visca.limits.TILT_MAX_SPEED)
+		local msg = Visca.Message()
+		msg.payload_type = Visca.payload_types.visca_command
+		msg.payload = {
+			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
+			Visca.packet_consts.command,
+			Visca.categories.pan_tilter,
+			Visca.commands.pantilt_drive,
+			bit.band(pan_speed, 0x1F), -- lowest 5 bits are only relevant
+			bit.band(tilt_speed, 0x1F), -- lowest 5 bits are only relevant
+			bit.band(bit.rshift(direction, 8), 0xFF),
+			bit.band(direction, 0xFF),
+			Visca.packet_consts.terminator,
+		}
+		return msg
+	end,
+	Cam_PanTilt_Home = function()
+		local msg = Visca.Message()
+		msg.payload_type = Visca.payload_types.visca_command
+		msg.payload = {
+			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
+			Visca.packet_consts.command,
+			Visca.categories.pan_tilter,
+			Visca.commands.pantilt_home,
+			Visca.packet_consts.terminator,
+		}
+		return msg
+	end,
+	Cam_PanTilt_Reset = function()
+		local msg = Visca.Message()
+		msg.payload_type = Visca.payload_types.visca_command
+		msg.payload = {
+			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
+			Visca.packet_consts.command,
+			Visca.categories.pan_tilter,
+			Visca.commands.pantilt_reset,
+			Visca.packet_consts.terminator,
+		}
+		return msg
+	end,
+	Cam_Zoom_Stop = function()
+		local msg = Visca.Message()
+		msg.payload_type = Visca.payload_types.visca_command
+		msg.payload = {
+			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
+			Visca.packet_consts.command,
+			Visca.categories.camera,
+			Visca.commands.zoom,
+			Visca.Zoom_subcommand.stop,
+			Visca.packet_consts.terminator,
+		}
+		return msg
+	end,
+	Cam_Zoom_Tele = function(speed: nil | Visca.limits.ZOOM_MIN_SPEED .. Visca.limits.ZOOM_MAX_SPEED)
+		speed = speed or Visca.Zoom_subcommand.tele_standard
+		speed = math.min(math.max(speed, Visca.limits.ZOOM_MIN_SPEED), Visca.limits.ZOOM_MAX_SPEED)
+		local msg = Visca.Message()
+		msg.payload_type = Visca.payload_types.visca_command
+		msg.payload = {
+			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
+			Visca.packet_consts.command,
+			Visca.categories.camera,
+			Visca.commands.zoom,
+			bit.bor(Visca.Zoom_subcommand.tele_variable, bit.band(speed, 0x07)),
+			Visca.packet_consts.terminator,
+		}
+		return msg
+	end,
+	Cam_Zoom_Wide = function(speed: nil | Visca.limits.ZOOM_MIN_SPEED .. Visca.limits.ZOOM_MAX_SPEED)
+		speed = speed or Visca.Zoom_subcommand.wide_standard
+		speed = math.min(math.max(speed, Visca.limits.ZOOM_MIN_SPEED), Visca.limits.ZOOM_MAX_SPEED)
+		local msg = Visca.Message()
+		msg.payload_type = Visca.payload_types.visca_command
+		msg.payload = {
+			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
+			Visca.packet_consts.command,
+			Visca.categories.camera,
+			Visca.commands.zoom,
+			bit.bor(Visca.Zoom_subcommand.wide_variable, bit.band(speed, 0x07)),
+			Visca.packet_consts.terminator,
+		}
+		return msg
+	end,
+	Cam_Zoom_To = function(zoom: nil | Visca.limits.ZOOM_MIN_VALUE .. Visca.limits.ZOOM_MAX_VALUE)
+		zoom = zoom or 0
+		zoom = math.min(math.max(zoom, Visca.limits.ZOOM_MIN_VALUE), Visca.limits.ZOOM_MAX_VALUE)
+		local msg = Visca.Message()
+		msg.payload_type = Visca.payload_types.visca_command
+		msg.payload = {
+			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
+			Visca.packet_consts.command,
+			Visca.categories.camera,
+			Visca.commands.zoom_to,
+			bit.band(bit.rshift(zoom, 12), 0x0F),
+			bit.band(bit.rshift(zoom, 8), 0x0F),
+			bit.band(bit.rshift(zoom, 4), 0x0F),
+			bit.band(zoom, 0x0F),
+			Visca.packet_consts.terminator,
+		}
+		return msg
+	end,
+}
 
 do
 	-- A Visca message is binary data with a message header (8 bytes) and payload (1 to 16 bytes).
@@ -597,210 +791,12 @@ do
 		return msg
 	end
 
-	function Connection:Cam_Focus_Mode(mode: Visca.Focus_modes[keysof<|Visca.Focus_modes|>])
-		local msg = Visca.Message()
-		msg.payload_type = Visca.payload_types.visca_command
-		msg.payload = {
-			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
-			Visca.packet_consts.command,
-			Visca.categories.focus,
-			bit.band(bit.rshift(mode, 8), 0xFF),
-			bit.band(mode, 0xFF),
-			Visca.packet_consts.terminator,
-		}
-		return self:send(msg)
+	for action_name, func in pairs(Visca.CameraActions) do
+		Connection[action_name] = function(self: Connection.@Self, ...: unpack<|Parameters<|func|>|>)
+			return self:send(func(...))
+		end
 	end
 
-	function Connection:Cam_Focus_Stop()
-		local msg = Visca.Message()
-		msg.payload_type = Visca.payload_types.visca_command
-		msg.payload = {
-			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
-			Visca.packet_consts.command,
-			Visca.categories.focus,
-			Visca.commands.focus,
-			Visca.command_arguments.focus_stop,
-			Visca.packet_consts.terminator,
-		}
-		return self:send(msg)
-	end
-
-	function Connection:Cam_Focus_Far(speed: nil | Visca.limits.FOCUS_MIN_SPEED .. Visca.limits.FOCUS_MAX_SPEED)
-		speed = speed or Visca.command_arguments.focus_far_std
-		speed = math.min(math.max(speed, Visca.limits.FOCUS_MIN_SPEED), Visca.limits.FOCUS_MAX_SPEED)
-		local msg = Visca.Message()
-		msg.payload_type = Visca.payload_types.visca_command
-		msg.payload = {
-			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
-			Visca.packet_consts.command,
-			Visca.categories.focus,
-			Visca.commands.focus,
-			bit.bor(Visca.command_arguments.focus_far_var, bit.band(speed, 0x07)),
-			Visca.packet_consts.terminator,
-		}
-		return self:send(msg)
-	end
-
-	function Connection:Cam_Focus_Near(speed: nil | Visca.limits.FOCUS_MIN_SPEED .. Visca.limits.FOCUS_MAX_SPEED)
-		speed = speed or Visca.command_arguments.focus_near_std
-		speed = math.min(math.max(speed, Visca.limits.FOCUS_MIN_SPEED), Visca.limits.FOCUS_MAX_SPEED)
-		local msg = Visca.Message()
-		msg.payload_type = Visca.payload_types.visca_command
-		msg.payload = {
-			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
-			Visca.packet_consts.command,
-			Visca.categories.focus,
-			Visca.commands.focus,
-			bit.bor(Visca.command_arguments.focus_near_var, bit.band(speed, 0x07)),
-			Visca.packet_consts.terminator,
-		}
-		return self:send(msg)
-	end
-
-	function Connection:Cam_Power(on: boolean)
-		local msg = Visca.Message()
-		msg.payload_type = Visca.payload_types.visca_command
-		msg.payload = {
-			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
-			Visca.packet_consts.command,
-			Visca.categories.camera,
-			Visca.commands.power,
-			on and
-			Visca.command_arguments.power_on or
-			Visca.command_arguments.power_standby,
-			Visca.packet_consts.terminator,
-		}
-		return self:send(msg)
-	end
-
-	function Connection:Cam_Preset_Recall(preset: 0 .. 127)
-		local msg = Visca.Message()
-		msg.payload_type = Visca.payload_types.visca_command
-		msg.payload = {
-			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
-			Visca.packet_consts.command,
-			Visca.categories.camera,
-			Visca.commands.preset,
-			Visca.command_arguments.preset_recall,
-			bit.band(preset, 0x7F), -- Preset Number(=0 to 127)
-			Visca.packet_consts.terminator,
-		}
-		return self:send(msg)
-	end
-
-	function Connection:Cam_PanTilt(
-		direction: Visca.PanTilt_directions[keysof<|Visca.PanTilt_directions|>],
-		pan_speed: nil | (Visca.limits.PAN_MIN_SPEED .. Visca.limits.PAN_MAX_SPEED),
-		tilt_speed: nil | (Visca.limits.TILT_MIN_SPEED .. Visca.limits.TILT_MAX_SPEED)
-	)
-		pan_speed = math.min(math.max(pan_speed or 1, Visca.limits.PAN_MIN_SPEED), Visca.limits.PAN_MAX_SPEED)
-		tilt_speed = math.min(math.max(tilt_speed or 1, Visca.limits.TILT_MIN_SPEED), Visca.limits.TILT_MAX_SPEED)
-		local msg = Visca.Message()
-		msg.payload_type = Visca.payload_types.visca_command
-		msg.payload = {
-			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
-			Visca.packet_consts.command,
-			Visca.categories.pan_tilter,
-			Visca.commands.pantilt_drive,
-			bit.band(pan_speed, 0x1F), -- lowest 5 bits are only relevant
-			bit.band(tilt_speed, 0x1F), -- lowest 5 bits are only relevant
-			bit.band(bit.rshift(direction, 8), 0xFF),
-			bit.band(direction, 0xFF),
-			Visca.packet_consts.terminator,
-		}
-		return self:send(msg)
-	end
-
-	function Connection:Cam_PanTilt_Home()
-		local msg = Visca.Message()
-		msg.payload_type = Visca.payload_types.visca_command
-		msg.payload = {
-			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
-			Visca.packet_consts.command,
-			Visca.categories.pan_tilter,
-			Visca.commands.pantilt_home,
-			Visca.packet_consts.terminator,
-		}
-		return self:send(msg)
-	end
-
-	function Connection:Cam_PanTilt_Reset()
-		local msg = Visca.Message()
-		msg.payload_type = Visca.payload_types.visca_command
-		msg.payload = {
-			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
-			Visca.packet_consts.command,
-			Visca.categories.pan_tilter,
-			Visca.commands.pantilt_reset,
-			Visca.packet_consts.terminator,
-		}
-		return self:send(msg)
-	end
-
-	function Connection:Cam_Zoom_Stop()
-		local msg = Visca.Message()
-		msg.payload_type = Visca.payload_types.visca_command
-		msg.payload = {
-			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
-			Visca.packet_consts.command,
-			Visca.categories.camera,
-			Visca.commands.zoom,
-			Visca.Zoom_subcommand.stop,
-			Visca.packet_consts.terminator,
-		}
-		return self:send(msg)
-	end
-
-	function Connection:Cam_Zoom_Tele(speed: nil | Visca.limits.ZOOM_MIN_SPEED .. Visca.limits.ZOOM_MAX_SPEED)
-		speed = speed or Visca.Zoom_subcommand.tele_standard
-		speed = math.min(math.max(speed, Visca.limits.ZOOM_MIN_SPEED), Visca.limits.ZOOM_MAX_SPEED)
-		local msg = Visca.Message()
-		msg.payload_type = Visca.payload_types.visca_command
-		msg.payload = {
-			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
-			Visca.packet_consts.command,
-			Visca.categories.camera,
-			Visca.commands.zoom,
-			bit.bor(Visca.Zoom_subcommand.tele_variable, bit.band(speed, 0x07)),
-			Visca.packet_consts.terminator,
-		}
-		return self:send(msg)
-	end
-
-	function Connection:Cam_Zoom_Wide(speed: nil | Visca.limits.ZOOM_MIN_SPEED .. Visca.limits.ZOOM_MAX_SPEED)
-		speed = speed or Visca.Zoom_subcommand.wide_standard
-		speed = math.min(math.max(speed, Visca.limits.ZOOM_MIN_SPEED), Visca.limits.ZOOM_MAX_SPEED)
-		local msg = Visca.Message()
-		msg.payload_type = Visca.payload_types.visca_command
-		msg.payload = {
-			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
-			Visca.packet_consts.command,
-			Visca.categories.camera,
-			Visca.commands.zoom,
-			bit.bor(Visca.Zoom_subcommand.wide_variable, bit.band(speed, 0x07)),
-			Visca.packet_consts.terminator,
-		}
-		return self:send(msg)
-	end
-
-	function Connection:Cam_Zoom_To(zoom: nil | Visca.limits.ZOOM_MIN_VALUE .. Visca.limits.ZOOM_MAX_VALUE)
-		zoom = zoom or 0
-		zoom = math.min(math.max(zoom, Visca.limits.ZOOM_MIN_VALUE), Visca.limits.ZOOM_MAX_VALUE)
-		local msg = Visca.Message()
-		msg.payload_type = Visca.payload_types.visca_command
-		msg.payload = {
-			Visca.packet_consts.req_addr_base + bit.band(Visca.default_camera_nr or 1, 0x0F),
-			Visca.packet_consts.command,
-			Visca.categories.camera,
-			Visca.commands.zoom_to,
-			bit.band(bit.rshift(zoom, 12), 0x0F),
-			bit.band(bit.rshift(zoom, 8), 0x0F),
-			bit.band(bit.rshift(zoom, 4), 0x0F),
-			bit.band(zoom, 0x0F),
-			Visca.packet_consts.terminator,
-		}
-		return self:send(msg)
-	end
 end
 
 return Visca
