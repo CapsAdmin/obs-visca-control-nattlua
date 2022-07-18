@@ -271,11 +271,10 @@ end
 local function close_visca_connection(camera_id: number)
 	local connection = plugin_data.connections[camera_id]
 
-	if connection ~= nil then
-		connection.close()
-		connection = nil
-		plugin_data.connections[camera_id] = connection
-	end
+	if not connection then return end
+
+	connection:close()
+	plugin_data.connections[camera_id] = nil
 end
 
 local function open_visca_connection(
@@ -286,21 +285,18 @@ local function open_visca_connection(
 )
 	local connection = plugin_data.connections[camera_id]
 
-	if connection == nil then
-		local new_connection, connection_error = Visca.connect(camera_address, camera_port)
+	if connection then return connection end
 
-		if new_connection then
-			connection = new_connection
+	local connection, connection_error = Visca.connect(camera_address, camera_port)
 
-			if camera_mode and connection then connection.set_mode(camera_mode) end
-
-			plugin_data.connections[camera_id] = connection
-		else
-
-		--log(connection_error)
-		end
+	if not connection then
+		log(connection_error)
+		return
 	end
 
+	if camera_mode and connection then connection:set_mode(camera_mode) end
+
+	plugin_data.connections[camera_id] = connection
 	return connection
 end
 
@@ -332,43 +328,43 @@ local function do_cam_action_start(camera_id: number, camera_action: number, act
 
 	local connection = open_visca_connection(camera_id, camera_address, camera_port, camera_mode)
 
-	if connection then
-		if camera_action == camera_actions.Camera_Off then
-			connection.Cam_Power(false)
-			-- Force close connection after sending Off-command.
-			connection.close()
-			plugin_data.connections[camera_id] = nil
-		elseif camera_action == camera_actions.Camera_On then
-			connection.Cam_Power(true)
-		elseif camera_action == camera_actions.Preset_Recal and action_args.preset then
-			connection.Cam_Preset_Recall(action_args.preset)
-		elseif camera_action == camera_actions.PanTilt then
-			connection.Cam_PanTilt(
-				action_args.direction or Visca.PanTilt_directions.stop,
-				action_args.speed or 0x03,
-				action_args.speed or 0x03
-			)
-		elseif camera_action == camera_actions.Zoom_In then
-			connection.Cam_Zoom_Tele(action_args.speed)
-		elseif camera_action == camera_actions.Zoom_Out then
-			connection.Cam_Zoom_Wide(action_args.speed)
-		elseif camera_action == camera_actions.Focus_Auto then
-			connection.Cam_Focus_Mode(Visca.Focus_modes.auto)
-		elseif camera_action == camera_actions.Focus_Manual then
-			connection.Cam_Focus_Mode(Visca.Focus_modes.manual)
-		elseif camera_action == camera_actions.Focus_Refocus then
-			connection.Cam_Focus_Mode(Visca.Focus_modes.manual)
-			connection.Cam_Focus_Mode(Visca.Focus_modes.one_push_trigger)
-		elseif camera_action == camera_actions.Focus_Infinity then
-			connection.Cam_Focus_Mode(Visca.Focus_modes.manual)
-			connection.Cam_Focus_Mode(Visca.Focus_modes.infinity)
-		elseif camera_action == camera_actions.Focus_Near then
-			connection.Cam_Focus_Mode(Visca.Focus_modes.manual)
-			connection.Cam_Focus_Near()
-		elseif camera_action == camera_actions.Focus_Far then
-			connection.Cam_Focus_Mode(Visca.Focus_modes.manual)
-			connection.Cam_Focus_Far()
-		end
+	if not connection then return end
+
+	if camera_action == camera_actions.Camera_Off then
+		connection:Cam_Power(false)
+		-- Force close connection after sending Off-command.
+		connection:close()
+		plugin_data.connections[camera_id] = nil
+	elseif camera_action == camera_actions.Camera_On then
+		connection:Cam_Power(true)
+	elseif camera_action == camera_actions.Preset_Recal and action_args.preset then
+		connection:Cam_Preset_Recall(action_args.preset)
+	elseif camera_action == camera_actions.PanTilt then
+		connection:Cam_PanTilt(
+			action_args.direction or Visca.PanTilt_directions.stop,
+			action_args.speed or 0x03,
+			action_args.speed or 0x03
+		)
+	elseif camera_action == camera_actions.Zoom_In then
+		connection:Cam_Zoom_Tele(action_args.speed)
+	elseif camera_action == camera_actions.Zoom_Out then
+		connection:Cam_Zoom_Wide(action_args.speed)
+	elseif camera_action == camera_actions.Focus_Auto then
+		connection:Cam_Focus_Mode(Visca.Focus_modes.auto)
+	elseif camera_action == camera_actions.Focus_Manual then
+		connection:Cam_Focus_Mode(Visca.Focus_modes.manual)
+	elseif camera_action == camera_actions.Focus_Refocus then
+		connection:Cam_Focus_Mode(Visca.Focus_modes.manual)
+		connection:Cam_Focus_Mode(Visca.Focus_modes.one_push_trigger)
+	elseif camera_action == camera_actions.Focus_Infinity then
+		connection:Cam_Focus_Mode(Visca.Focus_modes.manual)
+		connection:Cam_Focus_Mode(Visca.Focus_modes.infinity)
+	elseif camera_action == camera_actions.Focus_Near then
+		connection:Cam_Focus_Mode(Visca.Focus_modes.manual)
+		connection:Cam_Focus_Near()
+	elseif camera_action == camera_actions.Focus_Far then
+		connection:Cam_Focus_Mode(Visca.Focus_modes.manual)
+		connection:Cam_Focus_Far()
 	end
 end
 
@@ -387,18 +383,18 @@ local function do_cam_action_stop(camera_id: number, camera_action: number, acti
 	)
 	local connection = open_visca_connection(camera_id, camera_address, camera_port, camera_mode)
 
-	if connection then
-		if camera_action == camera_actions.PanTilt then
-			connection.Cam_PanTilt(Visca.PanTilt_directions.stop)
-		elseif camera_action == camera_actions.Zoom_In then
-			connection.Cam_Zoom_Stop()
-		elseif camera_action == camera_actions.Zoom_Out then
-			connection.Cam_Zoom_Stop()
-		elseif camera_action == camera_actions.Focus_Near then
-			connection.Cam_Focus_Stop()
-		elseif camera_action == camera_actions.Focus_Far then
-			connection.Cam_Focus_Stop()
-		end
+	if not connection then return end
+
+	if camera_action == camera_actions.PanTilt then
+		connection:Cam_PanTilt(Visca.PanTilt_directions.stop)
+	elseif camera_action == camera_actions.Zoom_In then
+		connection:Cam_Zoom_Stop()
+	elseif camera_action == camera_actions.Zoom_Out then
+		connection:Cam_Zoom_Stop()
+	elseif camera_action == camera_actions.Focus_Near then
+		connection:Cam_Focus_Stop()
+	elseif camera_action == camera_actions.Focus_Far then
+		connection:Cam_Focus_Stop()
 	end
 end
 
@@ -419,7 +415,7 @@ function script_update(settings: obs.obs_data_t)
 end
 
 function script_save(settings: obs.obs_data_t)
-	for _, hotkey in pairs(plugin_data.hotkeys) do
+	for _, hotkey in ipairs(plugin_data.hotkeys) do
 		local a = assert(obs.obs_hotkey_save(hotkey.id))
 		obs.obs_data_set_array(settings, hotkey.name .. "_hotkey", a)
 		obs.obs_data_array_release(a)
@@ -917,7 +913,7 @@ end
 plugin_def.destroy = function(huh: any)
 	for camera_id, connection in pairs(plugin_data.connections) do
 		if connection ~= nil then
-			connection.close()
+			connection:close()
 			plugin_data.connections[camera_id] = nil
 		end
 	end
