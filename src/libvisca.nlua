@@ -1,5 +1,4 @@
 local bit = require("bit")
-local socket = import("./ljsocket.nlua")
 local Visca = {}
 Visca.default_port = 52381
 Visca.default_camera_nr = 1
@@ -708,16 +707,20 @@ do
 end
 
 do
+	local socket = import("./ljsocket.nlua")
+
+	local type { TSocket, AddressInfo } = import<|"./ljsocket.nlua"|>
+
 	local Connection = {}
 	Connection.__index = Connection
 	type Connection.@Self = {
-		sock = any,
-		address = any,
+		sock = TSocket,
+		address = AddressInfo,
 		mode = Visca.modes[keysof<|Visca.modes|>],
 	}
 
 	local function create_non_blocking_udp_socket(host: string, port: string)
-		local address = assert(socket.find_first_address(address, tostring(port)))
+		local address = assert(socket.find_first_address(host, tostring(port)))
 		local sock = assert(socket.create("inet", "dgram", "udp"))
 		assert(sock:set_blocking(false))
 		return sock, address
@@ -734,7 +737,7 @@ do
 
 		return setmetatable(
 			{
-				sock = sock,
+				sock = sock  as TSocket,
 				address = addrinfo,
 				mode = Visca.modes.generic,
 			},
@@ -796,7 +799,6 @@ do
 			return self:send(func(...))
 		end
 	end
-
 end
 
 return Visca

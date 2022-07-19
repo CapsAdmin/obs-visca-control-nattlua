@@ -50,10 +50,6 @@ local camera_action_active = {
 }
 
 local function log(fmt: string, ...: ...(string | number))
-	do
-		return
-	end
-
 	if plugin_data.debug or obs.obs_data_get_bool(plugin_settings, "debug_logging") then
 		local info = assert(debug.getinfo(2, "nl"))
 		local func = info.name or "?"

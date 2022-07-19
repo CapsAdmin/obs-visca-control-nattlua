@@ -880,6 +880,8 @@ local type AddressInfo = {
 	addrinfo = ffi.get_type<|"struct addrinfo*"|> ~ nil,
 }
 
+type M.AddressInfo = AddressInfo
+
 local function addrinfo_get_ip(self: AddressInfo)
 	if self.addrinfo.ai_addr == nil then return nil end
 
@@ -1039,6 +1041,8 @@ do
 		debug = true | nil,
 	}
 	type meta.@Self.@Name = "TSocket"
+
+	type M.TSocket = meta.@Self
 
 	function meta:__tostring()
 		return string.format("socket[%s-%s-%s][%s]", self.family, self.socket_type, self.protocol, self.fd)
