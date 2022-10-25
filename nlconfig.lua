@@ -11,7 +11,6 @@ local analyzer_config = {
 
 if cmd == "get-analyzer-config" then
 	local analyzer_config = {
-		working_directory = input_dir,
 		inline_require = true,
 		entry_point = input_file,
 	}
