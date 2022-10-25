@@ -1,4 +1,6 @@
 local bit = require("bit")
+import<|"./obslua.nlua"|>
+local obs = obslua
 local Visca = {}
 Visca.default_port = 52381
 Visca.default_camera_nr = 1
@@ -580,6 +582,46 @@ do
 			return self.reply_type == Visca.packet_consts.reply_error
 		end
 
+        function PayloadReply:get_inquiry_data_for(inquiry_payload: PayloadBytes)
+            local _,_,category,inquiry_command = unpack(inquiry_payload)
+            local data = {}
+
+            if category == Visca.categories.interface then
+                if inquiry_command == Visca.inquiry_commands.software_version then
+                    -- TODO: parse Visca.inquiry_commands.software_version
+                    data = {
+                        vendor_id   = bit.lshift(self.arguments[1], 8) + self.arguments[2],
+                        model_code  = bit.lshift(self.arguments[3], 8) + self.arguments[4],
+                        rom_version = bit.lshift(self.arguments[5], 8) + self.arguments[6],
+                    }
+                end
+            elseif category == Visca.categories.camera then
+                if inquiry_command == Visca.inquiry_commands.zoom_position then
+                    data = {
+                        position = bit.lshift(bit.band(self.arguments[1], 0x0F), 12) +
+                                   bit.lshift(bit.band(self.arguments[2], 0x0F), 8) +
+                                   bit.lshift(bit.band(self.arguments[3], 0x0F), 4) +
+                                   bit.band(self.arguments[4], 0x0F),
+                    }
+                end
+            elseif category == Visca.categories.pan_tilter then
+                if inquiry_command == Visca.inquiry_commands.pantilt_position then
+                    data = {
+                        pan  = bit.lshift(bit.band(self.arguments[1], 0x0F), 12) +
+                               bit.lshift(bit.band(self.arguments[3], 0x0F), 4) +
+                               bit.lshift(bit.band(self.arguments[2], 0x0F), 8) +
+                               bit.band(self.arguments[4], 0x0F),
+                        tilt = bit.lshift(bit.band(self.arguments[5], 0x0F), 12) +
+                               bit.lshift(bit.band(self.arguments[6], 0x0F), 8) +
+                               bit.lshift(bit.band(self.arguments[7], 0x0F), 4) +
+                               bit.band(self.arguments[8], 0x0F)
+                    }
+                end
+            end
+
+            return data
+        end
+
 		function PayloadReply:as_string()
 			if self:is_ack() then
 				return "Acknowledge"
@@ -785,6 +827,70 @@ do
 end
 
 do
+	local Transmission = {}
+	Transmission.__index = Transmission
+	type Transmission.@Self = {
+		send = Visca.Message(),
+		send_timestamp = nil | string,
+		ack = nil | string,
+		ack_timestamp = nil | string,
+		error = nil | string,
+		error_timestamp = nil | string,
+		completion = nil | string,
+		completion_timestamp = nil | string,
+	}
+
+	function Transmission:add_reply(reply)
+		if reply.is_ack() then
+			self.ack = reply
+			self.ack_timestamp = obs.os_gettime_ns()
+		elseif reply.is_completion() then
+			self.completion = reply
+			self.completion_timestamp = obs.os_gettime_ns()
+		elseif reply.is_error() then
+			self.error = reply
+			self.error_timestamp = obs.os_gettime_ns()
+		end
+	end
+
+	function Transmission:timed_out()
+		if not self.send_timestamp then
+			return false
+		else
+			return (obs.os_gettime_ns() - math.max(self.send_timestamp, self.ack or 0)) >
+				3000000000 -- 3 seconds in nanoseconds
+		end
+	end
+
+	function Transmission:is_inquiry()
+		return self.send and self.send.is_inquiry() or false
+	end
+
+	function Transmission:inquiry_data()
+		if self.is_inquiry() and self.completion then
+			return self.completion.get_inquiry_data_for(self.send.payload)
+		else
+			return nil
+		end
+	end
+
+	function Visca.Transmission(message: mutable Visca.Message())
+        return setmetatable( {
+			send                 = message,
+			send_timestamp       = nil,
+			ack                  = nil,  -- received ack message
+			ack_timestamp        = nil,  -- received ack timestamp
+			error                = nil,  -- received ack message
+			error_timestamp      = nil,  -- received ack timestamp
+			completion           = nil,  -- recieved completion message
+			completion_timestamp = nil,  -- received completion timestamp
+		  }, Transmission)
+    end
+
+
+end
+
+do
 	local socket = import("./ljsocket.nlua")
 
 	local type { TSocket, AddressInfo } = import<|"./ljsocket.nlua"|>
@@ -795,6 +901,8 @@ do
 		sock = TSocket,
 		address = AddressInfo,
 		mode = Visca.modes[keysof<|Visca.modes|>],
+		transmission_queue = List<|Visca.Transmission(Visca.Message())|>,
+		callbacks = any,
 	}
 
 	local function create_non_blocking_udp_socket(host: string, port: string)
@@ -818,10 +926,86 @@ do
 				sock = sock  as TSocket,
 				address = addrinfo as AddressInfo,
 				mode = Visca.modes.generic,
+				transmission_queue = {},  -- List of Transmission objects
+				callbacks = {},   -- List of callbacks: [type][id] = function
 			},
 			Connection
 		)
 	end
+
+    function Connection:_transmit(message)
+        local data_to_send = message.to_data(self.mode)
+        local sock = self.sock
+
+        if Visca.debug then
+            print(string.format("Connection transmit %s", message.as_string(self.mode)))
+            message.dump(nil, nil, self.mode)
+        end
+
+        if sock ~= nil then
+            return sock:send_to(self.address, data_to_send), data_to_send
+        else
+            return 0, data_to_send
+        end
+    end
+
+    function Connection:_transmissions_add_message(msg)
+        local found = false
+        local transmission = nil
+
+        for _,t in pairs(self.transmission_queue) do
+            if self.mode == Visca.modes.generic then
+                if t.send.seq_nr == msg.seq_nr then
+                    found = true
+                end
+            elseif self.mode == Visca.modes.ptzoptics then
+                -- The response does not have a header, so we don't know the sequence number
+                -- Let's just assume it belongs to the first message in the queue
+                found = true
+            end
+
+            if found then
+                t.add_reply(msg.message.reply)
+                transmission = t
+                break
+            end
+        end
+
+        return transmission
+    end
+
+    function Connection:_transmissions_process()
+        local transmit_size = 0
+        local transmit_data = nil
+
+        for i,t in pairs(self.transmission_queue) do
+            if t.timed_out() then
+                self._exec_callback('timeout', t)
+                t = nil
+            elseif t.error or t.completion then
+                -- Message transaction completed, remove from queue
+                t = nil
+            end
+
+            if not t then
+                self.transmission_queue[i] = nil
+            end
+        end
+
+        for _,t in pairs(self.transmission_queue) do
+            -- Check if the first remaining message still needs transmission
+            if t then
+                if not t.send_timestamp then
+                    transmit_size, transmit_data = self._transmit(t.send)
+                    t.send_timestamp = obs.os_gettime_ns()
+                end
+                break
+            end
+        end
+
+        return transmit_size, transmit_data
+    end
+
 
 	function Connection:set_mode(mode: Visca.modes[keysof<|Visca.modes|>])
 		self.mode = mode
@@ -833,27 +1017,22 @@ do
 
 		self.sock:close()
 		self.sock.sock = nil
+
+		if #self.transmission_queue > 0 then
+            print(string.format("Warning: %d unfinished messages in queue", #connection.transmission_queue))
+        end
 	end
 
 	function Connection:send(message: mutable Visca.Message())
 		message.seq_nr = (message.seq_nr + 1) % 0xFFFFFFFF
 
-		if Visca.debug then
-			print(string.format("Connection send %s", message:as_string(self.mode)))
-			message:dump(nil, nil, self.mode)
-		end
-
-		local data_to_send = message:to_data(self.mode)
-		local sock = self.sock
-
-		if sock ~= nil then
-			return sock:send_to(self.address, data_to_send), data_to_send
-		else
-			return 0, data_to_send
-		end
+		table.insert(self.transmission_queue, Visca.Transmission(message))
+        return self._transmissions_process()
 	end
 
 	function Connection:receive()
+		local result = {nil, "No connection", 0}
+
 		local sock = self.sock
 
 		if not sock then return nil, "No connection", 0 end
@@ -868,6 +1047,17 @@ do
 		if Visca.debug then
 			print(string.format("Received %s", msg.as_string(self.mode)))
 		end
+
+		if msg.message.reply then
+			local transmission = connection._transmissions_add_message(msg)
+			if not transmission then
+				print(string.format("Warning: Unable to find send message for reply: %s",
+						msg.as_string(connection.mode)))
+			end
+		end
+
+		pcall(self._transmissions_process)
+
 
 		return msg
 	end
